@@ -55,8 +55,13 @@ void Dates::difference(int d,int m,int y)
 		}
 	}
 	// Year Not Same
-				    
-	/*
+	
+		
+	// Easiest Technique
+	/* Formula : (iDay + (153 * (iMonth + 12 * ((14 - iMonth) / 12) - 3) + 2) / 5 + 365 *
+        (iYear + 4800 - ((14 - iMonth) / 12)) + (iYear + 4800 - ((14 - iMonth) / 12)) / 4 - 32083);	*/
+	
+	/*  Older Technique
 	if(y>yyyy)
 	{
 		cout<<"\n"<<y - yyyy<<" years";
@@ -73,9 +78,7 @@ void Dates::difference(int d,int m,int y)
 		m2 = m;
 		cout<<"\n"<<y - yyyy<<" years";
 	}
-	*/
-
-	/*
+	
 	int i,j,temp = 0, temp1 = 0;
 	for(i = m1; i<=m2; i++)
 	{

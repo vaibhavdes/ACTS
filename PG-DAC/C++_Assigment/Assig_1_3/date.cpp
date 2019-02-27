@@ -34,15 +34,38 @@ void Dates::difference(int d,int m,int y)
 	tdays = days(m,y);
 	tdays1 = days(mm,yyyy);
 
+	//Iterator Variables
+	int t_days = 0, t_month = 0;
+	int i,j,k,l,m,n;
+	
+	// Year is same
+	if(y==yyyy)
+	{
+		//Month is same
+		if(m == mm)
+		{	
+			if(d>dd)
+				t_days = d - dd;
+			else
+				t_days = dd - d;
+		}
+		else
+		{
+			//Month Not Same
+		}
+	}
+	// Year Not Same
+				    
+	/*
 	if(y>yyyy)
 	{
-		cout<<"\n"<<yyyy - y<<" years";
+		cout<<"\n"<<y - yyyy<<" years";
 		d1 = d;
 		m1 = m;
 		d2 = dd;
 		m2 = mm;
 	}
-	else
+	else if(y<yyyy)
 	{
 		d1 = dd;
 		m1 = mm;
@@ -50,7 +73,9 @@ void Dates::difference(int d,int m,int y)
 		m2 = m;
 		cout<<"\n"<<y - yyyy<<" years";
 	}
+	*/
 
+	/*
 	int i,j,temp = 0, temp1 = 0;
 	for(i = m1; i<=m2; i++)
 	{
@@ -66,6 +91,8 @@ void Dates::difference(int d,int m,int y)
 		}
 		temp1++;
 	}
+	*/
+	
 	
 	cout <<"\n"<<temp1<<" month";
 	cout <<"\n"<<temp<<" days";

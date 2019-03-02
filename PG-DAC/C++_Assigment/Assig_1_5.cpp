@@ -81,6 +81,27 @@ void Player::Sort_Age(Player p[],int s)
                 }
         }
 }
+
+
+//Efficient
+/* void Player::Sort_Obj(Player p[],int s)
+{      
+       for(int i=0; i<s; i++)
+        {
+                for(int j=i+1;j<s;j++)
+                {
+                    if(p[i].name > p[j].name || p[i].name == p[j].name)
+                    {
+                        Player p;
+                        p = p[i];
+                        p[i]= p[j];
+                        p[j] = p;             
+                    }
+                }
+        }
+}
+*/
+
 Player::Player()
 {
         age=10;

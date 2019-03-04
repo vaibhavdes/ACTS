@@ -23,7 +23,7 @@ void Player::Display()
 {
 	cout<<age<<"\t"<<name<<"\t"<<country<<endl;
 }
-void Player::Sort(Player *p,int a)
+void Sort(Player *p,int a)
 {
 	int temp_age;
 	string temp;

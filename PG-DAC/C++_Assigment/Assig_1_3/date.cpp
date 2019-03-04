@@ -67,7 +67,7 @@ void Dates::difference(int d,int m,int y)
 	
 	total_days = total_days + y_d + d_y;	
 	
-	cout<<total_days<<" Days\n"<<end;
+	cout<<total_days<<" Days\n"<<endl;
 	cout<<total_months<<" Months\n"<<endl;		//Unverified
 	cout<<y - yyyy<<" Years\n"<<endl;	
 }

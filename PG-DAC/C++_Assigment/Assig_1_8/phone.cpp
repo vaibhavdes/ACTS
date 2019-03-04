@@ -34,7 +34,11 @@ void Phone::Display()
 }
 void Phone::Search(int model)
 {
-	cout<<"Enter Manufacturer";
+	for(int i=0;i<size;i++)
+	{
+		if(p[i].modelNo  == model)
+			cout<<"\n"<<p[i].modelNo<<"\t"<<p[i].price<<"\t"<<p[i].manufacturer<<"\t"<<p[i].quantity<<endl;
+	}
 }
 void Phone::Add(int m,int p,string mF, int q,Phone [])
 {}
@@ -42,7 +46,7 @@ void Phone::List(Phone p[],int size)
 {
 	for(int i=0;i<size;i++)
 		{
-				cout<<"\n"<<p[i].modelNo<<"\t"<<p[i].price<<"\t"<<p[i].manufacturer<<"\t"<<p[i].quantity<<endl;
+			cout<<"\n"<<p[i].modelNo<<"\t"<<p[i].price<<"\t"<<p[i].manufacturer<<"\t"<<p[i].quantity<<endl;
 		}
 }
 void Phone::Qty(Phone p[],int m,int size)

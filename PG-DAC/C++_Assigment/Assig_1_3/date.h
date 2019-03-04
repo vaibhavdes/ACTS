@@ -6,7 +6,7 @@ class Dates
 public:
 	Dates();		
 	Dates(int d,int m,int y);	
-	void accept(int d,int m,int y);
+	void accept();
 	void show();
 	void difference(int d,int m,int y);
 	int days(int d,int y);

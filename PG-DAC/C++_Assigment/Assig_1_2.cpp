@@ -32,15 +32,15 @@ public:
 			if(t1.hour == t2.hour)
 			{	if((t1.minute) == (t2.minute))
 				{	if(t1.second == t2.second)
-					{cout<<"Time is Matching";}
-					else
-					{cout<<"Second is not matching";}
+					{
+						cout<<"Time is Matching";
+					}
 				}
-				else
-				{cout<<"Minute is not matching";}
 			}
 			else
-			{cout<<"Time is not matching";}
+			{
+				cout<<"Time is not matching";
+			}
 		}
 		void different(Time t1,Time t2)
 		{
@@ -50,9 +50,8 @@ public:
 			s = t2.second - t1.second;
 			t = h + m + s;
 			
-      //For this Time Difference Formula, Ref StackOverflow
-      cout<<"\nDifference: Hour "<<t/3600<<" Minute "<<(t%3600)/60<<" Second "<<s%60;
-      
+     			//For this Time Difference Formula, Ref StackOverflow
+      			cout<<"\nDifference: Hour "<<t/3600<<" Minute "<<(t%3600)/60<<" Second "<<s%60;      
 		}
 		//~Time();
 
@@ -69,5 +68,6 @@ int main() {
 	t3.compare(t1,t2);
 
 	t3.different(t1,t2);
+	
 	return 0;
 }

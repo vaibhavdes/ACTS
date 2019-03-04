@@ -1,5 +1,6 @@
 #include<string>
 using namespace std;
+void Sort(Player *,int);		
 class Player
 {
 	private:int age;
@@ -9,5 +10,4 @@ class Player
 		Player(int ,string ,string );
 		void Accept();
 		void Display();
-		void Sort(Player *,int);		
 };

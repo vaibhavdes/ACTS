@@ -9,5 +9,5 @@ class Player
 		Player(int ,string ,string );
 		void Accept();
 		void Display();
-		static void Sort(Player *,int);		
+		void Sort(Player *,int);		
 };

@@ -92,89 +92,89 @@ int Dates::days(int m,int y)
 	return tdays;
 }
 
-/*
-void Date::compare(int d,int m,int y)
+void Dates::compare(int d,int m,int y)
 {
-
+	if(dd == d && mm == m && yyyy == y)
+	{
+		cout<<"Date is matching";
+	}
+	else
+	{
+		cout<<"Date is not matching";
+	}
 }
-*/
 
-
-
-
-
-/* Older Implementation || difference()
-
-
-int tdays,tdays1;
-	int d1,m1,d2,m2;
-
-	tdays = days(m,y);
-	tdays1 = days(mm,yyyy);
-
-	//Iterator Variables
-	int t_days = 0, t_month = 0;
-	int i,j,k,l,m,n;
-	
-	// Year is same
-	if(y==yyyy)
+bool Dates::operator==(Dates &d)
+{
+	if(dd == d.dd && mm == d.mm && yyyy == d.yyyy)
 	{
-		//Month is same
-		if(m == mm)
-		{	
-			if(d>dd)
-				t_days = d - dd;
-			else
-				t_days = dd - d;
-		}
-		else
+		return 1; //cout<<"Date is matching";
+	}
+	else
+	{
+		return 0; //cout<<"Date is not matching";
+	}
+}
+
+bool Dates::operator!=(Dates &d)
+{
+	if(dd != d.dd && mm != d.mm && yyyy != d.yyyy)
+	{
+		return 1; //cout<<"Date is matching";
+	}
+	else
+	{
+		return 0; //cout<<"Date is not matching";
+	}
+}
+
+int Dates::operator -(Dates &d)
+{
+	int y_t;
+	int t_y;
+	int d_y = 0,i;
+	int y_d = 0,j;
+	int l,n,total_days = 0,total_months = 0;
+
+	(yyyy%4==0)?(y_t = 366):(y_t = 365); // Start Year
+	(d.yyyy%4==0)?(t_y = 366):(t_y = 365); // End Year
+
+	//Start Day
+	for(i = mm + 1; i <= 12;i++)
+	{
+		d_y = d_y + days(i,yyyy);
+		total_months = total_months + 1;
+	}
+		d_y = d_y + (days(mm,yyyy) - dd);
+
+	//End Day
+	for(j = 1; j < d.mm ; j++)
+	{
+		y_d = y_d + days(j,d.yyyy);
+		total_months = total_months + 1;
+	}
+		y_d =  y_d + d.dd;
+
+
+	if(d.yyyy>yyyy && d.yyyy!=yyyy)
+	{
+		for(l = yyyy + 1;l < d.yyyy; l++)
 		{
-			//Month Not Same
-		}
-	}
-	// Year Not Same
-	
-		
-	// Easiest Technique
-	/* Formula : (iDay + (153 * (iMonth + 12 * ((14 - iMonth) / 12) - 3) + 2) / 5 + 365 *
-        (iYear + 4800 - ((14 - iMonth) / 12)) + (iYear + 4800 - ((14 - iMonth) / 12)) / 4 - 32083);	*/
-	
-	/*  Older Technique
-	if(y>yyyy)
-	{
-		cout<<"\n"<<y - yyyy<<" years";
-		d1 = d;
-		m1 = m;
-		d2 = dd;
-		m2 = mm;
-	}
-	else if(y<yyyy)
-	{
-		d1 = dd;
-		m1 = mm;
-		d2 = d;
-		m2 = m;
-		cout<<"\n"<<y - yyyy<<" years";
-	}
-	
-	int i,j,temp = 0, temp1 = 0;
-	for(i = m1; i<=m2; i++)
-	{
-		for(j = d1; j <= d2; j++)
-		{
-			if(d1<=tdays)
+			for(n = 1; n <= 12; n++)
 			{
-				j = 1;
-				continue;
+				total_days = total_days + days(n,l);
+				total_months = total_months + 1;
 			}
-			temp++;
-			cout<<"Test"<<j<<temp;
 		}
-		temp1++;
 	}
-	
-	
-	
-	cout <<"\n"<<temp1<<" month";
-	cout <<"\n"<<temp<<" days";
-*/
+
+	total_days = total_days + y_d + d_y;
+
+	return total_days;
+}
+
+
+
+
+
+

@@ -10,9 +10,12 @@ public:
 	void show();
 	void difference(int d,int m,int y);
 	int days(int d,int y);
-/*
+	
 	void compare(int d,int m,int y);
-*/
+	bool operator==(Dates &);
+	bool operator!=(Dates &);
+	int operator - (Dates &);
+
 	
 
 };

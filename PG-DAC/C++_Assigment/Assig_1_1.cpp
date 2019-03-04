@@ -12,6 +12,8 @@ private:
 public:
 		Student()
 		{
+			name = '\0';
+			course = '\0';
 			rollno = 0;
 		}
 		Student(int r,string name,string c)
@@ -20,11 +22,14 @@ public:
 			this->name = name;
 			course = c;
 		}
-		void accept(int r,string n,string c)
+		void accept()
 		{
-			rollno = r;
-			name = n;
-			course = c;
+			cout<<"Enter Name"<<endl;
+			cin>>name;
+			cout<<"Enter Course"<<endl;
+			cin>>cou;
+			cout<<"Enter Roll"<<endl;
+			cin>>rollno;
 		}
 		void show()
 		{
@@ -51,38 +56,20 @@ int main() {
 	Student s2(23,"Arjun","PG-DAC");
 	Student s3[10];
 
-	string name,cou;
-	int rollno;
-
-	cout<<"Enter Name"<<endl;
-	cin>>name;
-	cout<<"Enter Course"<<endl;
-	cin>>cou;
-	cout<<"Enter Roll"<<endl;
-	cin>>rollno;
-
-	s1.accept(rollno,name,cou);
+	s1.accept();
 	s1.show();
 	s2.show();
 
 	int i;
 	for(i = 0; i < 2; i++)
 	{
-		cout<<"Enter Name"<<endl;
-		cin>>name;
-		cout<<"Enter Course"<<endl;
-		cin>>cou;
-		cout<<"Enter Roll"<<endl;
-		cin>>rollno;
-
-		s3[i].accept(rollno,name,cou);
+		s3[i].accept();
 	}
 
 	int s;
 	cout<<"Enter Roll Number to Search";
 	cin>>s;
 	s1.search(s,s3);
-
 
 	return 0;
 }

@@ -15,9 +15,12 @@ Dates::Dates(int d,int m,int y)
 }
 void Dates::accept(int d,int m,int y)
 {
-	dd = d;
-	mm = m;
-	yyyy = y;
+	cout<<"\n Enter Date"<<endl;
+	cin>>dd;
+	cout<<"\n Enter Month"<<endl;
+	cin>>mm;
+	cout<<"\n Enter Year"<<endl;
+	cin>>yyyy;
 }
 void Dates::show()
 {

@@ -1,0 +1,24 @@
+.login{
+    margin-top: 15px;
+    margin-left: 20%;
+    margin-right: 20%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.login-left{
+    width: 25%;
+    background-color: #2874f0;
+    padding: 30px;
+    position: absolute;
+    height:70%;}
+.login-right{
+    width: 40%;
+    padding: 30px;
+    margin-left: 35%;
+    position: absolute;
+    height:70%;
+}
+
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}

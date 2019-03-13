@@ -1,0 +1,44 @@
+.product{
+    margin-top: 25px;
+}
+
+.product-left{
+    width: 30%;
+    padding: 30px;
+    position: absolute;
+    height:65%;
+    margin-left: 60px;
+    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
+}
+.product-right{
+    width: 50%;
+    padding: 30px;
+    margin-left: 40%;
+    position: absolute;
+    height:65%;
+}
+.product img{
+   width:80%;
+   height:70%;
+   margin-top: 20px;
+   margin-left: 20px;
+}
+.product button{
+    padding: 18px 8px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    width: 45%;
+    border: none;
+    float: left;
+    color: #fff;
+    margin-left: 10px;
+    margin-top: 50px;
+}
+.product-right p.title{
+    font-family: 'Segoe UI';
+    font-size: 20px;
+}
+.product-right li.features{
+    font-family: 'Segoe UI';
+    font-size: 15px;
+}

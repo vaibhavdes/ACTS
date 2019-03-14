@@ -3,23 +3,32 @@
         <title>FlipKart</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/style-product.css">
-
     </head>
     <body>
         <?php include('pages/header.php');?>
 
+        <?php
+        if(!empty($_GET['prodid']))
+        {
+            $res=mysqli_query($connect,"SELECT * FROM products WHERE id=".$_GET['prodid']);
+            $product=mysqli_fetch_array($res);
+        }
+        ?>
         <div class="product">
              <div  class="product-left">
                 <div class="product-content">
-                    <img src="images/sample_image.jpg">
+                    <img src="images/<?php echo $product['image'];?>">
                 </div>
-                <button style="background: #ff9f00;">Add to Cart</button>
-                <button style="background: #fb641b;">Buy Now</button>
+                <form method="post" action="#">
+                    <input type="hidden" name="productId" style="background: #ff9f00;" value="<?php echo $product['id'];?>">
+                    <input type="submit" name="addtocart" style="background: #ff9f00;" value="Add to Cart">
+                    <input type="submit" name="buynow" style="background: #fb641b;" value="Buy Now">
+                </form>
             </div>
             <div class="product-right">
                <div class="product-content">
-                    <p class="title">Miss & Chief High Speed Stickerless 3x3 Magic Rubik Cube Puzzle Game Toy  (1 Pieces)</p>
-                    <p class="title" style="font-size: 32px;">₹116</p> 
+                    <p class="title"><?php echo $product['name'];?></p>
+                    <p class="title" style="font-size: 32px;">₹ <?php echo $product['price'];?></p> 
                     <div class="feature">
                         <div class="heading" style="color:#878787;"> Highlights </div>
                         <div class="features" style="margin-left:15%;">
@@ -36,9 +45,15 @@
                             <li class="features">Free shipping₹40</li>
                                 </td>
                             </tr>
-                        </table>
+                        </table>                             
                         </div> 
                     </div>
-               </div>         
+               </div>   
+               <details>
+                    <summary>Product Details</summary>
+                        <?php echo $product['detail'];?>
+                </details>         
             </div>
         </div>
+    </body>
+</html>

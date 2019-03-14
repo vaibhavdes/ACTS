@@ -1,0 +1,35 @@
+body{
+    background: rgb(240, 240, 240);
+}
+.profile{
+    margin-left: 5%;
+    margin-bottom: 10px;
+    margin-top: 12px;
+    width: 90%;
+    height: 90%;
+    display: flex;
+}
+.profile-left{
+    width: 25%;
+    height: 90%;
+}
+.space-hr{
+    margin-right: 20px;
+    height: 90%;
+    width: 2%;
+}
+.profile-right{
+    width: 68%;
+    height: 90%;
+}
+.profile-section{
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: white;
+}
+.inner-profile{
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+    align-content: center;
+}

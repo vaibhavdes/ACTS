@@ -39,3 +39,15 @@ h1{
     margin-top: 15px;
     margin-bottom: 15px;
 }
+.login-content input[type="text"]{
+    margin-bottom:15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.login-content input[type="email"]{
+    margin-bottom:15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.login-content input[type="password"]{
+    margin-bottom:15px; 
+    border-bottom: 1px solid #e0e0e0;
+}

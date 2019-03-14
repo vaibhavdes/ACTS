@@ -27,27 +27,48 @@ h1{
     margin-top: 30px;
 }
 .login-content input{
+    border: none;
+    font-family: 'Segoe UI';
+    font-size: 15px;
+}
+.login-content select{
     width: 450px;
     height: 45px;
     border: none;
     font-family: 'Segoe UI';
     font-size: 15px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    margin-bottom:15px;
 }
 .login-content input[type="submit"]{
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 450px;
+    height: 45px;
 }
 .login-content input[type="text"]{
     margin-bottom:15px;
     border-bottom: 1px solid #e0e0e0;
+    width: 450px;
+    height: 45px;
 }
 .login-content input[type="email"]{
     margin-bottom:15px;
     border-bottom: 1px solid #e0e0e0;
+    width: 450px;
+    height: 45px;
 }
 .login-content input[type="password"]{
     margin-bottom:15px; 
     border-bottom: 1px solid #e0e0e0;
+    width: 450px;
+    height: 45px;
+}
+.login-content input[type="number"]{
+    margin-bottom:15px; 
+    border-bottom: 1px solid #e0e0e0;
+    width: 450px;
+    height: 45px;
 }

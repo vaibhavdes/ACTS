@@ -1,5 +1,7 @@
+<?php
+    include("classes/session.php");
+?>
 <?php 
-session_start();
 include("classes/newUser.php");
 ?>
 <html>

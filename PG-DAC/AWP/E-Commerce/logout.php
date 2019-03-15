@@ -1,5 +1,11 @@
 <?php
-    session_destroy();
+
+    session_start();
+
     unset($_SESSION['user']);
-    header('Location: index.php');
+    unset($_SESSION['cart']);
+    session_destroy();
+
+    header('Location: login.php');
+ 
 ?>

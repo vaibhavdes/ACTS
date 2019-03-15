@@ -1,3 +1,6 @@
+<?php
+    include("classes/session.php");
+?>
 <html>
     <head>
         <title>FlipKart</title>
@@ -10,6 +13,7 @@
         <?php
         if(!empty($_GET['prodid']))
         {
+           // $prodid = mysqli_real_escape_string($_GET['prodid']);
             $res=mysqli_query($connect,"SELECT * FROM products WHERE id=".$_GET['prodid']);
             $product=mysqli_fetch_array($res);
         }
@@ -21,7 +25,17 @@
                 </div>
                 <form method="post" action="#">
                     <input type="hidden" name="productId" style="background: #ff9f00;" value="<?php echo $product['id'];?>">
-                    <input type="submit" name="addtocart" style="background: #ff9f00;" value="Add to Cart">
+                    <?php 
+                        if($product['stock']>0)
+                        {
+                            echo '<input type="submit" name="addtocart" style="background: #ff9f00;" value="Add to Cart">';
+                        }
+                        else
+                        {
+                            echo '<input type="submit" name="addtocart" style="background: #fb641b;" value="Coming Soon" disabled>';     
+                        }
+                        ?>
+                    
                     <input type="submit" name="buynow" style="background: #fb641b;" value="Buy Now">
                 </form>
             </div>
@@ -29,6 +43,22 @@
                <div class="product-content">
                     <p class="title"><?php echo $product['name'];?></p>
                     <p class="title" style="font-size: 32px;">₹ <?php echo $product['price'];?></p> 
+                    
+                        <?php 
+                            if($product['stock']>10)
+                            {
+                                echo '<p style="font-size:20px;font-weight:500;">In Stock</p>';
+                            }
+                            else if($product['stock']<10 && $product['stock']>0)
+                            {
+                                echo '<p style="font-size:20px;font-weight:500;">'.$product['stock'].' Left In Stock</p>';
+                            }
+                            else 
+                            {
+                                echo '<p style="font-size:36px;font-weight:500;">Out of Stock</p>';
+                            }
+                        ?>
+
                     <div class="feature">
                         <div class="heading" style="color:#878787;"> Highlights </div>
                         <div class="features" style="margin-left:15%;">
@@ -51,7 +81,7 @@
                </div>   
                <details>
                     <summary>Product Details</summary>
-                        <?php echo $product['detail'];?>
+                        <?php echo nl2br($product['detail']);?>
                 </details>         
             </div>
         </div>

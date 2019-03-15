@@ -1,6 +1,8 @@
+<?php
+    include("classes/session.php");
+?>
 <?php 
-session_start();
-include("classes/userLogin.php");
+    include("classes/userLogin.php");
 ?>
 <html>
     <head>

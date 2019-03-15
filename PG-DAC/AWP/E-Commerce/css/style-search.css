@@ -15,9 +15,8 @@ body{
     height: 90%;
 }
 .space-hr{
-    margin-right: 20px;
     height: 90%;
-    width: 2%;
+    width: 1%;
 }
 .profile-right{
     width: 68%;
@@ -42,6 +41,9 @@ body{
     margin-top: 12px;
     margin-bottom: 10px;
 }
+.heading p{
+    margin-top: 4px;
+}
 .amountOutputName{
     position: absolute;
     margin-left: 10px;
@@ -58,4 +60,25 @@ input[type="submit"]{
     float: left;
     color: #fff;
     margin-top: 10px;
+}
+.product{
+    padding: 10px;
+}
+.product-item{
+    display: flex;
+}
+.product-image{
+}
+.product-detail{
+    display: block;
+}
+.product-info {
+    margin-left: 40px;
+    margin-top: 15px;
+    display: flex;
+}
+.product-price{
+    margin-left: 400px;
+    position: absolute;    
+    font-size: 25px;
 }

@@ -54,57 +54,9 @@ p.menu-items{
     font-size:16px;
     margin-left: 10px; 
 }
-.section-banner{
-    margin-top: 5px;
-    margin-left: 8px;
-    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
-    height: 28%;
-    width: 99%;
-}
-.sections{
-    margin-top: 5px;
-    margin-left: 8px;
-    height: 55%;
-    width: 75%;
-    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
-}
-.ads-banner{
-    position: absolute;
-    margin-left: 80%;
-}
-.products{
-    margin-top: 5px;
-    margin-left: 8px;
-    height: 55%;
-    width: 62%;
-}
-.product-image{
-    width: 200px;
-    height: 200px;
-}
-.product-image:hover{
-    transform: scale(1.02);
-}
-.product-item{
-    position: absolute;
-}
-.product-item h3{
-    text-align: center;
-}
-.product-item p{
-    color: green;
-    text-align: center;
-}
-.section-text{
-    margin-left: 15px;
-    margin-top: 25px;
-    font-family: 'Segoe UI';
-    font-size: 20px;
-}
 a{
     color: white;
 }
-
 @media screen and (max-width: 800px) {
     .left, .main, .right {
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */

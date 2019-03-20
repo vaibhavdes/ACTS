@@ -1,0 +1,3 @@
+Run C++ through Terminal
+
+// g++ implement.cpp main.cpp

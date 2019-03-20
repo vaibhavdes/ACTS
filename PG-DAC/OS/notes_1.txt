@@ -1,0 +1,111 @@
+//Commands
+
+:whoami			//current user
+:id			//detailed information with id of current user
+
+:fdisk -l		//list partitions (Need Super User Access) (Fixed Disk/Format Disk)
+:su root		//super user login
+:exit			//to re-enter normal mode
+:sudo fdisk -l		//Only Super User Access for executing this command
+
+:whatis			(Try This)
+:whatis id		//More Information on Type of Id's
+:whatis fdisk		//Tells about each unique command on linux
+
+:ls			//List all files and folder in current directory
+:ls -l			//(-l is option)formatted in listview with details
+:ls -a			//show hidden files
+:ls -i 			//with inode no of files and folder
+
+(Note: Internally System do not understand file or folder with name, system understand only number so each file and folder is associated with a number called as inode no/id.
+Folder is also a file which has list of inodes of each file or folder inside it.
+When we format a disk all inodes linked list is deleted but data still exist which is burned on hard disk).
+
+//Extras
+
+:date						//Time with Date and Timezone
+:pwd						//present/current working directory
+:cd (Folder in which you want to enter)		//Change Directory
+:cd ..						//Move to Previous/Parent Directory
+:cd -						//Shows last location accessed
+:sleep 3					//sleeps for 3 seconds
+:cat /proc/cpuinfo				//show information of computer
+
+//Process
+
+:ps				//List Running Processed with Id
+:ps -e -o pid,ppid,psr	
+:ps -e -o pid,ppid,psr | wc -l	//List Count of Process
+
+Note:	pid 	= process identification number
+	ppid 	= parent process id to which process is assigned
+	psr	= formatted output of processor id
+
+
+
+//SHELL GAME
+
+:sh 		//to enter shell on unix
+:bash		//to enter shell on linux
+
+Note: shell is used to execute or interpret commands given by user [Same as Python does]
+
+:echo "Hello"		//Output the Words same as printf or cout
+:echo "Hello" | wc	//Output (Number of Line, Number of Word, Number of Character)
+:echo "Hello" | wc -l	//Output Number of Word count
+
+?Help:
+	:man echo	//To know more details about particular command (like documentation) - same like "whatis"
+
+Note: 	Have you observed that verticle line, it passes output of first command i.e 'echo "Hello"' to second command i.e wc to count word.
+	That verticle line is called pipe (Message Passer)
+
+:ps -e | less		//less cmd is used to add the paging (restrict number of output)
+:date && pwd		//separate two commands with && to execute both
+:datee || pwd		//separate two commands with || to execute which are correct
+
+
+//SHELL DATA GAME
+
+:var1=10		//create variable with name var1 and assign with value 10
+:echo $var1		//output value of variable var1
+:var3=$(($var1+3))	//writing expression	(Variables are local to tab)
+
+
+//SHELL Assignment
+
+:vim shell.sh		//One can create shell programming in file with extension .sh (Vim is an editor) 
+:chmod +x shell.sh	//to change mode to executable
+:./shell.sh		//to execute shell script
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

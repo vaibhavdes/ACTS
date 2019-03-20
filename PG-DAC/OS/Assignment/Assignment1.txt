@@ -1,0 +1,159 @@
+1
+2
+3
+4
+5
+
+for((i=1;i<6;i++))
+do
+        echo $i
+done
+
+-----------------------------
+
+1 2 3 4 5
+
+for((i=1;i<6;i++))
+do
+    echo -n " $i "
+done
+
+----------------------------
+
+1 
+22 
+333 
+4444 
+55555 
+
+for((i=1;i<6;i++))
+do
+    for((j=1;j<=i;j++))
+    do	
+          echo -n "$i"
+    done
+          echo " "	
+done
+
+----------------------------
+
+     1
+    22
+   333
+  4444
+ 55555
+
+for((i=1;i<6;i++))
+do
+    for((z=5;z>=i;z--))
+    do
+        echo -n " "
+    done
+    for((j=1;j<=i;j++))
+    do
+          echo -n "$i"
+    done
+          echo  
+done
+
+
+---------------------------
+
+      1     
+     2 2    
+    3 3 3   
+   4 4 4 4  
+  5 5 5 5 5 
+
+
+for((i=1;i<6;i++))
+do 
+    for((z=5;z>=i;z--))
+    do
+	echo -n " "
+    done
+    for((j=1;j<=i;j++))
+    do	
+          echo -n " $i"
+    done
+          echo 	
+done
+
+---------------------------
+
+Add Two Number
+
+
+read var1
+read var2
+var3=$(($var1+$var2))
+echo $var3
+
+---------------------------
+
+Factorial of a Number
+
+read var1
+var3=1
+for((i=var1;i>0;i--))
+do
+	var3=$((var3*i))
+done
+	echo $var3
+
+---------------------------
+
+Average of 5 Number
+
+var1=0;
+for((i=0;i<5;i++))
+do
+	read vari
+	var1=$(($var1+$vari))
+done
+	echo $(($var1/5))
+
+---------------------------
+
+Reverse of 4 Digit Number
+
+echo "Enter 4 Digit Number"
+read var1
+var2=0
+echo "Reverse is"
+while((var1>0))
+do
+	var2=$(($var1%10))
+	echo -n $var2
+	var1=$(($var1/10))
+done
+
+	   OR
+
+echo "Enter 4 Digit Number"
+	read var1
+	var2=0
+echo "Reverse is"
+
+while((var1>0))
+do
+	var2=`expr $var1 % 10`
+	echo -n $var2
+	var1=`expr $var1 / 10`
+done
+
+---------------------------
+
+echo "Enter 4 Digit Number"
+	read var1
+	var2=0
+	sum=0
+echo "Sum of Digits"
+
+while((var1>0))
+do
+	var2=`expr $var1 % 10`
+	sum=`expr $sum + $var2`
+	var1=`expr $var1 / 10`
+done
+	echo $sum

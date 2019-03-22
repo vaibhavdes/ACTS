@@ -1,0 +1,164 @@
+//Floating Point Division
+
+echo "Enter Number 1"
+read num1
+echo "Enter Number 2"
+read num2
+
+echo "scale=2;$num1/$num2" | bc
+
+
+---------------------------------------------
+
+//Leap Year
+
+echo "Enter Year"
+read num1
+
+if [ $(( $num1 % 4 )) -eq 0 ]
+then
+        if [ $(( $num1 % 100 )) -eq 0 ]
+        then
+                if [ $(( $num1 % 400 )) -eq 0 ]
+                then
+                        echo "Leap Year"
+                else
+                        echo "Not Leap Year"
+                fi
+        else
+                echo "Leap Year"
+        fi
+else
+        echo "Not Leap Year" 
+fi
+
+---------------------------------------------
+
+//SWAP Number
+
+read -p "Enter Number 1" num1
+read -p "Enter Number 2" num2
+
+num1=$(($num1+$num2))
+num2=$(($num1-$num2))
+num1=$(($num1-$num2))
+
+echo $num1
+echo $num2
+
+---------------------------------------------
+
+//Three Greater Number
+
+read -p "Enter Number 1 " num1
+read -p "Enter Number 2 " num2
+read -p "Enter Number 3 " num3
+
+if [ $num1 -gt $num2 -a $num1 -gt $num3 ]
+then
+        echo "Greater Number is $num1"
+elif [ $num2 -gt $num1 -a $num2 -gt $num3 ]
+then
+        echo "Greater Number is $num2"
+else
+        echo "Greater Number is $num3"
+fi
+
+---------------------------------------------
+
+//Check Regular File or Directory
+
+
+read -p "Enter File Name " file
+
+if [ -d $file ]
+then
+        echo "This is Directory"
+fi
+
+if [ -f $file ]
+then
+        echo "This is Regular File"
+fi
+
+                
+---------------------------------------------
+
+//Prime Number
+
+read -p "Enter Number" num1
+flag=0
+for((i=2;i<$num1/2;i++))
+do
+        if [ $(($num1%$i)) -eq 0 ]
+        then
+                flag=1
+                break
+        fi
+done
+
+if [ $flag = 1 ]
+then
+        echo " Not Prime Number "
+else
+        echo " Prime Number "
+fi
+
+---------------------------------------------
+
+//Odd Even
+
+
+read -p "Enter Number" num1
+
+
+        if [ $num1 -ne 1 ]
+        then
+                if [ $(($num1%2)) -eq 0 ]
+                then
+                        echo "Even Number"
+                else
+                        echo "Odd Number"
+                fi
+        else
+                echo "Nor Even Nor Odd"
+        fi
+
+
+---------------------------------------------
+//FIle Properties
+
+if [ -x $file ]
+then
+   echo "File has execute permission"
+else
+   echo "File does not have execute permission"
+fi
+
+if [ -f $file ]
+then
+   echo "File is an ordinary file"
+else
+   echo "This is sepcial file"
+fi
+
+if [ -d $file ]
+then
+   echo "File is a directory"
+else
+   echo "This is not a directory"
+fi
+
+if [ -s $file ]
+then
+   echo "File size is zero"
+else
+   echo "File size is not zero"
+fi
+
+if [ -e $file ]
+then
+   echo "File exists"
+else
+   echo "File does not exist"
+fi

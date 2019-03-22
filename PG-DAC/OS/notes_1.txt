@@ -61,6 +61,9 @@ Note: 	Have you observed that verticle line, it passes output of first command i
 	That verticle line is called pipe (Message Passer)
 
 :ps -e | less		//less cmd is used to add the paging (restrict number of output)
+:ps -e | more		//less cmd is used to add the paging (restrict number of output)
+			Press Enter to Scroll Line By Line
+			Press Esc to Scroll Page By Page
 :date && pwd		//separate two commands with && to execute both
 :datee || pwd		//separate two commands with || to execute which are correct
 
@@ -78,34 +81,4 @@ Note: 	Have you observed that verticle line, it passes output of first command i
 :chmod +x shell.sh	//to change mode to executable
 :./shell.sh		//to execute shell script
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 

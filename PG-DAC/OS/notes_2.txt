@@ -1,0 +1,50 @@
+//Working with File
+
+ Write Program
+ Press Esc + 
+		:set number			//Add Line Number
+		:se nu
+		:set nonumber			//Display Cursor Position & Remove Line Number
+		:se nonu
+
+		
+:tac filename.c					//Reverse the Content of File - Verticle Mirror/Water Image
+:rev filename.c					//Reverse the Content of Line - Horizontal Mirror
+:tac filename.c | rev
+
+:wc file.c					//Word Count of File Content
+:cat file.c | wc				//cat returns content of file and wc does counting
+:cat file1.txt file.txt > file3.txt		//Concatenate Content of File1 and FIle to FIle3
+						//cat Create New File when not present
+
+ls -x						//Display Directory Files Row Wise
+ls -C						//Display Content COloumn WIse
+
+ls -F						//List File in Ascending Order
+ls -r						//List File in Descending Order
+
+ls -a						//Display Hidden Files
+ls -l						//Display All Information of File and Directory
+
+touch -t 201203101513 file1.txt			//Change TimeStamp of File with Format YYYYMMDDHHMM
+
+cat > .filename					//Create a File (Hidden) when filename starts with .
+cat >> filename					//Append new content to exisiting file					
+	
+:PS1='dac-->'					//Change Name of Shell Session
+
+Approach - I
+		$(( $var1 + $var2 ))
+Approach - II
+		`expr $var1 + $var2`
+Approach - III
+		Enter :bc Environment
+		:10/20	-> 0
+		:scale = 2			//For Floating Point Division
+		:10/20	-> .50
+		:quit				//To Return to Normal Mode
+
+		:bc filename.c			//Evaluates Expression inside File and Returns Result
+
+
+	

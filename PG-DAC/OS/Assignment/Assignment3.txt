@@ -1,0 +1,207 @@
+//Q.1
+
+mkdir dbda16
+cd dbda16
+mkdir day1
+mkdir day2
+cd day1
+touch file1.c
+ls
+file1.c
+cd ..
+cd day2
+touch file2.c
+cd								//Execute All Operations by going to root directory
+cp dbda16/day1/file1.c dbda16/day2/				//Copy File
+mv dbda16/day1/file1.c dbda16/day2/				//Move File		
+mv dbda16/day1/file1.c dbda16/day1/file5.c			//Rename File		//Change Inode Entry by changing filename
+rm dbda16/day1/file5.c						//Remove File		//Delete Inode Entry
+
+---------------------------------------------------------------------------
+
+//Q.2
+			
+//Switch Case Calculator
+
+
+echo "Enter Number 1"
+read num1
+read -p  "Enter Number 2" num2
+
+echo "Press 1. For Addition \n 2. For Subtraction \n 3. For Divsion \n 4. For Multiplication"
+read op
+
+case $op in
+1)
+        echo `expr $num1 + $num2`;;
+2)
+        echo `expr $num1 - $num2`;;
+3)
+        echo "scale=2;$num1/$num2" | bc;;
+4)
+        echo `expr $num1 \* $num2`;;
+*)
+        echo "Invalid Operation";;
+esac
+
+---------------------------------------------------------------------------
+
+//Q.3
+
+ ls -l -R
+ ls -l | wc -w							//Display Count of File/Directory
+
+ alias fileCount='ls|wc'
+ fileCount							//Show Output of Alias
+ alias								//List out all Alias
+ unalias fileCount						//Remove the Alias
+
+---------------------------------------------------------------------------
+
+//Q.4
+ cal								//Print the Calender of Current Month
+ cal 03 2020							//Month and Year
+ cal 03 2018
+
+---------------------------------------------------------------------------
+
+//Q.6 a
+
+	echo "Enter Character"
+	read char
+
+	case $char in
+		a|e|i|o|u)
+		        echo "This is Vowel" ;;
+		*)
+		        echo " This is not vowel";;
+	esac
+		       
+---------------------------------------------------------------------------
+
+//Q.6 b
+
+echo "Enter Character"
+read char
+
+case $char in
+        [a-z])
+                echo "This is Character" ;;
+        [0-9])
+                echo "This is Number" ;;
+        *)
+                echo " This is symbol";;
+esac
+
+---------------------------------------------------------------------------
+
+//Q.7 
+
+echo "Enter String 1"
+read string1
+echo "Enter String 2"
+read string2
+
+read choice
+
+case $choice in
+        1)
+                echo "$string1" | wc -m;;
+        2)
+                string3=$string2
+                printf "Copied String Two %s" $string3;;
+        3)
+                string2+=$string1
+                echo "$string2";;
+        4)
+                if [ $string1 = $string2 ]
+                then
+                        echo "Same"
+                else
+                        echo "Not Same"
+                fi;;
+        5)
+                echo "$string2"|rev;;
+esac
+
+---------------------------------------------------------------------------
+
+//Q.8
+
+sum=0
+count=0
+for i in "$#"
+do
+        sum=$(($sum+$i))
+        count=$(($count+1))
+done
+
+echo "Sum is $sum"
+echo "Average is $sum/$count"
+
+---------------------------------------------------------------------------
+
+//Q.8
+
+max=0
+min=9999
+for i in "$@"
+do
+        x=$i
+        if [ $x -gt $max ]
+        then
+                max=$x
+        fi
+        if [ $x -lt $min ]
+        then
+                min=$x
+        fi
+done
+
+echo "Max is  $max"
+echo "Min is $min"
+
+---------------------------------------------------------------------------
+
+//Q.9
+
+count=0
+COLUMNS=$(tput cols)
+for i in "$@"
+do
+        for((j=$i;j>0;j--))
+        do
+                echo -n $j
+                sleep 1
+                echo -en "\b\b"
+        done
+        echo "Boom" 
+done
+
+---------------------------------------------------------------------------
+
+//Q.10
+
+
+for i in "$@"
+do
+        for((j=1;j<=$i;j++))
+        do
+                for((z=2;z<$j;z++))
+                do
+                        if [ $(($j%$z)) -ne 0 ]
+                        then
+                                echo "$j"
+                                break
+                        fi
+                done
+        done
+done
+~                                                                                                                                                     
+~            
+
+
+
+         
+
+

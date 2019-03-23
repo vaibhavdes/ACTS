@@ -1,0 +1,11 @@
+//Working with Folder
+
+:mkdir foldername				//Create Folder
+:touch filename					//Create File
+
+:cp source destination				//To Copy File as Well Folder
+		
+---------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+

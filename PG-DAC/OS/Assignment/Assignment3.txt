@@ -49,7 +49,8 @@ esac
 //Q.3
 
  ls -l -R
- ls -l | wc -w							//Display Count of File/Directory
+ ls -l | wc -w							
+ ls | wc -l							//Display Count of File/Directory
 
  alias fileCount='ls|wc'
  fileCount							//Show Output of Alias

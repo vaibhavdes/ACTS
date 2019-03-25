@@ -6,6 +6,28 @@
 :cp source destination				//To Copy File as Well Folder
 		
 ---------------------------------------------------------------------------
+//Process Know-How
 
+1) Create a Shell Program
+	:vi bg_process.sh
+	
+	echo "start"
+
+	for((i=0;i<1000;i++))
+	do
+		echo "$i"
+		sleep 1
+	done
+
+	echo "stop"
+2) Run Program in Foreground
+	:bash bg_process.sh
+3) Press Ctrl+c to stop process
+4) Run Program in Background
+	:bash bg_process.sh &
+5) Now Open New TAB
+	:ps -ef | grep bg_process			//Process name is bg_process | grep is used to search
+	:kill 9 9676					//9676 is PID and 9 is the option to force stop
+	
 ----------------------------------------------------------------------------
 

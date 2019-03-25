@@ -26,6 +26,8 @@ ls -r						//List File in Descending Order
 ls -a						//Display Hidden Files
 ls -l						//Display All Information of File and Directory
 
+ls -R						//Recursively Display folder Content
+
 touch -t 201203101513 file1.txt			//Change TimeStamp of File with Format YYYYMMDDHHMM
 
 cat > .filename					//Create a File (Hidden) when filename starts with .

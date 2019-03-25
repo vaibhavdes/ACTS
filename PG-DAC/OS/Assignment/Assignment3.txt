@@ -62,7 +62,7 @@ esac
 //Q.4
  cal								//Print the Calender of Current Month
  cal 03 2020							//Month and Year
- cal 03 2018
+ cal 3 2018
 
 ---------------------------------------------------------------------------
 
@@ -86,7 +86,7 @@ echo "Enter Character"
 read char
 
 case $char in
-        [a-z])
+        [a-z])					
                 echo "This is Character" ;;
         [0-9])
                 echo "This is Number" ;;
@@ -169,7 +169,7 @@ echo "Min is $min"
 //Q.9
 
 count=0
-COLUMNS=$(tput cols)
+tput cup 10 10				#COLUMNS=$(tput cols)
 for i in "$@"
 do
         for((j=$i;j>0;j--))

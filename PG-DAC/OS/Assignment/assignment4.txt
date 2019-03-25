@@ -1,0 +1,121 @@
+//Q.1
+
+read var1
+read var2
+echo `expr $var1 + $var2`
+
+let var3=var1+var2
+let var4=var1*var2
+echo $var3
+echo $var4
+
+echo $var1+$var2 | bc
+echo $var1*$var2 | bc
+
+-------------------------------------------------
+
+Q.2 a)
+	 :ps -e -o stat,pid,ppid,cmd		
+		//List Process with Status, PID, PPID,
+    b)
+   	 :ps -e -o stat,pid,ppid,cmd | grep "^R+"
+		//Display Only those process with status code starting with R+
+	 :ps -e -o pid,ppid,cmd,stat | grep "R+$"
+		//Display Only those process with status code ending with R+
+	 :ps -e -o pid,ppid,cmd,stat | grep "R+$" | wc -l
+		//Count the Number of process with status code ending with R+
+		//R+ Means Foreground Process
+	 :ps -e -o pid,ppid,cmd,stat | grep "R$" | wc -l
+		//R Means Ready Process
+		//S Means Stopped Process
+		//T Means Terminated Process
+    c)
+	 :ps -e -o pid,cmd,stat,ppid | grep "1$" | wc -l
+		//List Process with Parent INIT
+
+-------------------------------------------------
+
+Q.3
+	:ls -l 			//List All File/Folder details in current Directory
+	:ls -l | grep "^-"	//If Entry Starts with "-" it is FIle
+	:ls -l | grep "^d"	//If Entry Starts with "d" it is Directory
+
+-------------------------------------------------
+
+Q.4
+	echo "Enter Two Number"
+	read a
+	read b
+
+	temp=`expr $a \* $b`
+
+	while [ $a -ne $b ]
+	do
+		if [ $a -gt $b ]
+		then
+		        a=`expr $a - $b`
+		else
+		        b=`expr $b - $a`
+		fi
+	done
+
+	echo "gcd $b"
+                  
+-------------------------------------------------
+
+Q.5
+
+	echo "Enter String"
+	read string
+	length=${#string}
+
+	for((i=0;i<length;i++))
+	do
+		echo ${string:i:1}
+	done
+	
+-------------------------------------------------
+
+Q.6
+
+	:df				//List All Storage Partitions with Details	
+	:df -H				//Shows Partition info of Root
+	:df --output=avail /
+
+	:who
+	:/etc/passwd
+	:w
+
+-------------------------------------------------
+
+Q.7
+
+	:alias create="mkdir newDir"
+	:create
+-------------------------------------------------
+
+
+Q.8
+
+	declare -A dist
+
+	dist[usd]=70
+	dist[pound]=50
+	dist[aud]=50
+
+	echo ${dist[usd]}
+	echo ${#dist[*]}
+	echo ${dist[*]}
+	echo ${!dist[*]}
+
+-------------------------------------------------
+
+Q.9
+
+	:function add(){
+			echo $((12+15))
+			}
+
+	:add
+	
+

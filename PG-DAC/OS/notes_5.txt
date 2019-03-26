@@ -1,0 +1,87 @@
+//Playing with TEXT
+
+	:echo `expr 10 * 20`					//Syntax Error
+	:echo -e "\e[3;41m Hello World \e[0m"			//Red Color Background ;41  and Italic 3;
+	:echo -e "\e[4;32m $(date) \e[0m"			//Green Color ;32	and Underline 4;
+
+	Operators working with strings
+		=		Equal
+		!=		Not Equal
+		-n		Not null
+		-z		Null
+
+	[a-z] [A-Z] [0-9]		Used for Pattern Matching
+	[[:lower:]]	[[:upper:]]	[[:digit:]]
+
+Note:
+	In `expr` add spaces between variables and operators
+	In $(())  do not add spaces between variables and operators
+	${} is a expression evaluator			e.g ${array[1]}
+	$() is used to execute command			e.g $(date +%Y)
+
+
+	:seq 1 10				//print numbers from 1 to 10
+	:seq 10 -1 1				//   -1 is step taken at time
+	:`seq 1 10`				// `command` stores result in buffer to assign to a variable
+
+	:read -s var				//secure password read
+
+//Playing with Display Output
+
+	:tput lines				//Displays Rows shown at a time
+	:tput cols				//Display Cols shown at a time
+
+	:tput cup 10 20 ; echo "hello"		//Will Display Output on Screen as per coordinate provided
+
+//Playing with Functions
+
+	:fun(){	stmt }				//Definition of Function:fun is function name
+	:fun					//Calling Function with function name
+
+//Playing with CLA
+
+	:bash prg.sh	1 2 3 4
+	:$0					//program/script file name
+	:$1					//First Argument Passed
+	:$#					//No Of Arguments
+
+Note: # can be used with array to count no of elements, with string to calculate length of string and so on
+
+//Playing with DeviceFile
+
+	:ls -l /dev | more				//List All Devices Drivers
+	:mount 
+	:unmount /dev/sdb1
+
+	:df						//Displays Partiction Info
+	:df -H
+
+//Playing with BC
+	:var1=3 ; var2=5
+	:echo `$var1+$var2` | bc
+
+//Playing with Process
+	
+	:ps -e -o pid,cmd,stat
+	:kill -SIGTERM 4939				//Tried with GEDIT
+	:kill -SIGSTOP 4939
+
+Note: Process whos stat is R is Running in Background and R+ are running in foreground
+
+	:bash bg.sh &					//Run Program in Background
+	:jobs 						//Display background running process in same tab due to session
+//Playing with Permission
+
+      //Access Mode
+      
+	          rwx, rwx,  rwx
+               Owner Group Others
+      r:4            w:2          x:1                Total:7
+      :chmod 777 filename
+      :chmod 577 filename             //As 5 is less by 2 from 7 and w:2 so user will not get write 
+      :chmod 000 filename
+
+      :chmod g+w filename             //Gives Write Permission to Group
+      :chmod u+w filename             //Gives Write Permission to User/Owner
+      :chmod a+w filename             //Gives Write Permission to Other
+

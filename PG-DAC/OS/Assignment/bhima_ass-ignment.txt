@@ -1,0 +1,9 @@
+//Working With Filter
+  Create File
+    :vi student.lst
+        RollNo:Name:Course:Marks:DOB
+        83:sdshjd:dac:232:23/09/2012
+        54:sdsdsd:dmc:213:12/05/2000
+        67:gdadsf:desd:423:22/05/1996
+    :cut -d ":" -f 1 student.lst          //Retrives First Field
+    :cut -d ":" -f 2 student.lst          //Restrives Second Field

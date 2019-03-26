@@ -9,4 +9,5 @@
     :cut -d ":" -f 2 student.lst          //Restrives Second Field
     :cut -d ":" -f 1-2 student.lst        //Retrieves Field from 1 to 2
     :cut -d ":" -f 1,3 student.lst        //Retrieves Field 1 and 2
+    :cut -d ":" -f 1 "student.lst" | sed "1 d" | sort --numeric-sort    //Sort By Roll Number Wise
 

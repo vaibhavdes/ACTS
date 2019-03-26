@@ -5,6 +5,7 @@
         83:sdshjd:dac:232:23/09/2012
         54:sdsdsd:dmc:213:12/05/2000
         67:gdadsf:desd:423:22/05/1996
+        
     :cut -d ":" -f 1 student.lst          //Retrives First Field
     :cut -d ":" -f 2 student.lst          //Restrives Second Field
     :cut -d ":" -f 1-2 student.lst        //Retrieves Field from 1 to 2
@@ -12,4 +13,10 @@
     :cut -d ":" -f 1 "student.lst" | sed "1 d" | sort --numeric-sort    //Sort By Roll Number Wise Ascending
     :cut -d ":" -f 1 "student.lst" | sort -r                            //Sort By Roll Number Descending
     :cut -d ":" -f 2 "student.lst" | sed "1 d" | sort -r                //Sort By Name Descending : For Ascending Remove -r
+    
+    :sort student.lst --field-separator=':'
+    :sort -t ':' -k0  student.lst
+    :sort -t ':' -k4  student.lst
+    :sort -t ':' -k4 student.lst | sort -t ':' -k3 student.lst
+
 

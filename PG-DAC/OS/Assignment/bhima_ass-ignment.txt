@@ -21,4 +21,12 @@
     :cut -d ':' -f 3 student.lst | sed -n '1!p' | sort -u           //Get Unique Courses
     :cut -d ':' -f 3 student.lst | sed -n '1!p' | uniq               //Get Unique Courses
 
-
+    cat student.lst | sed -n '1!p' | grep "dac"                     //Get Entries of student from DAC course
+    cat student.lst | sed -n '1!p' | grep -v "dac"                  //Not Matching DAC course
+    cat student.lst | sed -n '1!p' | grep -n -v "dac"              //Print with Matching Line Number
+    cat student.lst | sed -n '1!p' | grep -n "dac" | wc -w          //Print Number of Matching Result
+    cut -d ":" -f 2 student.lst | sed -n '1!p' | grep  " "        //Name with Spaces
+    
+    
+    Create C/C++ Program
+    

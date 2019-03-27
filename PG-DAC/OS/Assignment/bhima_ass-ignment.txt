@@ -13,10 +13,12 @@
     :cut -d ":" -f 1 "student.lst" | sed "1 d" | sort --numeric-sort    //Sort By Roll Number Wise Ascending
     :cut -d ":" -f 1 "student.lst" | sort -r                            //Sort By Roll Number Descending
     :cut -d ":" -f 2 "student.lst" | sed "1 d" | sort -r                //Sort By Name Descending : For Ascending Remove -r
-    
+    :cat student.lst | sed -n '1!p'                                     //Remove First Coloumn
     :sort student.lst --field-separator=':'
     :sort -t ':' -k0  student.lst
     :sort -t ':' -k4  student.lst
     :sort -t ':' -k4 student.lst | sort -t ':' -k3 student.lst
+    :cut -d ':' -f 3 student.lst | sed -n '1!p' | sort -u           //Get Unique Courses
+    :cut -d ':' -f 3 student.lst | sed -n '1!p' | uniq               //Get Unique Courses
 
 

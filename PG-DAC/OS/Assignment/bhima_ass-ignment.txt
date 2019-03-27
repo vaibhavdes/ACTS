@@ -30,3 +30,16 @@
     
     Create C/C++ Program
     
+   :cat prg.c | grep "int"                                 //Print Lines with int
+   :cat prg.c | grep -w "int"                             //Print Lines with int exact
+   :cat prg.c | grep "^#"                                 //Print Lines with int exact
+   cat prg.c | grep  ";$"                                 //Print Lines Ending with ;
+   :cat prg.c | grep  " " | wc -l                         //Count Lines Number of Blanks
+   :cat prg.c | grep  " " | wc -w                         //Count Number of Blanks
+   
+   :cat prg.c | tr ';' ':'                              //Replace semicolon with colon
+   :cat prg.c | grep ""
+
+
+   
+

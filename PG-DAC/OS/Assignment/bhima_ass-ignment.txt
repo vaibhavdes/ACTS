@@ -38,8 +38,10 @@
    :cat prg.c | grep  " " | wc -w                         //Count Number of Blanks
    
    :cat prg.c | tr ';' ':'                              //Replace semicolon with colon
+   :cat prg.c | tr 0 3                                  //Replace 0 with 6
    :cat prg.c | grep ""
-
+   :cat prg.c | grep '//'                               //Display Only Line Comments
+   
 
    
 

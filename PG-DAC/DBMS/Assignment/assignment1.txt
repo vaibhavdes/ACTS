@@ -1,0 +1,12 @@
+:use test
+:desc emp;
+
+:SELECT * emp;
+:SELECT sal emp;
+:SELECT DISTINCT JOB FROM emp;
+ SELECT ename,sal+(sal*.015) FROM emp;
+ SELECT concat(ename," ",job) "Employee & Job" FROM emp;
+ SELECT concat(ename,"(",job,")") "Employee" FROM emp;
+ SELECT DATE_FORMAT(hiredate,"%M %d %Y") FROM emp;
+ select ename, length(ename) characters from emp;
+ select ename,sal,comm FROM emp;

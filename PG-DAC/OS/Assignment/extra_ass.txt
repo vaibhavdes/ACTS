@@ -1,0 +1,84 @@
+//Assignment - 1
+
+   	:date
+  	:date --date "Feb 21 2002" +%A			//Retrieve Day
+	:date "+%d %B %Y"				//Show in format
+	:date -s "21 June 2009 11:01:22"		//set date
+	:date %a %A					//Day in word
+	:date %b %B					//Month
+	:date %d					//Day in Number
+	:date %D					//COmplete Date
+	:date %y %Y					//Year
+	:date %H					//Hours
+	:date %M					//Minute
+	:date %S					//Seconds
+
+	echo -e "\n\nhello"				//Interpret Backslash
+	
+	cal -3
+
+	seq -s ":" 1 10
+		
+	:ls| ls -x| ls -c| ls -l| ls -F| ls -r
+
+	wc student.lst student.csv
+
+//Assignment - 2 Working With Filter
+  Create File
+    :vi student.lst
+        RollNo:Name:Course:Marks:DOB
+        83:sdshjd:dac:232:23/09/2012
+        54:sdsdsd:dmc:213:12/05/2000
+        67:gdadsf:desd:423:22/05/1996
+        
+    :cut -d ":" -f 1 student.lst          //Retrives First Field
+    :cut -d ":" -f 2 student.lst          //Restrives Second Field
+    :cut -d ":" -f 1-2 student.lst        //Retrieves Field from 1 to 2
+    :cut -d ":" -f 1,3 student.lst        //Retrieves Field 1 and 2
+    :cut -d ":" -f 1 "student.lst" | sed "1 d" | sort --numeric-sort    //Sort By Roll Number Wise Ascending
+    :cut -d ":" -f 1 "student.lst" | sort -r                            //Sort By Roll Number Descending
+    :cut -d ":" -f 2 "student.lst" | sed "1 d" | sort -r                //Sort By Name Descending : For Ascending Remove -r
+    :cat student.lst | sed -n '1!p'                                     //Remove First Coloumn
+    :sort student.lst --field-separator=':'
+    :sort -t ':' -k0  student.lst
+    :sort -t ':' -k4  student.lst
+    :sort -t ':' -k4 student.lst | sort -t ':' -k3 student.lst
+    :cut -d ':' -f 3 student.lst | sed -n '1!p' | sort -u           //Get Unique Courses
+    :cut -d ':' -f 3 student.lst | sed -n '1!p' | uniq               //Get Unique Courses
+
+    cat student.lst | sed -n '1!p' | grep "dac"                     //Get Entries of student from DAC course
+    cat student.lst | sed -n '1!p' | grep -v "dac"                  //Not Matching DAC course
+    cat student.lst | sed -n '1!p' | grep -n -v "dac"              //Print with Matching Line Number
+    cat student.lst | sed -n '1!p' | grep -n "dac" | wc -w          //Print Number of Matching Result
+    cut -d ":" -f 2 student.lst | sed -n '1!p' | grep  " "        //Name with Spaces
+    
+    
+    Create C/C++ Program
+    
+   :cat prg.c | grep "int"                                 //Print Lines with int
+   :cat prg.c | grep -w "int"                             //Print Lines with int exact
+   :cat prg.c | grep "^#"                                 //Print Lines with int exact
+   cat prg.c | grep  ";$"                                 //Print Lines Ending with ;
+   :cat prg.c | grep  " " | wc -l                         //Count Lines Number of Blanks
+   :cat prg.c | grep  " " | wc -w                         //Count Number of Blanks
+   
+   :cat prg.c | tr ';' ':'                              //Replace semicolon with colon
+   :cat prg.c | tr 0 3                                  //Replace 0 with 6
+
+   :cat prg.c | grep ""
+   :cat prg.c | grep '//'                               //Display Only Line Comments
+
+   :cat prg.c | tr -d '\t' < prg.c			//Remove Tabs and Save to FIle
+   :cat prg.c | tr -s '\n' < prg.c			//Remove Blank Lines
+
+	
+
+--------------------------------------------------------------------
+
+	:ls -l | grep '^-'				//List out only files from directories
+	:ls -l | grep '^d'				//List out only folders from directories
+	:ls -l | grep '^-' | wc -l			//Count Lines
+	:ls -l | grep '^d' | wc -l			//Count Lines	
+ 	:ls "/bin"					//Symbolic Links
+
+

@@ -20,3 +20,9 @@
         select * FROM emp WHERE length(ename)>=6;
          select * FROM emp WHERE DATE_FORMAT(hiredate,"%m")=01;
          SELECT concat(ename," works for ",mgr) FROM emp WHERE mgr!="NULL";
+SELECT * FROM emp WHERE job="CLERK";
+SELECT * FROM emp WHERE DATEDIFF(CURDATE(),hiredate)>=10;
+SELECT * FROM emp WHERE sal<3500;
+SELECT ename,job,sal FROM emp WHERE JOB="ANALYST";
+select * FROM emp WHERE DATE_FORMAT(hiredate,"%Y")=1981;
+//select * FROM emp WHERE DATE_FORMAT(hiredate,"%D")<01 AND DATE_FORMAT(hiredate,"%Y")<1991;

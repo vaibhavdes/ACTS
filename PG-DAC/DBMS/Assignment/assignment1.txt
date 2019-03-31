@@ -10,3 +10,13 @@
  SELECT DATE_FORMAT(hiredate,"%M %d %Y") FROM emp;
  select ename, length(ename) characters from emp;
  select ename,sal,comm FROM emp;
+ 
+  select * FROM emp WHERE deptno != 10;
+   select * FROM emp WHERE DATE_FORMAT(hiredate,"%Y")<1991;
+    select avg(sal) FROM emp WHERE JOB LIKE 'ANALYST';
+     select * FROM emp WHERE ename='BLAKE';
+      select * FROM emp WHERE comm>sal;
+       select * FROM emp WHERE sal*(0.25) > 3000;
+        select * FROM emp WHERE length(ename)>=6;
+         select * FROM emp WHERE DATE_FORMAT(hiredate,"%m")=01;
+         SELECT concat(ename," works for ",mgr) FROM emp WHERE mgr!="NULL";

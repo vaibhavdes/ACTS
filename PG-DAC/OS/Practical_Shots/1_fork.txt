@@ -1,0 +1,334 @@
+									NORMAL CHILD Process
+int id;
+
+id = fork()
+
+if(id > 0)	//Parent
+{
+
+}
+
+if(id < 0)	//Fail Condition
+{
+
+}
+
+if(id == 0)	//Child Condition
+{
+	
+}
+
+-----------------------------------------------------
+
+									Common Parent
+int id;
+for(int i = 0; i < 3; i++)
+{
+	id = fork()
+
+	if(id > 0)	//Parent
+	{
+
+	}
+
+	if(id < 0)	//Fail Condition
+	{
+	
+	}
+
+	if(id == 0)	//Child Condition
+	{
+		break;
+	}
+}
+
+-----------------------------------------------------
+
+									Differnt Parent
+int id;
+for(int i = 0; i < 3; i++)
+{
+	id = fork()
+
+	if(id > 0)	//Parent
+	{
+		break;
+	}
+
+	if(id < 0)	//Fail Condition
+	{
+	
+	}
+
+	if(id == 0)	//Child Condition
+	{
+		
+	}
+}
+
+-----------------------------------------------------
+
+									Child Reparenting
+int id;
+for(int i = 0; i < 3; i++)
+{
+	id = fork()
+
+	if(id > 0)	//Parent
+	{
+		
+	}
+
+	if(id < 0)	//Fail Condition
+	{
+	
+	}
+
+	if(id == 0)	//Child Condition
+	{
+		sleep(3);	
+	}	
+}
+
+-----------------------------------------------------
+
+									Change Image of Child
+int id;
+for(int i = 0; i < 3; i++)
+{
+	id = fork()
+
+	if(id > 0)	//Parent
+	{
+		wait();
+	}
+
+	if(id < 0)	//Fail Condition
+	{
+		//execl("/usr/bin/man","man","ls",NULL);
+		  execlp("gcc","gcc","main.c","-lpthread",NULL);
+	}
+
+	if(id == 0)	//Child Condition
+	{
+			
+	}	
+}
+
+-----------------------------------------------------
+									WAIT FOR CHILD TO COMPLETE
+int id;
+int status;
+
+id = fork()
+
+if(id > 0)	//Parent
+{
+//stmt
+
+int cpid = wait(&status);						//Wait for Child To Complete
+printf("%d Child PID",cpid);
+
+if(WIFEXITED(status))
+{
+	printf("%d",WIFEXITSTATUS(status));				//Print Exit Status
+}
+
+}
+
+if(id < 0)	//Fail Condition
+{
+
+}
+
+if(id == 0)	//Child Condition
+{
+
+}
+
+
+----------------------------------------------------	
+			
+								 SEMAPHORE FOR RACE CONDITION (Parent Execute First)
+#define KEY 0x0012
+sem_t *s1;
+
+s1 = sem_open(KEY,O_CREAT,0666,1);
+
+int id;
+id = fork()
+
+if(id > 0)	//Parent
+{
+	sem_wait(s1);						//Lock Resources till Completition
+	///statement
+	sem_post(s1);
+}
+
+if(id < 0)	//Fail Condition
+{
+
+}
+
+if(id == 0)	//Child Condition
+{
+	sem_wait(s1);						//Wait for Resources to be Available
+	//stmts
+	sem_post(s1);
+}
+
+sem_close(s1);
+sem_destroy(s1);
+
+----------------------------------------------------
+								Double SEMAPHORE FOR RACE CONDITION (Child Execute First)
+#define KEY 0x0012
+sem_t *s1,*s2;
+
+s1 = sem_open(KEY,O_CREAT,0666,1);
+s2 = sem_open(KEY,O_CREAT,0666,0);
+
+int id;
+id = fork()
+
+if(id > 0)	//Parent
+{
+	
+	sem_wait(s2)						//Blocking State			
+	///statement
+	///IF NEEDED can again use sem_wait(s1) stmts sem_post(s1)
+}
+
+if(id < 0)	//Fail Condition
+{
+
+}
+
+if(id == 0)	//Child Condition
+{
+	sem_wait(s1);						
+	//stmts
+	sem_post(s1);
+
+	sem_post(s2);						//Release Lock so Parent Can Acquire and Execute
+}
+
+sem_close(s1);
+sem_close(s2);
+sem_destroy(s1);
+sem_destroy(s2);
+
+----------------------------------------------------
+								Shared Memory
+#define KEY 0x0012
+int id;
+
+id = shm_get(KEY,4096,IPC_CREAT | 0666)
+
+void *ptr;
+
+ptr = shmat(id,0,0);
+
+strcpy(ptr, "Hello");						//Suppose in Parent Process
+
+///
+
+printf("%s",ptr);						//Suppose in Child Process
+
+shmdt(id);
+
+
+----------------------------------------------------
+
+								Message Queue
+
+#define KEY 0x0012
+int id;
+char a[] = "Hello World";
+char buf[30];
+id = msg_get(KEY,IPC_CREAT | 0666)
+
+
+msg_snd(id,a,sizeof(a),0);					//Suppose in Parent Process
+						
+///
+
+msg_rcv(id,buf,30,0,0)						//Suppose in Child Process
+
+printf("%s",buf);
+
+msgdt(id);
+
+
+----------------------------------------------------
+
+								Thread Program
+
+int *threadfun(void *a)
+	{
+		printf("%s",a);
+	}
+int main()
+{
+	char a[] = "Hello World";
+
+	pthread_t p1;
+
+	//pthread_create(&p1,NULL,threadfun,NULL)
+	pthread_create(&p1,NULL,threadfun,a)
+
+	//Can Create and Use Multiple Threads with Different Function refering function pointer
+}
+
+----------------------------------------------------
+
+								Mutex in Thread Program
+
+	pthread_mutex_t m1;
+
+int *threadfun(void *a)
+	{
+		pthread_mutex_lock(&m1);
+		printf("%s",a);
+		pthread_mutex_unlock(&m1);
+	}
+int main()
+{
+	char a[] = "Hello World";
+
+	pthread_t p1;
+
+	pthread_mutex_init(&m1,NULL);				//if return after create see what happen
+
+	pthread_create(&p1,NULL,threadfun,a)
+	
+	pthread_mutex_lock(&m1);
+	//stmt
+	pthread_mutext_unlock(&m1);
+
+}
+
+
+----------------------------------------------------
+
+								Mutex Join in Thread Program
+
+int *threadfun(void *a)
+	{
+		pthread_mutex_lock(&m1);
+		printf("%s",a);
+		pthread_mutex_unlock(&m1);
+	}
+int main()
+{
+	char a[] = "Hello World";
+
+	pthread_t p1;
+
+	pthread_create(&p1,NULL,threadfun,a)
+	
+	pthread_join(p1,NULL);					//Wait for Thread to complete then will execute stmements beyond this line
+
+}
+
+

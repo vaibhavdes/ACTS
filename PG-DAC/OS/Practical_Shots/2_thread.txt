@@ -1,0 +1,135 @@
+
+								NAMED PIPE (Stored as File)
+
+char *fname = "/tmp/mkfifo";
+
+char *sndMsg = " This is message";
+char rcvMsg[30];
+
+int id;
+
+mkfifo(fname,0666);					//Needeed only for write
+
+//In Parent
+id = open(fname,O_WRONLY,0666);				//Return FileDescriptor
+
+if(id==NULL)
+	printf("Failed to Open");
+
+write(id,sndMsg,sizeof(sndMsg));
+
+
+//In Child
+
+id = open(fname,O_RDONLY,0666);
+
+read(id,rcvMsg,30);
+
+unlink(fname);
+
+------------------------------------------------------------------------
+		
+								Unnamed Pipe
+char *sndMsg = " This is message";
+char rcvMsg[30];
+
+int fd[2];						//Array of Two Integer Value
+int id;
+int size; 
+
+id = pipe(fd);						//Initialize Array 
+							//  fd[0] to Read
+							//  fd[1] to Write
+
+//In Parent
+
+close(fd[0]);						//Close From Reading
+write(fd[1],sndMsg,sizeof(sndMsg));
+
+
+//In Child
+close(fd[1]);						//Close from Writing
+size = read(fd[0],rcvMsg,30);				//Message Size
+
+
+------------------------------------------------------------------------
+		
+								File Read Write
+char *sndMsg = " This is message";
+char rcvMsg[30];
+
+int id;
+int size;
+
+//In Parent
+
+id = open("text.txt",O_WRONLY|O_CREAT, 0666)		
+write(id,sndMsg,sizeof(sndMsg));
+
+
+//In Child
+id = open("text.txt",O_RDONLY, 0666)		//Close From Reading
+size = read(id,rcvMsg,30);
+
+
+
+------------------------------------------------------------------------
+		
+								Counting Semaphore
+
+sem_t *s1;
+
+s1 = sem_open("countingSem",O_CREAT,0666,0);
+s2 = sem_open("lock",O_CREAT,0666,0);
+//In Child
+
+for(int i = 0; i < 3; i++)
+{
+	sem_post(s1);
+	//stmt
+}
+	sem_post(s2);
+
+//In Parent
+	sem_wait(s2);
+for(int i = 0; i < 3; i++)
+{
+	sem_wait(s1);
+}
+
+sem_close(s1);
+sem_close(s2);
+
+sem_destroy(s1);
+sem_destroy(s2);
+
+
+
+------------------------------------------------------------------------
+		
+								Printing Directory Recursively
+
+struct dirent *de;
+
+DIR *dr = opendir("foldername");
+
+if(dr == NULL)
+	printf("failed"):
+
+while((de = readdir(dr)) ! == NULL)
+	printf("%s",de->d_name);
+
+closedir(dr):
+
+
+------------------------------------------------------------------------
+		
+								Signal Program
+
+sigset_t s1;
+struct sigaction act1, act2;
+
+act1.sa_handler=handler1;
+sigaction(SIGINT, &act1, &act2);
+
+sigsuspend(&t1);

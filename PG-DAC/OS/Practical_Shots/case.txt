@@ -1,0 +1,43 @@
+
+add(){
+	var1=$(($1+$2))
+	echo $var1
+}
+mul(){
+	var1=$(($1*$2))
+	echo $var1
+}
+
+sub(){
+	var1=$(($1-$2))
+	echo $var1
+}
+
+echo "Program Started"
+
+read -p "Enter Number 1  " num1
+read -p "Enter Number 2  " num2
+
+option=1
+
+while [ $option -ne 0 ]
+do
+	echo "Press "
+	echo "1 To Add"
+	echo "2 To Multiple"
+	echo "3 To Divide"
+	echo "4. To Subtract"
+		
+	read -p "Enter Option" option
+	
+	case $option in
+	1) 	add num1 num2;;
+
+	2)	mul num1 num2;;
+
+	3) 	echo "scale=2;$num1/$num2" | bc
+		;;
+
+	4) 	sub num1 num2;;
+	esac
+done

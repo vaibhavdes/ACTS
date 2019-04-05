@@ -1,0 +1,116 @@
+Q.1
+
+     delimiter //
+     create procedure cost2(emp_no int)
+     begin     
+     declare v_sal int;
+     declare v_salary int;
+     declare exper int;
+     declare v_hiredate date;
+     declare results int;
+     declare sa int;
+     select SAL,HIREDATE into v_salary,v_hiredate from emp where empno=emp_no;
+     set exper=round(datediff(curdate(),v_hiredate)/365);
+     set v_sal = v_salary;
+     set v_salary= v_sal+v_sal*0.15+v_sal*0.20+v_sal*8;
+     if(exper < 1)  then
+      set sa = 0;
+     elseif (exper>= 1) then
+      set sa= v_sal*0.10;
+     elseif YEAR(hiredate)>=2 then
+      set sa = v_sal + v_sal*0.20;
+     else
+      set sa = v_sal + v_sal*0.30;
+     end if;
+     set result = v_salary + v_sal + sa;
+     select result;
+     end//
+     DELIMITER //
+
+--	call cost2(2561);
+
+
+     delimiter //
+     create function cost3(emp_no int) returns int
+     begin     
+     declare v_salary int;
+     declare exper int;
+     declare v_hiredate date;
+     declare results int;
+     select SAL,HIREDATE into v_salary,v_hiredate from emp where empno=emp_no;
+     set exper=round(datediff(curdate(),v_hiredate)/365);
+     set results=v_salary;
+     if(exper < 1)  then
+      set v_salary =0;
+     elseif (exper>= 1) then
+      set v_salary = v_salary*0.10;
+     elseif YEAR(hiredate)>=2 then
+      set v_salary = v_salary + v_salary*0.20;
+     else
+      set v_salary = v_salary + v_salary*0.30;
+     end if;
+     return result+v_salary;
+     end//
+     DELIMITER //
+
+
+--	SET GLOBAL log_bin_trust_function_creators = 1;
+	set @x=cost2(7653);
+	select @x;
+
+
+Q.2
+	
+
+     delimiter //
+     drop procedure if exists status;
+     create procedure status (in empid int, out v_empname varchar(10), out v_deptname varchar(14), out v_job varchar(9), out v_sal int, out v_sal_status varchar(9))
+     DETERMINISTIC
+     begin     
+     declare avg_sal double;
+	
+
+     select e.ename,e.job,e.sal,d.dname into v_empname,v_job,v_sal,v_deptname from emp e inner join dept d on e.deptno=d.deptno where empno=empid;
+     select round(avg(sal),2) into avg_sal from emp group by deptno having deptno = (select deptno from emp where empno=empid);
+     
+     IF v_sal < avg_sal THEN
+	set v_sal_status = "LESSER";
+     ELSEIF v_sal = avg_sal THEN
+	set v_sal_status = "EQUAL";
+     ELSE
+	set v_sal_status = "GREATER";
+     END IF;    
+    end//
+
+--     call status(7369, @name,@deptname,@job,@sal,@stat);
+       select @name,@deptname,@job,@sal,@stat;
+
+
+
+Q.5
+
+
+create table IF NOT EXISTS emp_back as select * from emp where 1=2;
+alter table emp_back
+add column changedate datetime,
+add column action varchar(20);
+
+-------------------------------------------------------------------
+
+create trigger emp_update before UPDATE on emp FOR EACH ROW
+BEGIN
+
+	insert into emp_back values
+        (OLD.empno,OLD.ename,OLD.job,OLD.mgr,OLD.hiredate,OLD.sal,
+		OLD.comm,OLD.deptno,NOW(),'update');
+END
+
+---------------------------------------------------------------
+
+UPDATE emp
+ set sal = case sal
+when floor(datediff(curdate(),v_hiredate)/365)<=2 then sal
+when floor(datediff(curdate(),v_hiredate)/365)<5 then (sal*1.20)
+else (sal*1.25)
+END;
+

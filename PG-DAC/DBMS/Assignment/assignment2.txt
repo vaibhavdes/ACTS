@@ -114,3 +114,108 @@ when floor(datediff(curdate(),v_hiredate)/365)<5 then (sal*1.20)
 else (sal*1.25)
 END;
 
+
+
+
+6.
+
+	delimiter //
+	create function calExp(emp_num int) returns int
+	DETERMINISTIC
+	begin
+	declare experience int;	
+	select round(datediff(curdate(),hiredate)/365)
+	into experience
+	from emp
+	where empno=emp_num;
+
+	return experience;
+	end//
+	delimiter ;
+
+	------------------------
+	CREATE TABLE emp_allow
+	 (
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	emp int(6) NOT NULL,
+	allowance int(6) NOT NULL
+	);
+	------------------------------
+	delimiter //
+	drop procedure if exists expr ;
+	create procedure expr (in empid int)
+	begin
+		declare x int;
+		declare allow int;
+		set x = calExp(empid);
+		set allow = x*3000;
+		
+		insert into emp_allow (emp,allowance) values(empid,allow);
+	end//
+
+
+---------------------------------+=+=---------------------------------
+
+
+Q.2. TRIGGERS
+
+
+1.
+
+create table IF NOT EXISTS audit_back as select * from emp where 1=2;
+alter table audit_back
+add column action_date datetime,
+add column action varchar(20);
+-------------
+delimiter //
+drop trigger if exists audit_insert;
+create trigger audit_insert before UPDATE on emp FOR EACH ROW
+BEGIN
+	declare cur_day varchar(20);
+	set cur_day = DAYNAME(curdate());
+
+	if(cur_day='Saturday' OR cur_day="Sunday") then
+		insert into audit_back values
+       		 (OLD.empno,OLD.ename,OLD.job,OLD.mgr,OLD.hiredate,OLD.sal,
+			OLD.comm,OLD.deptno,cur_day,'Update');
+	end if;
+	
+END //	
+delimiter ;
+
+--------------------------
+delimiter //
+drop trigger audit_qty if exist;
+create trigger audit_ty before DROP on orders FOR EACH ROW
+BEGIN
+	
+		insert into order_back values
+       		 (OLD.qty,OLD.cost);
+	
+END //	
+delimiter ;
+---------------------------------------
+
+
+
+
+2.
+
+create table IF NOT EXISTS audit_back (
+	qty int;
+	cost int;
+);
+
+--------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

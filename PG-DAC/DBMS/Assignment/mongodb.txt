@@ -1,0 +1,110 @@
+1) Install MongoDB
+
+2) Create "Data" Folder on C:\
+	and Inside Create "DB" Folder
+
+3) Start MongoServer with mongod.exe
+
+4) Start Mongo Client with mongo.exe
+
+
+---------- Import From JSON File ------------
+
+1) Navigate to MongoDB bin Folder
+2) Press Shift + Right Click
+3) Open Command Prompt
+4) Enter Following Command
+		mongoimport --db test --collection restaurants --file d:\DBMS_SELF\samplerestaurent.json
+
+---------------------------------------------
+1) Start Mongo Client
+	
+	:show dbs						//Will not show 
+	:show collections				//Will Show If Present
+	
+	:use restaurants				//Change Database in Use
+	:db.emptab.insert({empid:123,ename:"xyz",sal:5545})				//Create Record
+	:db.emptab.find()				//Show All Records
+	
+2) Press Ctrl + l 				//to Clear Screen
+	
+----------------Assignment Restaurant---------
+
+	:show dbs
+	:use test
+	:show collections
+1.	:db.rest.find().pretty()					//List All Documents in Collection
+	
+2.  :db.rest.find({},{restaurant_id:1,name:1,borough:1,cuisine:1}).limit(10).pretty()
+		//First {} has Condition (Where)
+		//Second {} has Projection (Select)
+		//Third {} has Sort
+
+3. db.rest.find({},{restaurant_id:1,name:1,borough:1,cuisine:1,_id:0}).limit(10).pretty()
+		//By Default find() shows _id for all Collection which is create by MongoDB by default.
+		
+4. db.rest.find({},{restaurant_id:1,name:1,borough:1,cuisine:1,'address.zipcode':1,_id:0}).limit(10).pretty()
+		//Show Object inside of an Object
+		
+5.  db.rest.find({borough:"Bronx"},{}).pretty()
+		//Search Condition
+		
+6. 	db.rest.find({borough:"Bronx"},{}).limit(5).pretty()
+		//Limit to 5 Records
+
+7.  db.rest.find({borough:"Bronx"},{}).limit(5).skip(5).pretty()
+		//Skip First 5 Records
+		
+8.  db.rest.find({'grades.score':{$gt:90}},{}).pretty()
+		//Conditional Operator $gt
+		
+9.	db.rest.find({'grades.score':{$gt:90,$lt:100}}).limit(1).pretty()
+		//Two COnditions
+		
+	db.rest.find( { "grades" : { $elemMatch : { "score": {$gt:90,$lt:100} } } },
+{ "grades" : { $elemMatch : { "score": {$gt:90,$lt:100} } } }	).pretty()
+		//Exact Match
+
+10. db.rest.find( { 'address.coord.1' : {$lt:95.754168 } } ).pretty()
+		//Select First Object from Array
+
+11.	db.rest.find( { cuisine : { $regex : '^((?!American).)*$' }, grades : { $elemMatch : { score : { $gt:70} } }, 'address.coord.1' : { $lt : 65.754168 } } ).pretty()
+		//Multiple Condition and Does Not Contain a String
+
+12. db.rest.find( { cuisine : { $ne : 'American' }, grades : { $elemMatch : { score : { $gt:70} } }, 'address.coord.1' : { $lt : 65.754168 } } ).pretty()
+		//Multiple Condition and Does Not Contain a String
+
+13.  db.rest.find( { cuisine : { $ne : 'American' }, grades : { $elemMatch : { grade : { $eq : 'A' } } }, borough : { $ne : 'Brooklyn' } } ).pretty().sort({ cuisine : -1 })
+		//Descending Order
+		
+	 db.rest.find( { cuisine : { $ne : 'American' }, grades : { $elemMatch : { grade : { $eq : 'A' } } }, borough : { $ne : 'Brooklyn' } } ).pretty().sort({ cuisine : 1 })
+		//Ascending Order
+
+14.	db.rest.find( { name : { $regex : "^Wil" } }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//First Three Letters as "Wil"
+
+15	db.rest.find( { name : { $regex : "ces$" } }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//Last Three Letters as "ces"
+		
+16. db.rest.find( { name : { $regex : /reg/ } }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//Contain "reg" somewhere in middle
+		
+17.	db.rest.find( { borough : 'Bronx', $or : [{cuisine: 'American'}, {cuisine: 'Chinese' }] }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//OR condition
+		
+18.	db.rest.find( { $or : [{ borough: 'Staten Island'}, { borough: 'Queens' }, { borough: 'Bronxor Brooklyn' } ] }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//Belongs to 
+	
+19. db.rest.find( { borough : { $nin : ['Staten Island', 'Queens', 'Bronxor Brooklyn'] } }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//Not In (Does Not Belong To)
+		
+20.	db.rest.find( { 'grades.score' : { $lt : 10} }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+		//Lest than
+
+21.	db.rest.find( { $or : [{ cuisine : {$nin : ['American','Chinese']}},{restaurant : /^Wil/}] }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
+			//cuisine vs Restaurant
+		
+	
+
+	
+

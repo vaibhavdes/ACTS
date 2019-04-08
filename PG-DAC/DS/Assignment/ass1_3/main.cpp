@@ -27,7 +27,7 @@ int main()
 		//Can use (For Loop 5) times
 		b[1] = new int[5];
 
-		b[1][1] = 23;
+		b[1][2] = 23;
 
 		cout<<b[1][2]<<endl;
 		

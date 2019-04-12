@@ -17,24 +17,32 @@ int main()
 	//USED FOR GRAPH
 
 
-	//1) Fixed Coloumn - 
-	int **b;
-		
-		//Rows
-		b = new int*[5];
-	
-		//For Each Coloumns
-		//Can use (For Loop 5) times
-		b[1] = new int[5];
+	//1) Contiguous Rows - 
+		int **b;
 
-		b[1][2] = 23;
+			//Rows
+			b = new int*[5];
 
-		cout<<b[1][2]<<endl;
-		
-		//Remove For Each Coloumn
-		delete[] b[1];
+			//For Each Coloumns
+			//Can use (For Loop 5) times
+			b[1] = new int[5];
 
-	delete[] b;
+			b[1][2] = 23;
 
+			cout<<b[1][2]<<endl;
+
+			//Remove For Each Coloumn
+			delete[] b[1];
+
+		delete[] b;
+
+	//2) Fixed Coloum | Non Contiguous Row
+		int (*a)[2];
+			a = new int [3][2];
+
+			//Can Use Loop for Each Row
+			a[0][1] = 12;
+			cout<<a[0][1];
+		delete a;
 	
 }

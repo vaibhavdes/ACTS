@@ -19,4 +19,15 @@ Workouts:
         3) Circular
         4) Doubly Circular
     6) Tree
+    
+    7) Sorting Algorithm
+           1) Bubble Sort
+           2) Sequential Sort
+           3) Insertion Sort
+           4) Quick Sort
+           5) Heap Sort
+           6) Merge Sort
+    8)  Search Algorithm
+            1) Linear Search
+            2) Binary Search
          

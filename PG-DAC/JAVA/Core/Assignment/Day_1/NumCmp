@@ -1,0 +1,30 @@
+class NumCmp
+{
+	public static void main(String[] args)
+	{
+		if(args.length < 2)
+		{
+			System.out.println("Please Enter Atmost Two Number");
+		}
+		else
+		{
+			int numOne,numTwo;
+			numOne = Integer.parseInt(args[0]);
+			numTwo = Integer.parseInt(args[1]);
+			
+			if( numOne == numTwo)
+			{
+				System.out.println("Both Numbers are Equal");
+			}
+			else if( numOne < numTwo )
+			{
+				System.out.println("First Number is Less than Second Number");
+			}
+			else
+			{
+				System.out.println("Second Number is Less than First Number");
+			}
+		}
+		
+	}
+}

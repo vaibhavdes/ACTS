@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class ScnAvg
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		int numOne = 0,numTwo = 0, average;
+		System.out.println("Enter First Number");
+		if(sc.hasNextInt())
+		{
+			numOne=sc.nextInt();
+			
+      System.out.println("Enter Second Number");
+			if(sc.hasNextInt())
+				numTwo=sc.nextInt();
+			else
+				System.out.println("You Passed Something Else");
+			
+		}
+		else
+		{
+			System.out.println("You Passed Something Else");
+		}		
+		average = numOne + numTwo;		
+		System.out.printf("Average is " + (average/2));
+		
+	}
+}

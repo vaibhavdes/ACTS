@@ -5,29 +5,33 @@ class ScnAvg
 	public static void main(String[] args)
 	{
 		Scanner sc = new Scanner(System.in);
-		
+		//Can be Done with Array: int a[] = new int[2];
 		int numOne = 0,numTwo = 0, average;
-		System.out.println("Enter First Number");
-		if(sc.hasNextInt())
-		{
-			numOne=sc.nextInt();
-			
-     			System.out.println("Enter Second Number");
+		while(true){
+			System.out.println("Enter First Number");
 			if(sc.hasNextInt())
-				numTwo=sc.nextInt();
+			{
+				numOne=sc.nextInt();
+				
+				System.out.println("Enter Second Number");
+				if(sc.hasNextInt())
+					numTwo=sc.nextInt();
+				else
+				{
+					System.out.println("You Passed Something Else");
+					sc.next();			//Consume Given Input (Eater)
+					break
+				}
+
+				average = numOne + numTwo;		
+				System.out.printf("Average is " + (average/2));
+			}
 			else
 			{
 				System.out.println("You Passed Something Else");
-				sc.next();			//Consume Given Input (Eater)
-			}
-			
-		}
-		else
-		{
-			System.out.println("You Passed Something Else");
-		}		
-		average = numOne + numTwo;		
-		System.out.printf("Average is " + (average/2));
-		
+				sc.next();
+				break;
+			}		
+		}			
 	}
 }

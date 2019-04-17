@@ -12,11 +12,14 @@ class ScnAvg
 		{
 			numOne=sc.nextInt();
 			
-      System.out.println("Enter Second Number");
+     			System.out.println("Enter Second Number");
 			if(sc.hasNextInt())
 				numTwo=sc.nextInt();
 			else
+			{
 				System.out.println("You Passed Something Else");
+				sc.next();			//Consume Given Input (Eater)
+			}
 			
 		}
 		else

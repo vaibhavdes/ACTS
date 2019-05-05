@@ -104,7 +104,29 @@
 21.	db.rest.find( { $or : [{ cuisine : {$nin : ['American','Chinese']}},{restaurant : /^Wil/}] }, { restaurant_id:1,name:1,borough:1,cuisine:1} ).pretty()
 			//cuisine vs Restaurant
 		
-	
+22.	db.rest.find({$and:[{'grades.grade':"A"},{'grades.score':11},{'grades.date':ISODate("2014-08-11T00:00:00Z")}]},{restaurant_id:1,name:1,grades:1}).pretty();
+
+23.	db.rest.find({$and:[{'grades.grade':"A"},{'grades.score':9},{'grades.date':ISODate("2014-08-11T00:00:00Z")}]},{restaurant_id:1,name:1,grades:1}).pretty();
+
+24.	db.rest.find({'address.coord.0':{$gt:42,$lt:52}},{restaurant_id:1,name:1,address:1}).pretty();
+
+25. 	db.rest.find({}).pretty().sort({name:1});
+
+26	db.rest.find({}).pretty().sort({name:-1});
+
+27.	 db.rest.find({},{cuisine:1,borough:1,_id:0}).pretty().sort({cuisine:1,borough:-1});
+
+28.	db.rest.find({"address.street":null}).pretty();
+	db.rest.find({"address.street":{$exists:true}}).pretty();
+
+29	db.rest.find({"address.coord":{$type:1}}).pretty();
+
+30	db.rest.find({"grades.score":{$mod:[7,0]}},{}).pretty();
+
+31	db.rest.find({"name":{$regex : /mon/}},{}).pretty();
+
+32	db.rest.find({"name":{$regex : "^Mad"}},{}).pretty();
+
 
 	
 

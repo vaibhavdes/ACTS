@@ -1,0 +1,23 @@
+Q.2
+-------------------------
+
+use car;
+
+db.details.insert({name:"Apache",price:1000,accessory:["radio","ac","camera"],colors:["red","yellow","black"]});
+
+db.details.insert({name:"Swift",price:1500,accessory:["covers","radio","ac"],colors:["blue","yellow","black"]});
+
+db.details.insert({name:"Mercedes",price:2800,accessory:["reverse camera","digital navigation","ac"],colors:["red","blue","silver"]});
+
+db.details.insert({name:"Omni",price:3200,accessory:["tape","navigation","ac"],colors:["blue","yello","red"]});
+
+db.details.insert({name:"Ford",price:8000,accessory:["ai","ac","navigation"],colors:["yellow","red","blue"]});
+
+db.details.find().pretty();
+
+
+
+1.  db.details.find({colors:"red"}).pretty();
+
+2.  db.details.updateMany({colors:"red"},{$inc:{price:-800}});
+

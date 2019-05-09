@@ -1,0 +1,266 @@
+Q.1
+
+
+SELECT * FROM emp 
+	WHERE deptno = 
+	(SELECT deptno FROM emp WHERE ename = 'SCOTT');
+
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 | 9000.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 9000.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 9000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 9000.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 9000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+5 rows in set (0.00 sec)
+
+
+------------------------
+Q.2
+
+
+SELECT 
+	e.empno AS EMPID,
+	e.ename AS EMPNAME,
+	e.deptno AS DEPTNO,
+	d.dname AS DEPTNAME 
+FROM emp e,dept d 
+WHERE 
+	e.deptno=d.deptno 
+	AND 
+	e.deptno = (SELECT deptno FROM emp WHERE ename='BLAKE');
+
+
++-------+---------+--------+----------+
+| EMPID | EMPNAME | DEPTNO | DEPTNAME |
++-------+---------+--------+----------+
+|  7499 | ALLEN   |     30 | SALES    |
+|  7521 | WARD    |     30 | SALES    |
+|  7654 | MARTIN  |     30 | SALES    |
+|  7698 | BLAKE   |     30 | SALES    |
+|  7844 | TURNER  |     30 | SALES    |
+|  7900 | JAMES   |     30 | SALES    |
+|  2435 | rahul   |     30 | SALES    |
++-------+---------+--------+----------+
+7 rows in set (0.00 sec)
+
+
+--------------------------
+Q.3
+
+
+
+SELECT 
+	SUM(sal) as SUM, 
+	AVG(sal) as AVG 
+FROM emp 
+	GROUP BY deptno 
+	HAVING avg(sal) > 2000;
+
++----------+-------------+
+| SUM      | AVG         |
++----------+-------------+
+| 45000.00 | 9000.000000 |
+| 29400.00 | 4200.000000 |
+|  8750.00 | 2916.666667 |
++----------+-------------+
+3 rows in set (0.02 sec)
+
+
+---------------------------
+Q.4
+
+
+delimiter //
+drop procedure if exists update_comm;
+create procedure update_comm()
+begin
+	declare v_flag int;
+	declare v_comm decimal(9,2);
+	declare v_empno int;
+	declare v_sal int;
+	declare v_job varchar(30);
+	declare my_cur cursor for select empno,sal,job,comm from emp;
+	declare continue handler for not found set v_flag = 1;
+	open my_cur;
+	loop_update:loop
+		FETCH my_cur into v_empno,v_sal,v_job,v_comm;
+		if(v_flag=1) then
+			leave loop_update;
+		end if;
+		if(v_job="MANAGER") then
+		 	set v_comm = v_comm + v_sal*0.10;
+		elseif (v_job="ANALYST") then
+			set v_comm = v_comm + v_sal*0.20;
+		else 
+			set v_comm = v_comm + v_sal*0.30;
+		end if;
+		UPDATE emp SET comm=v_comm WHERE empno = v_empno;
+		SELECT concat('EMPID ',empno,' COMM ',comm) AS UPDATED FROM emp WHERE empno = v_empno;				
+	end loop;
+	close my_cur;
+end //
+delimiter ;
+
+
+mysql> call update_comm();
++--------------------------+
+| UPDATED                  |
++--------------------------+
+| EMPID 7369 COMM 13500.00 |
++--------------------------+
+1 row in set (0.10 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7499 COMM 2400.00 |
++-------------------------+
+1 row in set (0.18 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7521 COMM 1875.00 |
++-------------------------+
+1 row in set (0.22 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7566 COMM 4500.00 |
++-------------------------+
+1 row in set (0.32 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7654 COMM 1875.00 |
++-------------------------+
+1 row in set (0.38 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7698 COMM 1425.00 |
++-------------------------+
+1 row in set (0.48 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7782 COMM 1225.00 |
++-------------------------+
+1 row in set (0.54 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7788 COMM 9000.00 |
++-------------------------+
+1 row in set (0.59 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7839 COMM 7500.00 |
++-------------------------+
+1 row in set (0.65 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7844 COMM 2250.00 |
++-------------------------+
+1 row in set (0.71 sec)
+
++--------------------------+
+| UPDATED                  |
++--------------------------+
+| EMPID 7876 COMM 13500.00 |
++--------------------------+
+1 row in set (0.79 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7900 COMM 1425.00 |
++-------------------------+
+1 row in set (0.90 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7902 COMM 9000.00 |
++-------------------------+
+1 row in set (0.95 sec)
+
++-------------------------+
+| UPDATED                 |
++-------------------------+
+| EMPID 7934 COMM 1950.00 |
++-------------------------+
+1 row in set (1.06 sec)
+
++--------------------------+
+| UPDATED                  |
++--------------------------+
+| EMPID 2435 COMM 30000.00 |
++--------------------------+
+1 row in set (1.12 sec)
+
+Query OK, 0 rows affected (1.12 sec)
+
+
+
+--------------------------
+Q.5.
+
+CREATE TABLE delete_audit (
+  id int primary key auto_increment,
+  t_date date,
+  name varchar(200),
+  location varchar(200)
+  );
+
+
+
+delimiter //
+DROP TRIGGER IF EXISTS make_entry;
+CREATE TRIGGER make_entry AFTER DELETE ON dept
+FOR EACH ROW
+BEGIN
+	INSERT INTO delete_audit (t_date,name,location) VALUES (now(),OLD.dname,OLD.loc);
+END //
+delimiter ;
+
+
+mysql> SELECT * FROM delete_audit;
+Empty set (0.00 sec)
+
+mysql> DELETE from dept WHERE deptno = 50;
+Query OK, 1 row affected (0.12 sec)
+
+
+mysql> SELECT * FROM delete_audit;
++----+------------+---------+----------+
+| id | t_date     | name    | location |
++----+------------+---------+----------+
+|  1 | 2019-05-09 | MANAGER | PUNE     |
++----+------------+---------+----------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+

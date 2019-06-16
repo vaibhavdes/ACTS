@@ -5,7 +5,8 @@
 
 4. Launch in Browser
           localhost:8080
-5
+5 Manage Jenkins
+                   Change localhost to IP
 
 
 -----------------------------
@@ -19,6 +20,8 @@ echo 'deb https://pkg.jenkins.io/debian-stable binary/' | sudo tee -a /etc/apt/s
 sudo apt update
 sudo apt install jenkins
 sudo systemctl start jenkins.service
+service jenkins status
+
 
 Visit localhost:8080
 

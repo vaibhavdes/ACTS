@@ -1,0 +1,60 @@
+
+git init
+
+git add -A
+
+git commit -m "First Update"
+
+git remote add origin [url]
+
+git push origin [master/branch name]
+
+git log
+
+git status
+
+-------
+Make Changes
+-------
+
+git add -A
+
+git commit -m "Second Update"
+
+git push origin [master/branch name]
+
+git show  [hash_value of commit]
+
+---------
+Go to Previous Changes
+---------
+
+git checkout [hash_value of commit]
+
+git revert [hash_value of commit]
+
+----------
+Delete all after wards changes
+-----------
+
+git reset [hash_value of commit]
+
+------------
+create new branch
+------------
+
+git checkout -b [new branch name]
+
+git add -A
+
+git commit -m "Third Update"
+
+git push origin [new branch name]
+
+
+------------
+pull branch
+------------
+
+git pull
+

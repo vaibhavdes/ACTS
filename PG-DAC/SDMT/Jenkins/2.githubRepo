@@ -1,0 +1,31 @@
+          Create Job/Proj (FreeStyle)
+              - General 
+                  (Select Github Project)
+                    (Paste Github Main URL i.e Username/Account one)
+                    
+                    - Source Code Management
+                        (Select Git)
+                          (Paste Repository URL)
+                            (Get from Clone/Download)
+                            
+                    - Build Trigger
+                        (Select Poll SCM)
+                          (Under Schedule Enter):
+                                H/10 * * * *
+                    
+                    - Build   
+                        (Command)
+                            gcc -o file2 file2.c
+                            ./file2
+                            
+                         - Post Build Action
+                            (Add Post Build Action)
+                            
+                     (Apply and Save)
+                     
+                     
+                      - Build History (In Menu of Dashboard)
+                          (Observe Changes)
+                          
+                          
+                     

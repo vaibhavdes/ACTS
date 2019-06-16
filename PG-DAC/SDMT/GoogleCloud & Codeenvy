@@ -1,0 +1,22 @@
+CodeEnvy : https://codenvy.com/
+
+GoogleCloud:
+
+1) Start Eclipse
+2) Install Google Cloud Plugin from Eclipse MarketPlace
+3) Observe Google Icon at bottom right corner
+4) Sign in with Google, Give Permission (Do not Click "Try Free" or "Trial")
+
+
+
+1) Create New Project 
+      File -> New -> Other -> Google Cloud Platform -> Standard Project (Select Option)
+      
+      Tick on Google App Engine API and Enter Project Details
+      
+      Done! Project Created
+      
+      
+2) Run Project
+      Right Click on Project -> Deploy to App Engine Standard -> 
+      

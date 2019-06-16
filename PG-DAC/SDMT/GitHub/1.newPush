@@ -1,4 +1,16 @@
+-------
+Setup
+-------
 
+sudo apt install git
+
+git config --global user.name "John Doe"
+
+git config --global user.email "email_id"
+
+------
+Get Started
+------
 git init
 
 git add -A
@@ -20,6 +32,8 @@ Make Changes
 git add -A
 
 git commit -m "Second Update"
+
+get diff
 
 git push origin [master/branch name]
 
@@ -43,7 +57,11 @@ git reset [hash_value of commit]
 create new branch
 ------------
 
-git checkout -b [new branch name]
+git branch
+
+git checkout -b [new branch name]         OR      git branch [new branch name]
+
+git checkout [branch name]
 
 git add -A
 

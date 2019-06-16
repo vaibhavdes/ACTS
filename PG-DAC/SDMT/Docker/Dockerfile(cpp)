@@ -15,7 +15,7 @@ CMD ["./file1"]
 
 2. Build Image
 
-docker build -t image-exam
+docker build -t image-exam .
 
 3. Run Image
 

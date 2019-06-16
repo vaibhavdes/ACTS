@@ -1,0 +1,25 @@
+package MyPackage;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class MyFirstTest {
+	
+	private int add(int p1, int p2) {
+		return p1 + p2;
+	}
+	
+	@Test(description="checking add functionality")
+	public void test1() {
+		System.out.println("This is my first test");
+		
+		// 10, 20 => 30
+		int result = add(10, 20);
+		Assert.assertEquals(result, 30);
+	}
+	
+	@Test(description="checking login functionality")
+	public void test2() {
+		System.out.println("This is my second test");
+	}
+}

@@ -1,0 +1,34 @@
+On Ubuntu:
+  
+    systemctl status jenkins
+    
+Create C Program as file1.c
+    
+      Create New Job (FreeStyle)
+        - Build
+            -Command
+                      cd /prog1
+                      gcc -o file file1.c
+                      ./file1
+      
+            (Go to Program Directory and Chmod of File):
+                        chmod a+rwx
+                        
+      Go to Dashboard
+         - Select Job/Project
+            - Build Now (From Left Menu)
+                 (Build History will be create in menu)
+                 - Click on #1
+                      - Console Output
+                        (Check Program error
+                        
+            - Configure
+                  - Build Trigger 
+                    (Select Poll SCM)
+                        (Under Schedule type):
+                                H/10 * * * *
+                            (Will Auto Build after every  10 Minute)
+                              - Apply and Save
+                              
+  
+                      

@@ -1,0 +1,64 @@
+package MyPackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class MyThirdTest {
+	
+	WebDriver driver;
+	
+	@BeforeClass
+	public void initDriver() {
+		driver = new ChromeDriver();
+		System.out.println("init driver");
+	}
+	
+	@AfterClass
+	public void closeDriver() {
+		driver.close();
+		System.out.println("closed driver");
+	}
+
+	@BeforeMethod
+	public void beforeEveryMethod() {
+		System.out.println("before every method");
+	}
+	
+	@AfterMethod
+	public void afterEveryMethod() {
+		System.out.println("after every method");
+	}
+	
+	@Test(description="login functionality", priority=1)
+	public void login() {
+		System.out.println("inside login");
+		
+		driver.get("http://localhost:4200/login");
+		
+		driver.findElement(By.xpath("/html/body/app-root/div/app-login/div/div[2]/div[1]/input")).sendKeys("user1@test.com");
+		driver.findElement(By.xpath("/html/body/app-root/div/app-login/div/div[2]/div[2]/input")).sendKeys("user1");
+		driver.findElement(By.xpath("/html/body/app-root/div/app-login/div/div[2]/div[3]/button[1]")).click();
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		String url = driver.getCurrentUrl();
+		Assert.assertTrue(url.endsWith("/home"));
+	}
+	
+	
+	@Test(description="registration functionality", priority=2)
+	public void register() {
+		System.out.println("inside register");
+	}
+}

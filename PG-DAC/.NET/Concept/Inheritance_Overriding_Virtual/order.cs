@@ -6,16 +6,62 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-    class Order_Overseas : Order
+    class Order
     {
-        public Order_Overseas(int id, string name, int quantity, double price) : base(id, name, quantity, price)
+        protected int id;
+        protected string name;
+        protected int quantity;
+        protected double price;
+        public Order(int id, string name, int quantity, double price)
         {
-
+            this.id = id;
+            this.name = name;
+            this.quantity = quantity;
+            this.price = price;
         }
-        public override double GetOrderValue()
+
+        public virtual double GetOrderValue()
         {
-            double fprice =  price * Convert.ToDouble(quantity) ;
-            return fprice + (fprice * 10) / 100;
+            return price * Convert.ToDouble(quantity);
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public int Quantity
+        {
+            get
+            {
+                return quantity;
+            }
+
+            set
+            {
+                quantity = value;
+            }
+        }
+
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+
+            set
+            {
+                price = value;
+            }
         }
     }
-} 
+}

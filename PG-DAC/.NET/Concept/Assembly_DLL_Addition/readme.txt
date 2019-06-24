@@ -28,3 +28,16 @@ In #FIRST Project [ Solution Explore ]
  
  Keep .exe file of #SECOND Project along with .dll of #FIRST project means in same folder so function can be found, called and executed
 
+-------------------
+
+Changing Version:
+
+In Project [Solution Explorer]
+      Expand Properties Section
+      Open AssemblyInfo.cs
+      [Here you can change various information of project] Scroll Down and Change version 
+      e.g 
+            1.0.0.0 -> 1.0.0.1 (Bug Fix)
+            1.0.0.0 -> 1.0.1.0 (New Function Added)
+            1.0.0.0 -> 1.1.0.0 (New Module Added)
+            1.0.0.0 -> 2.0.0.0 (Stable New Release)

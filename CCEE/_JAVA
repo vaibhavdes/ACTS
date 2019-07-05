@@ -1,0 +1,185 @@
+java
+2. Platform or architecture independent
+3. Secure
+4. Automatic memory management.
+
+1. Identifiers must start with a letter, a currency character ($), or a connecting
+character such as the underscore ( _ ),  cannot start with a number!
+
+class level access specifiers - default(scope=current pkg only), public (scope=accessible form any where)
+
+Javac doesn't allow to access un-inited vars.
+
+java dont consider 1 as true and 0 as false like c++
+Char occupies 16-bit in memory, so it supports 2^16 i:e from 0 to 65535. = 2 byte
+
+JRE creates 2 thrds --- main thrd(to exec main() sequentially) -- fg thrd
+G.C --- daemon thrd ---bg thrd 
+
+8. char -- unsigned char. --- UTF 16 
+range 0----65535
+
+java.lang.Object)
+
+super keyword usage
+1. To access super class's visible members
+2. To invoke immediate super class's matching constructor --- accessible only from sub class constructor.(super(...))
+
+instanceof -- keyword in java --used for testing run time type information.
+
+final methods ---can't be overridden, constant, can't be subclassed or extendedn, can't ne reassigned.
+
+throwable - superclass for exception
+
+string pool ?/
+
+Inner classes can't have static members.(Java SE 8 --allows static final members)
+
+static nested classes
+1.A static nested class is not an inner class, it's a top-level nested class.
+2. You don't need an instance of the
+outer class to instantiate a static nested class.
+4.It cannot access non-static members of the outer class directly BUT can access static members of the outer class.
+5. It can contain both static & non-static members.
+
+boxing (to wrapper, upcast) & unboxing (to primitive, required coversion method to call, downcast) |||| widening & narrowing  ||| accessor & mutator
+upcasting & downcasting
+
+java.util 
+
+COLLECTIOn: 
+LIST = duplicate, ordered, 
+SET = no duplicate, no order, use equals while inserting  e.g HashSET (unsorted), TreeSet(sorted), LinkedHashSet
+
+
+MAP = no duplicate keys, key value pair, 
+Both ArrayList (i/r = O(n), s = O(1)) and LinkedList (i/r = O(1), s = O(n)) are implementation of List interface, maintain the elements insertion order, are non-synchronized and can be made synchronized explicitly by using Collections, iterator (if modified while accessing elements than ConcurrentModificationException).
+TeeMap = natural ordering of keys
+HashMap<K,V>() --- creates empty map , init capa = 16 & load factor .75,  earlier value allocation  = [i (mod%) 10] and now new algo
+
+22)The methods for modifying element in the ___vector________ class are synchronized. 
+
+
+Any Set in Collection cannot contain duplicate values.
+
+Thread Lock can be applied on notify and notifyall.
+
+3 constants defined in Thread class:
+public static int MIN_PRIORITY
+public static int NORM_PRIORITY
+public static int MAX_PRIORITY
+Default priority of a thread is 5 (NORM_PRIORITY). The value of MIN_PRIORITY is 1 and the value of MAX_PRIORITY is 10.
+
+
+FileReader and Buffered Reader are uused to search text/word occurence in file
+
+Finally Block Will not execute only if there is exit(1) method / sys call in try or before finally.
+
+Following are various methods of Object class:
+
+protected Object clone() - Used to create and return a copy of this object.
+ boolean equals(Object obj) - Used to indicate whether some other object is "equal to" this one.
+protected void finalize() - garbage collector calls this method on an object when it determines that there are no more references to the object.
+Class<?> getClass() - Used to get the runtime class of this Object.
+int hashCode() - Used to get a hash code value for the object.
+void notify() - Used to wake up a single thread that is waiting on this object's monitor.
+void notifyAll() - Used to wake up all threads that are waiting on this object's monitor.
+String toString() - Used to get a string representation of the object.
+void wait() - marks the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.
+void wait(long timeout) - marks the current thread to wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
+void wait(long timeout, int nanos) - marks the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object, or some other thread interrupts the current thread, or a certain amount of real time has elapsed.
+
+
+https://medium.com/heuristics/interface-vs-abstract-class-vs-concrete-class-196f20c3af9a
+
+
+
+
+BASE CLASS (i/f):
+
+java.lang.System
+java.lang.Object
+Throwable (for exception)
+iterable
+Collection
+MAP
+
+arr[row][coloumn][internal object col]
+
+if 3d array == 2d array then only 1st row (0 th in term of index)is accessible
+
+when string reference is assigned with literal then only string pool happens but in case new string object is created then not.
+
+
+28)Which class do you use to read data from a text file?
+Scanner
+
+Server object interface  is a subinterface of java.rmi.Remote that defines the methods for the server object.
+Server implementation  is a class that implements the remote object interface.
+40) To obtain an ObjectOutputStream from a socket, use ________.  === D. new ObjectOutputStream(socket.getOutputStream())
+
+IMP  QUe
+
+23) Analyze the following code.
+// Test.java: Define threads using the Thread class
+import java.util.*;
+public class Test 
+{
+private Stack stack = new Stack();
+private int i = 0;
+/** Main method */
+public static void main(String[] args) 
+{
+new Test();
+}
+public Test()
+ {
+// Start threads
+new Producer().start();
+new Consumer().start();
+  }
+
+class Producer extends Thread
+ {
+public void run()
+ {
+while (true)
+ {
+System.out.println("Producer: put " + i);
+stack.push(new Integer(i++));
+synchronized (stack)
+ {
+notifyAll();
+}
+}
+}
+}
+class Consumer extends Thread 
+{
+public void run() 
+{
+while (true)
+ {
+synchronized (stack)
+ { 
+Try
+ 	{
+while (stack.isEmpty())
+stack.wait();
+System.out.println("Consumer: get " + stack.pop());
+}
+catch (InterruptedException ex)
+ {
+ex.printStackTrace();
+}
+       }
+              }
+      }
+      }
+}
+
+A. The program creates two threads: one to add data to the stack and the other to get data from the stack.
+B. The program has a compilation error on the notifyAll() method in the Producer class because it is not invoked from the stack object.
+C. The program will throw an exception because the notifyAll() method in the Producer class is not invoked from the stack object.
+D. The program has a logic error because the lock obtained by the synchronized block for notifyAll in the Producer class is stack and it should be this (i.e., synchronized (this) { notifyAll(); }).
+Answer: C

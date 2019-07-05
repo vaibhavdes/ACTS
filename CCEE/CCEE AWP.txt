@@ -1,0 +1,306 @@
+
+PHP
+
+<? ... ?>
+PHP can create, open, read, write, delete, and close files on the server
+no case-sensitive
+A variable starts with the $ sign, followed by the name of the variable
+A variable name cannot start with a number
+
+PHP automatically associates a data type to the variable, depending on its value. Since the data types are not set in a strict sense, you can do things like adding a string to an integer without causing an error.
+
+PHP has three different variable scopes:
+
+local A variable declared within a function has a LOCAL SCOPE and can only be accessed within that function:
+global A variable declared outside a function has a GLOBAL SCOPE and can only be accessed outside a function: (can use global keyword before variable to access within function)
+
+static Normally, when a function is completed/executed, all of its variables are deleted. However, sometimes we want a local variable NOT to be deleted. We need it for a further job.
+Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.
+
+echo has no return value while print has a return value of 1 to use in expression
+echo can take multiple parameters (although such usage is rare) while print can take one argument. 
+The echo & print statement can be used with or without parentheses: echo or echo().
+
+
+var_dump() function returns the data type and value:
+
+
+class Car {
+    function Car() {
+        $this->model = "VW";
+    }
+}
+// create an object
+$herbie = new Car();
+echo $herbie->model;
+
+
+A variable of data type NULL is a variable that has no value assigned to it.
+
+Constant
+define("GREETING", "Welcome to W3Schools.com!", true);
+name: Specifies the name of the constant
+value: Specifies the value of the constant
+case-insensitive: Specifies whether the constant name should be case-insensitive. Default is false
+
+Function (use a default parameter.) Returning values, return type declare just right before ===  method_name : type_name { //code }
+To specify strict we need to set declare(strict_types=1);. This must be the on the very first line of the PHP file. Declaring strict specifies that function calls made in that file must strictly adhere to the specified data types
+
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+foreach($age as $x => $x_value) {
+
+sort() - sort arrays in ascending order
+rsort() - sort arrays in descending order
+asort() - sort associative arrays in ascending order, according to the value
+ksort() - sort associative arrays in ascending order, according to the key
+arsort() - sort associative arrays in descending order, according to the value
+krsort() - sort associative arrays in descending order, according to the key
+
+The PHP superglobal variables are:
+
+$GLOBALS PHP stores all global variables in an array called $GLOBALS[index].
+$_SERVER  which holds information about headers, paths, and script locations. e.g $_SERVER['SERVER_ADDR']	$_SERVER['REQUEST_METHOD']	$_SERVER['REMOTE_ADDR']	
+$_REQUEST PHP $_REQUEST is used to collect data after submitting an HTML form.
+$_POST 
+$_GET
+$_FILES
+$_ENV
+$_COOKIE
+$_SESSION
+
+ This checks if the $_POST variable is empty (with the PHP empty() function). If it is empty, an error message is stored in the different error variables, and if it is not empty, it sends the user input data through the test_input() function:
+ 
+ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+setcookie(name, value, expire, path, domain, secure, httponly);
+setcookie("user", "", time() - 3600);
+
+session_start();
+$_SESSION["favanimal"] = "cat";
+print_r($_SESSION); print all session values
+// remove all session variables
+session_unset(); 
+session_destroy(); 
+
+$conn = new mysqli($servername, $username, $password);
+mysqli_close($conn);
+
+mysqli_connect_error()
+
+$sql = "CREATE DATABASE myDB"			//Similar Query for other
+mysqli_query($conn, $sql)
+ mysqli_error($conn);
+
+ 
+ if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+	
+	
+	$stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $firstname, $lastname, $email);
+
+
+SimpleXML turns an XML document into a data structure you can iterate through like a collection of arrays and objects.
+
+$xml = simplexml_load_string($myXMLData);		//return T or Function
+$xml=simplexml_load_file("note.xml") or die("Error: Cannot create object");
+echo $xml->to . "<br>";				//Access keys
+echo $xml->book[0]->title . "<br>";
+echo $xml->book[0]['category'] . "<br>";
+
+OR
+
+foreach($xml->children() as $books) { 
+    echo $books->title . ", "; 
+
+	mail($to,$subject,$txt,$headers);
+
+	header("Content-Type: application/json; charset=UTF-8");
+$obj = json_decode($_GET["x"], false);
+	echo json_encode($outp);
+
+	
+	
+XML
+XML is often used for distributing data over the Internet.
+XML documents are formed as element trees.
+
+An XML tree starts at a root element and branches from the root to child elements.
+
+All elements can have sub elements (child elements):
+
+To avoid errors, you should specify the encoding used, or save your XML files as UTF-8.
+
+<?xml version="1.0" encoding="UTF-8"?>   == prolog
+
+XML Tags are Case Sensitive & must have closing tag
+XML Attribute Values Must Always be Quoted = metadata
+
+Solving the Name Conflict Using a Prefix 
+
+The namespace can be defined by an xmlns attribute in the start tag of an element.
+When a namespace is defined for an element, all child elements with the same prefix are associated with the same namespace.
+
+A Uniform Resource Identifier (URI) is a string of characters which identifies an Internet Resource.
+
+XSLT is a language that can be used to transform XML documents into other formats.
+
+var xhttp = new XMLHttpRequest(); in Ajax we can get data from xml use in html
+xhttp.onreadystatechange = function()
+if (this.readyState == 4 && this.status == 200)			// 4 is the number of request after handshaking for xml data with server
+document.getElementById("demo").innerHTML = xhttp.responseText;
+
+The HTML DOM defines a standard way for accessing and manipulating HTML documents. It presents an HTML document as a tree-structure.
+
+
+XSLT is a language for transforming XML documents.
+
+XPath is a language for navigating in XML documents.
+
+XQuery is a language for querying XML documents.
+
+
+
+XPath Expression	 (like querying xml in different way)
+XPath uses path expressions to select nodes or node-sets in an XML document. These path expressions look very much like the expressions you see when you work with a traditional computer file system.
+
+/bookstore/book[1]	
+/bookstore/book[price>35.00]	
+
+XSLT (eXtensible Stylesheet Language Transformations) is the recommended style sheet language for XML.
+
+ With XSLT you can add/remove elements and attributes to or from the output file. rearrange and sort elements, perform tests and make decisions
+
+<?xml-stylesheet type="text/xsl" href="cdcatalog.xsl"?>
+An XML Schema describes the structure of an XML document, just like a DTD.
+
+With XML Schema, your XML files can carry a description of its own format.
+
+CDATA: (Unparsed Character data): CDATA contains the text which is not parsed further in an XML document. Tags inside the CDATA text are not treated as markup and entities will not be expanded.
+
+<![CDATA[  
+  <firstname>vimal</firstname> 
+  <lastname>jaiswal</lastname> 
+  <email>vimal@javatpoint.com</email> 
+]]>   
+
+PCDATA: (Parsed Character Data): XML parsers are used to parse all the text in an XML document. PCDATA stands for Parsed Character data. PCDATA is the text that will be parsed by a parser. Tags inside the PCDATA will be treated as markup and entities will be expanded.
+
+A DTD is a Document Type Definition.
+
+A DTD defines the structure and the legal elements and attributes of an XML document.
+An application can use a DTD to verify that XML data is valid.
+
+If the DTD is declared inside the XML file, it must be wrapped inside the <!DOCTYPE> definition: (internal dtd)
+
+<!DOCTYPE note [
+<!ELEMENT note (to,from,heading,body)> 
+<!ELEMENT to (#PCDATA)>
+]>
+
+//should be in this structure like <note> <to/> <from/> <headeing/> <body/> </note>
+!DOCTYPE note defines that the root element of this document is note
+!ELEMENT note defines that the note element must contain four elements: "to,from,heading,body"
+!ELEMENT to defines the to element to be of type "#PCDATA"
+
+can be in another file .dtd but xml must have reference <!DOCTYPE note SYSTEM "note.dtd"> called External DTD
+
+<!ELEMENT square EMPTY>
+<!ATTLIST square width CDATA "0" #REQUIRED>
+In the example above, the "square" element is defined to be an empty element with a "width" attribute of  type CDATA. If no width is specified, it has a default value of 0.
+Use the #REQUIRED keyword if you don't have an option for a default value, but still want to force the attribute to be present.
+Use the #IMPLIED keyword if you don't want to force the author to include an attribute, and you don't have an option for a default value.
+Use the #FIXED keyword when you want an attribute to have a fixed value without allowing the author to change it. If an author includes another value, the XML parser will return an error.
+
+
+
+WSDL WSDL stands for Web Services Description Language
+WSDL is used to describe web services
+It specifies the location of the service, and the methods of the service, 
+
+<types>	Defines the (XML Schema) data types used by the web service
+<message>	Defines the data elements for each operation
+<portType>	Describes the operations that can be performed and the messages involved.
+<binding>	Defines the protocol and data format for each port type
+
+SOAP stands for Simple Object Access Protocol
+SOAP is a format for sending and receiving messages
+SOAP is an application communication protocol
+SOAP is platform independent
+
+With RSS it is possible to distribute up-to-date web content from one web site to thousands of other web sites around the world.
+
+RSS stands for Really Simple Syndication
+RSS defines an easy way to share and view headlines and content
+RSS allows personalized views for different sites
+RSS was designed to show selected data.
+
+<title> - Defines the title of the channel (e.g. W3Schools Home Page)
+<link> - Defines the hyperlink to the channel (e.g. https://www.w3schools.com)
+<description> - Describes the channel (e.g. Free web building tutorials)
+
+
+
+JSON  JSON stands for JavaScript Object Notation
+
+When exchanging data between a browser and a server, the data can only be text.
+
+We can also convert any JSON received from the server into JavaScript objects.
+
+var myObj = {name: "John", age: 31, city: "New York"};
+var myJSON = JSON.stringify(myObj);			//TOJSOn
+var myObj = JSON.parse(myJSON);				//PARSEJSON
+
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+
+In JSON, values must be one of the following data types:
+
+a string
+a number
+an object (JSON object)
+an array
+a boolean
+null
+
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr = JSON.parse(this.responseText);
+    document.getElementById("demo").innerHTML = myArr[0];
+  }
+};
+xmlhttp.open("GET", "json_demo_array.txt", true);
+xmlhttp.send();
+
+For Date, Parse Object Convert to String using JS method parse/convert it  to date object
+
+{
+"name":"John",
+"age":30,
+"cars":[ "Ford", "BMW", "Fiat" ]
+}
+for (i in myObj.cars) {
+  x += myObj.cars[i];
+}
+
+
+
+BOOTSTRAP:
+
+Bootstrap's grid system allows up to 12 columns across the page.
+
+
+Grid Classes
+The Bootstrap 4 grid system has five classes:
+
+.col- (extra small devices - screen width less than 576px)
+.col-sm- (small devices - screen width equal to or greater than 576px)
+.col-md- (medium devices - screen width equal to or greater than 768px)
+.col-lg- (large devices - screen width equal to or greater than 992px)
+.col-xl- (xlarge devices - screen width equal to or greater than 1200px)

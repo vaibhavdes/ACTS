@@ -1,0 +1,240 @@
+JSP
+
+javax.servlet.jsp
+
+JSP-Engine
+Translation: JSP Page -> Servlet
+Compilation: Servlet .java Code -> .class file (locate, load, instantiate)
+
+Servlet Engine
+Instantiation (Loading): 
+.class file is loaded and object created
+jspinit() method is called (only once for user request) (or can be only once when server started)
+RequestTranslation:
+execute _jspService() method for each request from user (request processing)
+Destruction
+_jspDestroy() will be executed when no reference for servlet object (garbage collection)
+
+Invoked FOR REQUEST LIKE GET POST etc (but we overide this request specific method)
+public void service(ServletRequest request, ServletResponse response) 
+   throws ServletException, IOException {
+}
+
+e.g
+public void doGet(HttpServletRequest request, HttpServletResponse response)
+   throws ServletException, IOException {
+   // Servlet code
+}
+public void doPost(HttpServletRequest request, HttpServletResponse response)
+   throws ServletException, IOException {
+   // Servlet code
+}
+public void destroy() {
+   // Finalization code...
+}
+
+//by default session object created
+
+<%! .... %> declaration = methods and fields
+
+<% .... %> scriptlet = java stments
+
+
+<%=....%> expression = html
+
+
+useBean to use class object : must set scope
+
+JavaBean scope:
+application -> ServletContext
+session -> HttpSession
+request -> HttpServletRequest
+page -> PageContext
+
+
+setProperty: value to give fixed value
+param to give value of input field whose name is passed.
+
+
+Expression Language
+
+${ page.context.session.id }  ${sessionScope.details.name }
+
+Custom ErroPage  in xml
+
+ 
+markerInterface?
+
+Servlet over CGI (Common Gateway Interface)
+
+// Extend HttpServlet class
+public class HelloForm extends HttpServlet
+
+(life cycle is managed by web container WC)
+Servlets can be created using the javax.servlet and javax.servlet.http packages, which are a standard part of the Java's enterprise edition, an expanded version of the Java class library that supports large-scale development projects.
+
+By default, a servlet application is located at the path <Tomcat-installationdirectory>/webapps/ROOT and the class file would reside in <Tomcat-installationdirectory>/webapps/ROOT/WEB-INF/classes.
+
+getParameter() − You call request.getParameter() method to get the value of a form parameter.
+
+request.getParameterValues() − Call this method if the parameter appears more than once and returns multiple values, for example checkbox.
+
+getParameterNames() − Call this method if you want a complete list of all parameters in the current request.
+(Cast to Enumeration and use in while hasMoreElements)
+
+<servlet>
+   <servlet-name>HelloForm</servlet-name>
+   <servlet-class>HelloForm</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>HelloForm</servlet-name>
+   <url-pattern>/HelloForm</url-pattern>
+</servlet-mapping>
+
+Cookie[] getCookies()
+Returns an array containing all of the Cookie objects the client sent with this request.
+setValue set value for a cookie
+getValue get value associated with cookie
+setPath set path to which only, cookie applies
+setSecure for SSL
+getMaxAge ages after which cookie must die and rest in piece (by default -1 will exist till session is on not a party)
+
+isNew()
+HttpSession Interface which provides a way to identify a user across more than one page 
+HttpSession getSession()
+Returns the current session associated with this request, or if the request does not have a session, creates one.
+HttpSession getSession(boolean create)
+Returns the current HttpSession associated with this request or, if if there is no current session and value of create is true, returns a new session.
+getCreationTime
+getId = return session id
+getMaxInactiveInterval - return inactive time (like bank ) (can be set in web.xml)
+invalidate - destroy
+setAttribute - add value to sessions
+
+java.util.Locale request.getLocale() 
+Locale getLocale()
+Returns the preferred Locale that the client will accept content in, based on the Accept-Language header.
+
+CLIENT POINT oF VIEW
+getContentType() or set
+getContextPath() part of uri  getServletPath part of uri calling jsp
+getPathInfo get part of url
+getQueryString get part of query in url
+getHeader get as string
+
+getRemoteAddr Internet Protocol (IP) address of the client
+getRemoteHost  fully qualified name of the client that sent the request.
+ 
+
+SERVER POINT OF VIEEW
+
+void flushBuffer() clears content in the buffer to be written to the client.
+sendRedirect temporary redirect response to the client using the specified redirect location URL.
+ 
+ AND REVERSE oF CLIENT POINT oF VIEW METHODS
+ 
+ setStatus Sets the status code for this response
+
+      // Get current time
+      Calendar calendar = new GregorianCalendar();
+      String am_pm;
+      int hour = calendar.get(Calendar.HOUR);
+      int minute = calendar.get(Calendar.MINUTE);
+      int second = calendar.get(Calendar.SECOND);
+	  am_pm = calendar.get(Calendar.AM_PM) (if 0 then AM else PM)
+	  
+	  404 Not Found
+	  200 OK
+	  400 Bad REQUEST
+	  301 Move somewhere else i.e resource
+	  
+	  
+	  deployment descriptor ? is it application config file web.xml
+	  
+	  web.xml we can specify error along to error pages
+	  
+	  remembered       PrintWriter out = response.getWriter();
+
+	  URL Rewriting
+You can append some extra data on the end of each URL that identifies the session, and the server can associate that session identifier with data it has stored about that session. (Server does this automatically for us)
+
+
+SimpleDateFormat is a concrete class for formatting and parsing dates (Date of Birth is January 1, 1970)
+after
+before
+clone
+compareTo(Date dt) compare dates (-1, 0 ,1)
+equals if object has same date
+setTime
+getTime
+
+
+y = Year, M = month
+
+Annotations can replace equivalent XML configuration
+javax.servlet.annotation.
+
+
+
+
+
+
+
+
+Spring framework is an open source Java platform first released under the Apache 2.0 li
+
+using only POJOs is that you do not need an EJB container
+Spring provides a convenient API to translate technology-specific exceptions (thrown by JDBC, Hibernate, or JDO, for example) into consistent, unchecked exceptions.
+
+The Spring container (create the objects, wire them together, configure them, and manage their complete life cycle) uses DI to manage the components that make up an application. These objects are called Spring Beans, 
+
+autowiring mode
+This is used to inject the dependencies and will be discussed in subsequent chapters.
+
+Atomicity − A transaction should be treated as a single unit of operation, which means either the entire sequence of operations is successful or unsuccessful.
+
+Consistency − This represents the consistency of the referential integrity of the database, unique primary keys in tables, etc.
+
+Isolation − There may be many transaction processing with the same data set at the same time. Each transaction should be isolated from others to prevent data corruption.
+
+Durability − Once a transaction has completed, the results of this transaction have to be made permanent and cannot be erased from the database due to system failure.
+
+
+
+SPRING MVC (To develop Loosely Coupled, Extensible, Flexible ani sarva kahi asnare application)
+
+MODEL - POJO - Application Data
+VIEW - Refer Model data and generate html output (for browser)
+CONTROLLER - Process Request, Build Model and send it to view for generating output
+
+DispatcherServlet (karta dharta) - handles request and response
+
+Request Comes 
+-> DS consult HandlerMapping to know approp controller for request to be handled 
+-> Contrl get request call approp service/methods (works on data and logic) and return logical view name  to DS
+-> DS refer ViewResolver using logical view name return original view name
+-> Passes Model Data to View and send view in response to client via DS
+
+@Controller
+@RequestMapping("/hello")
+public class HelloController 
+
+Jakarta Commons Logging (JCL) API to generate a log in your Spring application.  log4j
+
+
+
+Navigation Technique:
+1) Client Pull 1 - Btn Click
+2) CLient pull 2 - Auto Redirect  (sendredirect)
+3) Server Pull - Redirect from server (include, forward) 
+
+Web Container has thread pool 
+
+Cookie 	| Session	| URL Rewriting (encodeUrl)
+javax.Servlet.http.cookie (Cookie Class Obj (key,value)) - addCokkie - saved at user side, but generated/created by server on new request and sent in response  to new client
+javax.Servlet.HTTPServlet
+
+context at unsafe thread = use syncronized { } block to make it safe
+
+
+

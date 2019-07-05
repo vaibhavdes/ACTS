@@ -1,0 +1,80 @@
+Spiral model is one of the most important Software Development Life Cycle models, which provides support for Risk Handling.
+
+Each loop of the spiral is called a Phase of the software development process.
+
+As the project manager dynamically determines the number of phases, so the project manager has an important role to develop a product using spiral model.
+
+
+The Radius of the spiral (width) at any point represents the expenses(cost) of the project 
+
+Prototyping Model also support risk handling, but the risks must be identified completely before the start of the development work of the project
+
+a single loop spiral actually represents the Iterative Waterfall Model
+
+Advantages of Spiral Model: Below are some of the advantages of the Spiral Model.
+
+Risk Handling: The projects with many unknown risks that occur as the development proceeds, in that case, Spiral Model is the best development model to follow due to the risk analysis and risk handling at every phase.
+Good for large projects: It is recommended to use the Spiral Model in large and complex projects.
+Flexibility in Requirements: Change requests in the Requirements at later phase can be incorporated accurately by using this model.
+Customer Satisfaction: Customer can see the development of the product at the early phase of the software development and thus, they habituated with the system by using it before completion of the total product.
+Disdvantages of Spiral Model: Below are some of the main disadvantages of the spiral model.
+
+Complex: The Spiral Model is much more complex than other SDLC models.
+Expensive: Spiral Model is not suitable for small projects as it is expensive.
+Too much dependable on Risk Analysis: The successful completion of the project is very much dependent on Risk Analysis. Without very highly experienced expertise, it is going to be a failure to develop a project using this model.
+Difficulty in time management: As the number of phases is unknown at the start of the project, so time estimation is very difficult.
+
+Classical waterfall model divides the life cycle into a set of phases. This model considers that one phase can be started after completion of the previous phase
+That is the output of one phase will be the input to the next phase
+
+Requirement gathering and analysis
+Design
+Coding and Unit testing:  The aim of the unit testing phase is to check whether each module is working properly or not.
+
+Integration and System testing:
+α-testing: α-testing is the system testing performed by the development team.
+β-testing: β-testing is the system testing performed by a friendly set of customers.
+Acceptance testing: After the software has been delivered, the customer performed the acceptance testing to determine whether to accept the delivered software or to reject it.
+
+Maintainence:
+Corrective Maintenance: This type of maintenance is carried out to correct errors that were not discovered during the product development phase.
+Perfective Maintenance: This type of maintenance is carried out to enhance the functionalities of the system based on the customer’s request.
+Adaptive Maintenance: Adaptive maintenance is usually required for porting the software to work in a new environment such as work on a new computer platform or with a new operating system.
+
+
+RAD: A software project can be implemented using this model if the project can be broken down into small modules wherein each module can be assigned independently to separate teams. These modules can finally be combined to form the final product.
+Another striking feature of this model is a short time span i.e the time frame for delivery(time-box) is generally 60-90 days.
+The model can also be used when already existing system components can be used in developing a new system with minimum changes.
+
+
+The purpose of Design phase in the Software Development Life Cycle is to produce a solution to a problem given in the SRS(Software Requirement Specification) document. The output of the design phase is Sofware Design Document (SDD).
+
+
+Coupling: Coupling is the measure of the degree of interdependence between the modules. A good software will have low coupling.
+(BEST)
+Data Coupling: If the dependency between the modules is based on the fact that they communicate by passing only data, then the modules are said to be data coupled
+Stamp Coupling In stamp coupling, the complete data structure is passed from one module to another module. Therefore, it involves tramp data
+Control Coupling: If the modules communicate by passing control information, then they are said to be control coupled
+External Coupling: In external coupling, the modules depend on other modules, external to the software being developed or to a particular type of hardware
+Common Coupling: The modules have shared data such as global data structures
+Content Coupling: In a content coupling, one module can modify the data of another module or control flow is passed from one module to the other module. 
+(WORST)
+
+Cohesion: Cohesion is a measure of the degree to which the elements of the module are functionally related. It is the degree to which all elements directed towards performing a single task are contained in the component.  A good software design will have high cohesion.
+(HIGH/BEST)
+Functional Cohesion: Every essential element for a single computation is contained in the component
+Sequential Cohesion: An element outputs some data that becomes the input for other element, i.e., data flow between the parts. 
+Communicational Cohesion: Two elements operate on the same input data or contribute towards the same output data
+Procedural Cohesion: Elements of procedural cohesion ensure the order of execution
+Temporal Cohesion: The elements are related by their timing involved. A module connected with temporal cohesion all the tasks must be executed in the same time-span.
+Logical Cohesion: The elements are logically related and not functionally.
+Coincidental Cohesion: The elements are not related(unrelated). The elements have no conceptual relationship other than location in source code. 
+(LOW/WORST)
+
+Cocomo (Constructive Cost Model) is a regression model based on LOC, i.e number of Lines of Code. It is a procedural cost estimate model for software projects and often used as a process of reliably predicting the various parameters associated with making a project such as size, effort, cost, time and quality. 
+
+Agility is achieved by fitting the process to the project, removing activities that may not be essential for a specific project. Also, anything that is wastage of time and effort is avoided.  help a project to adapt to change requests quickly. 
+gile model is the combination of iterative and incremental process models
+The time to complete an iteration is known as a Time Box. Time-box refers to the maximum amount of time needed to deliver an iteration to customers.
+
+https://www.geeksforgeeks.org/software-engineering-architectural-design/

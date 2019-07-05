@@ -1,0 +1,106 @@
+JAVASCRIPT (ECMAScript)
+
+variable=function(a,b){return a+b);
+parseint
+ Use strict (to check varibale declaration
+ getElementById
+ Log (message to console)
+ ... value get value of of form control
+ prompt, confirm() , alert()
+ JSON (Javascript Object Notation )
+ Keydown, Keypress, keyup 
+ 
+ setTimeout (to invoke function after particular time)
+ date(milliseconds)
+ toogle (ready made to show or hide), toogleClass (add effect when shown or when hidden)
+ 
+  $(document).ready() (load the documents first and then exec statements inside it)
+  $(“div”).css(background-color” , “red”)
+
+  
+  - Ampersand, semicolon
+JavaScript entities start with ______@______ and end with ____;__________
+
+
+JQUERY
+
+$('tag')
+$('#id')
+#('.cssclass')
+
+attr = gets attribute
+attr(name), value = sets attribute
+removeattr(name) = remove attribute
+
+slice vs splice vs split vs substr
+pop  (Return element) vs peek (return element), push (Return no of elements), 
+addClass() method adds one or more class names to the selected elements. This method does not remove existing class attributes, it only adds one or more class names to the class attribute. 
+
+https://www.w3schools.com/nodejs
+https://www.w3schools.com/js/default.asp
+https://www.w3schools.com/jquery/default.asp
+https://www.w3schools.com/js/js_ajax_intro.asp
+https://www.w3schools.com/js/js_json_intro.asp
+https://www.w3schools.com/xml/default.asp
+https://www.w3schools.com/xml/xsl_intro.asp
+
+
+NODE.js (single threaded application, ASYNC calls, highly scalable)
+
+Consider modules (consit of set of functions you want to include in your application) to be the same as JavaScript libraries.
+e.g var http = require('http');
+
+
+Use the exports keyword to make properties and methods available outside the module file.
+Save file as .js and it will be custom module created
+
+HTTP module - handle request, and response, (along with content type and status code)
+URL - parse the url and parameters passed (querystring)
+FS (File Server) works with file on server (appendFile (append or create new), open (with permission like r/w), CreateFile, unlink (Delete), rename)
+Event = handles events esp. with EventEmitter obj, on (Assign the event to handler), emit (to fire event)
+		eventemitter = bind function with an event
+		
+		
+Q9. REPL stands for. 
+is a computer environment similar to Shell and CMD
+Read : It reads the inputs from users and parses it into JavaScript data structure. It is then stored to memory.
+Eval : The parsed JavaScript data structure is evaluated for the results.
+Print : The result is printed after the evaluation.
+Loop : Loops the input command. To come out of NODE REPL, press ctrl+c twice
+
+e.g math.pow(3,4) , ceil, floor
+
+ npm ls –g  install depedency via npm manager globally
+ $ npm ls show all modules installed locally
+ 
+ Callback is an asynchronous equivalent for a function. A callback function is called at the completion of a given task. 
+ blocking code:  the program blocks until it process the request and then only it proceeds to end the program. (Have to mention sync method)
+Non-Blocking : does not wait for file reading and proceeds to print "Program Ended" and at the same time, the program without blocking continues reading the file.
+
+
+ANGULAR
+
+component (bring the modules together. )
+module (break up the application into logical pieces of code. )
+view:
+
+Angular  Templates are used to define the views of an Angular JS application. 
+
+
+A directive is a custom HTML element that is used to extend the power of
+HTML. 
+ 
+ 
+ Routing helps in directing users to different pages based on the option they choose on
+the main page. 
+
+tsconfig.json (Config Typescript used in Angular Project)
+packages.json
+
+ systemjs.config.json?
+a) 'npm:': 'node_modules/' tells the location in our project where all the npm
+modules are located.
+b) The mapping of app: 'app' tells the folder where all our applications files are
+loaded.
+
+Filters used like currency add symbol of currency with digits, date used to convert string to date

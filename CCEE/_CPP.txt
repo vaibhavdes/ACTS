@@ -1,0 +1,84 @@
+C++ Revision:
+
+What is the main purpose of creating an abstract base class ?:
+An abstract class is a class that is designed to be specifically used as a base class. An abstract class contains at least one pure virtual function. You declare a pure virtual function by using a pure specifier (= 0) in the declaration of a virtual member function in the class declaration.
+Ans: Dynamic Binding
+
+Metaclass is a class which contains the instances of other class, As simple class defines behaviour of objects metaclass defines behaviour of specific classes and their objects.
+
+Relationships: has-a, is-a, part-of
+
+ const Hello * p:
+will access constant member function of object
+
+When a derived class fails to override a virtual function, then
+A.  The first redefinition found in reverse order of derivation is used 
+B.  If the object of the derived class accesses that function, the function defined by the base class is used 
+
+A derived class inherits every member of a base class except
+A.  its constructors and destructors 
+B.  its operator = () members 
+C.  its friends 
+
+src: http://www.sstutor.com/cpp/
+
+Overriding : B.  derived class function to be called 
+
+delete : Deallocate the memory allocated by new and call the class destructor 
+
+upcast: 50. The idea behind virtual functions is to _______ the derived class object’s address into a pointer to a base class object
+
+We can modify non constant data member inside constant member function using keyword mutable
+
+reference are constant pointer so once it refer any object , it cannot be assigned with another object (Referent)
+
+implemented member function inside struct/class is by default inline
+
+reference e.g
+int &a = b;			// int* a = &b;
+
+selector == inspector (can be const) function w.r.t to state of object
+modifier == mutator
+iterator
+constructor
+destructor
+
+stack unwinding == calling destructor on fully created objects (via constr) in reverse sequence as stack is used;
+
+declaration = .h
+definition = .cpp
+
+header inclusion " " or <>
+
+cannot overload main and destructor
+
+can not overloaded method with same signature on thhe basis of return type
+
+wild pointer = uninit pointer
+dNGLING = POINT released memory address
+
+can declare destructor as inline and virtual
+can declare constructor as inline
+
+const function cannot manupulate members;
+
+const pointer function returns address and this can be assigned to only const int pointer.
+Hypothetically, if we could set a non-const pointer to a const value, then we would be able to dereference the non-const pointer and change the value. That would violate the intention of const.
+
+right shift >>  decrease by value/2
+left shift << increase by value * 2
+
+We can also make a pointer itself constant. A const pointer is a pointer whose value can not be changed after initialization
+
+http://www.c-jump.com/bcc/c123d/Lectures/wk09_reference/wk09_reference.html
+
+
+3) Why is the extraction operator (>>) generally declared as a friend? 
+b) To allow the operator to have access to private variables of the class
+
+
+
+
+
+
+ 

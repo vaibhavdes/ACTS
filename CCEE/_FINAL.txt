@@ -1,0 +1,49 @@
+AS PER SYLLABUS
+
+
+DS:
+
+In templates it creates copy of method or class for each <type> (includes user defined type) for which method is called at time of compilation. Get separate Memory Space including for static members
+
+
+Parameter passed to the templates (Non-Type Parameters) are of const type, cannot be modified inside method
+template<T a, int b>
+
+When we write overloaded function we must code the function for each usage. Correct
+When we write function template we code the function only once. Correct
+It is difficult to debug macros Correct
+Templates are more efficient than macros Correct
+
+
+Standard Template Library (STL) is a set of C++ template classes to provide common programming data structures and functions such as lists, stacks, arrays, etc,
+library of container classes, algorithms, and iterators. Containers or container classes store objects and data.
+
+Sequence Containers: implement data structures which can be accessed in a sequential manner.
+vector
+list
+deque
+arrays
+forward_list( Introduced in C++11)
+
+Container Adaptors : provide a different interface for sequential containers.
+queue
+priority_queue
+stack
+
+Associative Containers : implement sorted data structures that can be quickly searched (O(log n) complexity).
+set
+multiset
+map
+multimap
+
+
+The vector maintains a certain order of its elements, so that when a new element is inserted at the beginning or in the middle of the vector, Subsequent elements are moved backwards in terms of their assignment operator or copy constructor
+
+Explanation: Adapters are data types from STL that adapt a container to provide specific interface.
+
+1. Divide: Break the given problem into subproblems of same type.
+2. Conquer: Recursively solve these subproblems
+3. Combine: Appropriately combine the answers
+		1) Binary Search 		2) Quicksort i		3) Merge Sort
+		
+		Backtracking is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time (by time, here, is referred to the time elapsed till reaching any level of the search tree).

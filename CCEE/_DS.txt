@@ -8,6 +8,8 @@ In templates it creates copy of method or class for each <type> (includes user d
 Standard Template Library (STL): a library provide by C++, containing templates for frequently used data structures and algorithms
 STL data structures are growable & resizable
 
+ The vector member function end( )  
+a) Returns an iterator pointing immediately beyond the last element of the vector b
 
 Parameter passed to the templates (Non-Type Parameters) are of const type, cannot be modified inside method
 template<T a, int b>
@@ -89,7 +91,9 @@ Z: sorting                             3: stack
 B.	Binary search trees
 
 		  A Complete Binary Tree(CBT) is binary tree of depth K having (2K-1) nodes. Degree of every node in CBT is either 0 or2. 	
-
+		A full binary tree (sometimes proper binary tree or 2-tree or strictly binary tree) is a tree in which every node other than the leaves has two children. 		
+		A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.
+		
 		  Tree Traversing Technique
 		  Inorder = LN, ROOT, RN (Sorted)  (infix for expression)
 		  PreOrder = ROOT, LN, RN (prefix for expression)
@@ -191,6 +195,9 @@ ref https://www.gatevidyalay.com/separate-chaining-open-addressing-comparison/
 
 
 -------------------------------------------------------------
+
+If arity of operators is fixed, then which of the following notations can be used to parse expressions without parentheses? b) Postfix Notation (Postorder traversal of a expression tree) c) Prefix Notation (Preorder traversal of a expression tree)
+
 		 dot.net = sanfoundry
 		 os = 
 

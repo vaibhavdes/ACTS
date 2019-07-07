@@ -5,6 +5,9 @@ DS:
 
 In templates it creates copy of method or class for each <type> (includes user defined type) for which method is called at time of compilation. Get separate Memory Space including for static members
 
+Standard Template Library (STL): a library provide by C++, containing templates for frequently used data structures and algorithms
+STL data structures are growable & resizable
+
 
 Parameter passed to the templates (Non-Type Parameters) are of const type, cannot be modified inside method
 template<T a, int b>
@@ -41,9 +44,153 @@ The vector maintains a certain order of its elements, so that when a new element
 
 Explanation: Adapters are data types from STL that adapt a container to provide specific interface.
 
+
+Each container class defines functions that return iterators:
+begin(): returns iterator to item at start
+end(): returns iterator denoting end of container
+
+
+
+
 1. Divide: Break the given problem into subproblems of same type.
 2. Conquer: Recursively solve these subproblems
 3. Combine: Appropriately combine the answers
 		1) Binary Search 		2) Quicksort i		3) Merge Sort
 		
 		Backtracking is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time (by time, here, is referred to the time elapsed till reaching any level of the search tree).
+
+		
+		
+		
+)  Which of the following applications may use a stack? 
+A.	A parentheses balancing program. 
+B.	Keeping track of local variables at run time. 
+C.	Syntax analyzer for a compiler. 
+D.	All of the above. (ans)
+
+12) Selection sort can be applied to which of the following?
+        a. arrays   b. linked lists    c. stacks    d. a and b (ans)
+
+		Quick sort uses ____ for implementation.
+         a. recursion (ans)  
+
+		 heap sort
+		 
+(true) External sorting needs auxiliary storage 
+
+23) The most appropriate matching for the following pairs
+X: depth first search            1: heap
+Y: breadth-first search         2: queue
+Z: sorting                             3: stack
+ a) X—1 Y—2 Z-3  b) X—3 Y—1 Z-2  c) X—3 Y—2 Z-1 (ans)   d) X—2 Y—3 Z-1
+
+ 
+ 21.	The inorder traversal of tree will yield a sorted listing of elements of tree in
+B.	Binary search trees
+
+		  A Complete Binary Tree(CBT) is binary tree of depth K having (2K-1) nodes. Degree of every node in CBT is either 0 or2. 	
+
+		  Tree Traversing Technique
+		  Inorder = LN, ROOT, RN (Sorted)  (infix for expression)
+		  PreOrder = ROOT, LN, RN (prefix for expression)
+		  PostOrder = LN, RN, ROOT; (post fix for expression)
+		  
+		  BTREE
+		  3.	all non-leaf nodes except the root have at least m / 2 children
+	The number m should always be odd
+	1.	the number of keys in each non-leaf node is one less than the number of its children and these keys partition the keys in the children in the fashion of a search tree
+
+AVL TREE : like Binary Search Tree || The difference between height of left subtree and right subtree of every node is at most one.
+In AVL tree, Balance factor of every node is either 0 or 1 or -1.
+Rotation is the process of moving the nodes to make tree balanced.
+		Left Rotation (LL Rotation) = Rotate root Anticlockwise 
+		Right Rotation (RR Rotation) = Rotate root clockwise
+		Left-Right Rotation (LR Rotation) = LL  + RR ( rotate leaf AC and 
+		Right-Left Rotation (RL Rotation)
+
+	
+Sub-Graph (Contain similar edge and vertex of a Another Graph)
+Spanning Tree (Contain similar vertex of another graph but not all edge)
+
+Complete Graph:
+An undirected graph said to be COMPLETE , if it has n vertices and n*(n-1)/2 edges and it is denoted as Kn
+
+A digraph said to be COMPLETE , if it has n vertices and n*(n-1) edges and it is denoted as Kn
+Breadth First Search  ==== Hence the complexity of BFS is O(V + 2*E)
+			( Implemented using Queue )
+Depth First Search 
+		 ( Implemented using Stack )
+
+Complexity : Time and Space : perform a specific task (search, sort or access data) on a given data structure : number of operations required to complete a task.
+
+Linear Search  = BC: O(1) : constant ========= AC or WC : O(n)		  
+Binary Search  = BC : O(1) : element at midpoint ======== AC or WC : log base of 2 n   (log2n)
+
+Log ka khel : Logarithm or log is a way of expressing an exponent for a given base. So, if there were 16 elements (n = 16), then it would take, at worse case, 4 steps to find the number 15 (exponent = 4).	ref: https://cdn-media-1.freecodecamp.org/images/DSYpZXtP0NNN0Poj2wNYEE-n6wQhuekHm8KY
+
+
+Bubble Sort: AC or WC : O(n^2)  (at every iternation high element goes to end like Highest then Second Highest and So on ) : Every Iteration start from one element
+Selection Sort : AC : WC O (n^2) (at every iternation lowest element goes to beginning) : start from first element compare with rest and exchange with lowest element next time iternation will start from 2nd position and so on continues
+
+Insertion Sort : AC: WC O(n^2) : consider there is huge queue for movie ticket (Kabir Singh) and as per rule elder people will be first to take ticket so we have to rearrange the queue
+e.g https://cdn-media-1.freecodecamp.org/images/3tfg-fQ3pfT9czmGkS8p41nLAavr2XlPuxVK
+
+In computer science, a heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: in a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C
+
+The array indexing operation a[i] gains its meaning from the following features of C
+The syntax a[i] is equivalent to *(a + i). Thus it is valid to say 5[a] to get at the 5th element of a.
+Pointer-arithmetic says that given a pointer p and an integer i, p + i the pointer p advanced by i * sizeof(*p) bytes
+The name of an array a very quickly devolves to a pointer to the 0th element of a
+So Negative Indexing works like   arr[-2]
+
+
+
+-----------------------------------------------
+
+HashMap: It completes the search with constant time complexity O(1).  |  minimizes the number of comparisons 
+ h maps keys into integers in the range from zero to M-1.   
+Hash function  ( ‘key mod 7)is used to compute the hash value for a key.
+Hash value is then used as an index to store the key in the hash table.
+
+When the hash value of a key maps to an already occupied bucket of the hash table, it is called as a Collision.
+
+Collision resolution techniques are classified as-
+
+1. The separately chained hash table described is essentially a linked-list implementation,  Array-based hash tables are called scatter tables .
+= Hashing is used to identify the position where an item should be stored. When a collision occurs, the colliding item is stored somewhere else in the array. 
+e.g https://book.huihoo.com/data-structures-and-algorithms-with-object-oriented-design-patterns-in-java/html/img931.gif
+This technique creates a linked list to the slot for which collision occurs.
+The new key is then inserted in the linked list.
+These linked lists to the slots appear like chains.
+That is why, this technique is called as separate chaining
+=========== So, time taken for searching/delete in worst case is O(n). =========
+If Load factor (α) = constant, then time complexity of Insert, Search, Delete = Θ(1)
+
+
+
+2. An alternative method of dealing with collisions which entirely does away with the need for links and chaining is called open addressing.  To insert item x into the scatter table, we examine array locations  until we find an empty cell. Similarly, to find item x in the scatter table we examine the same sequence of locations in the same order. No key is stored outside the hash table.
+In case of collision,
+	Probing is performed until an empty bucket is found.
+	Once an empty bucket is found, the key is inserted.
+	Probing is performed in accordance with the technique used for open addressing.
+Searching: If the required key is found, the key is searched. Otherwise, the subsequent buckets are checked until the required key or an empty bucket is found.
+
+	In linear probing (BEST) When collision occurs, we linearly probe for the next bucket. We keep probing until an empty bucket is found. 
+			The main problem with linear probing is clustering.
+			Many consecutive elements form groups.
+			Then, it takes time to search an element or to find an empty bucket
+			
+	In quadratic probing,
+			When collision occurs, we probe for i2‘th bucket in ith iteration.
+			We keep probing until an empty bucket is found.
+	In double hashing, (Poor)
+			We use another hash function hash2(x) and look for i * hash2(x) bucket in ith iteration.
+			It requires more computation time as two hash functions need to be computed.
+			 
+ref https://www.gatevidyalay.com/separate-chaining-open-addressing-comparison/
+
+
+-------------------------------------------------------------
+		 dot.net = sanfoundry
+		 os = 
+

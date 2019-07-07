@@ -1,4 +1,4 @@
-C++ Revision:
+C++ Revision: (Bekhayali)
 
 What is the main purpose of creating an abstract base class ?:
 An abstract class is a class that is designed to be specifically used as a base class. An abstract class contains at least one pure virtual function. You declare a pure virtual function by using a pure specifier (= 0) in the declaration of a virtual member function in the class declaration.
@@ -6,7 +6,7 @@ Ans: Dynamic Binding
 
 Metaclass is a class which contains the instances of other class, As simple class defines behaviour of objects metaclass defines behaviour of specific classes and their objects.
 
-Relationships: has-a, is-a, part-of
+Relationships: has-a (associate = obj in obj) , is-a (inherit = extend class), part-of
 
  const Hello * p:
 will access constant member function of object
@@ -77,8 +77,286 @@ http://www.c-jump.com/bcc/c123d/Lectures/wk09_reference/wk09_reference.html
 b) To allow the operator to have access to private variables of the class
 
 
+While working with I/O stream objects, they have atleast one internal stream pointer.
+ifstream = get pointer.
+It points to the element to be read in next input.
+
+ofstream = put pointer.
+It points to the location where the next element has to be written.
+
+Uses : -
+seekg() : - moves get pointer to a specified location.
+seekp() : - moves put pointer to a specified location.
+tellg() : - gives the current position of the get pointer.
+tellp() : - gives the current position of the put pointer.
+You can understand with syntax here.
+
+In the name of functions,
+g represents get pointer 
+p represents put pointer .
+
+Seek moves the pointer.
 
 
+11.	In which case is it mandatory to provide a destructor in a class?
+A.	Almost in every class
+B.	Class for which two or more than two objects will be created
+C.	Class for which copy constructor is defined
+D.	Class whose objects will be created dynamically
 
+int *ptr[10];
+This is an array of 10 int* pointers, not as you would assume, a pointer to an array of 10 ints
 
+int (*ptr)[10];
+This is a pointer to an array of 10 int
  
+ 19.	Which of the following correctly applies to C++ struct?
+A.	Programmer can implement inheritance through C++ struct
+B. has member functions
+C. has public access specifier by default
+
+
+pointer to function can access code segment (Read Only) of process (running program)
+
+pointer referencing				int *p = &i				(pointer size = unsigned int)
+pointer dereference				cout << *p ;
+
+initializer list can be used to initialize constant members
+
+const function does not allow performing operation on variables inside it.
+
+static member (function) can access only static members (variables) of class
+and has to be called with class name and shared by all instances (objects) of class
+
+reference to const must be const
+reference do not require new memory location like pointer, it points to same mem location of variable to which it is pointig just like an alias
+
+&r = &(*r)
+
+Destructor is only needed to destroy dynamically allocated memory of data members
+
+SHALLOW Copy/Bit (uses default copy ctr)
+DEEP COPY (Require User Defined Copy Constr) is required for classes where memory to data members is allocated dynamically  (so it created similar new dyn obj)
+
+
+Base class pointer can point to derived class object provided by Inheritance is PUBLIC
+
+
+static polymorphism / early binding (resolved at compiletime)
+= function overloading (same nm function in same class) (fun signature diff) 
+
+runtime polymorphism / late binding
+= function override (same name function  in different class (one is derived by interiting other) (fun signature same)
+
+
+If a class has virtual function
+VTABLE will be created for that class.
+VPTR will be added as data member in class
+VPTR will be available in every object
+VTABLE is  per class and  VPTR is per object
+VPTR will be initialized by constructor hence constructor can not be made virtual
+VTABLE has entries of all virtual functions
+
+Virtual destructor is needed in case memory is allocated for object dynamically within Inheritance hierarchy
+
+Use dynamic_cast for converting pointers/references within an inheritance hierarchy. (downcasting of polymorphic type )
+Use static_cast for ordinary (data type conversions).
+Use reinterpret_cast for low-level reinterpreting of bit patterns. Use with extreme caution. (for pointer conversions)
+Use const_cast for casting away const/volatile. Avoid this unless you are stuck using a const-incorrect API.
+
+
+ typeid() can be used to identify type on any variable or type [ .name() can give type in string ] = type_info hold info returned by typeid operator
+ 
+ unhandled exception : stack unwinding
+ 
+ #include<stdexcept>
+
+ ofstream myfile(“dat.d”,ios::out);
+// This will open file  in out mode
+    myfile <<  x;
+//Insertion operator will  insert data in to file
+
+Using the stream member functions seekg(), seekp(), read() and write( ), we can do random file access
+Marker Positions for random access
+ios::beg ? Beginning of file
+ios::cur ? Current position
+ios::end? End of file
+
+stdarg.h is a header in the C standard library of the C programming language that allows functions to accept an indefinite number of arguments.
+
+Object slicing can be prevented by making the base class function pure virtual there by disallowing object creation. It is not possible to create the object of a class which contains a pure virtual method.
+
+constructor of virtual inherited class is called first
+(b) One cannot have a ‘Base’ pointer to ‘Derived’ since it is not derived publicl
+
+ When a base class pointer points to derived class object  
+a) It can access only base class members
+
+size of std:string internally is 24byte  while string_var.size() will give exact memory size hold.
+
+		arr[row][col][internal arr size]
+    int arr[2][3][2]={{{1,2},{3,4},{5,6},}, {{7,8},{9,10},{11,12}, }}; 
+    cout<<*(*(*(arr+0)+0)+0);  = 1		(Normal)
+	cout<<*(*(*(arr+1)+0)+0);  = 7		(Change by Row)
+    cout<<*(*(*(arr+1)+1)+0);  = 9		(Change by Row & Change by Col)
+	cout<<*(*(*(arr+1)+1)+1);  = 9		(Change by Row & Change by Col & Change in internal array col)
+    cout<<**(*arr)			;  = 1  	 Base Address (Observe Sequence Below)
+	cout<<**(*arr+1)		;  = 3
+	cout<<**(*arr+2)		;  = 5
+	cout<<**(*arr+3)		;  = 7
+    cout<<**(*arr+4)		;  = 9		
+
+
+							Col1	Col2	Col3
+Representational	row1	(1,2)	(3,4)	(5,6)
+					row2	(7,8)	(9,10)	(11,12)
+					
+					
+					public inheritance	= public 		private 	protected
+					private inheritance = pvt			pvt		 	pvt
+					protected			= protected		pvt			protected
+					
+					
+					
+					
+------------------------------------------------			
+					
+#include<iostream> 
+using namespace std; 
+class Person { 
+public: 
+	Person(int x) { cout << "Person::Person(int ) called" << endl; } 
+	Person()	 { cout << "Person::Person() called" << endl; } 
+}; 
+
+class Faculty : virtual public Person { 
+public: 
+	Faculty(int x):Person(x) { 
+	cout<<"Faculty::Faculty(int ) called"<< endl; 
+	} 
+}; 
+
+class Student : public Person { 
+public: 
+	Student(int x):Person(x) { 
+		cout<<"Student::Student(int ) called"<< endl; 
+	} 
+}; 
+
+class TA : public Faculty, public Student { 
+public: 
+	TA(int x):Student(x), Faculty(x) { 
+		cout<<"TA::TA(int ) called"<< endl; 
+	} 
+}; 
+
+int main() { 
+	TA ta1(30); 
+} 
+//OUTPUT
+Person::Person() called
+Faculty::Faculty(int ) called
+Person::Person(int ) called
+Student::Student(int ) called
+TA::TA(int ) called					
+					
+					(If Student class has virtual inherited person class than only once Person Cstr will be called.
+-----------------------------------------------------				
+					
+					
+Friend (Dost) : Friendship is not inherited | Friend keyword can be used in derived class
+
+Class: 			friend class LinkedList; 						 to access private members
+Function:		friend int LinkedList::search();				 special grant to access private and protected members |a) A method of another class b) A global function
+					
+					
+e.g 
+
+class A 
+{ 
+    int a; 
+public: 
+    A() {a = 0;} 
+    friend void showG(A&); // global friend function 
+	friend class C;     // Friend Class 
+	friend void C::showB(B& x); // Friend function 
+
+
+}; 
+  /////////////
+void showG(A& x) { 
+    // Since showA() is a friend, it can access 
+    // private members of A 
+    std::cout << "A::a=" << x.a; 
+} 					
+//////////////////					
+class C { 
+private: 
+    int b; 
+public: 
+    void showC(A& x) { 
+        // Since B is friend of A, it can access 
+        // private members of A 
+        std::cout << "A::a=" << x.a; 
+    } 
+	void showB(A& ); 
+}; 					
+///////////////////////
+void C::showB(A &x) 
+{ 
+    // Since show() is friend of B, it can 
+    // access private members of B 
+    std::cout << "B::b = " << x.b; 
+} 
+
+
+
+Called Using
+
+ A a; 
+ C b; 
+ b.showA(a); 		//Friend Class
+ b.showB(a); 		//Friend Function
+ showA(a); 			//Globl
+
+ -----------------------
+ 
+ #include <iostream> 
+using namespace std; 
+
+class A 
+{ 
+public : int a; protected: int b; private: int c; 
+public : A():a(1){};
+}; 
+
+class B: public A 
+{ 
+int d;
+friend class F; 
+
+}; 
+
+class F
+{
+B b; 
+public :
+  int show(A& b){
+  cout<<b.a;
+  }
+};
+
+int main() 
+{ 
+A a;
+B b;
+F f;
+f.show(a);
+  
+ return 0; 
+  } 
+
+  
+  -----------------------
+  
+  

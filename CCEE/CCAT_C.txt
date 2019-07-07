@@ -1,0 +1,143 @@
+﻿27
+102
+29,89
+
+Rules for Constructing Integer Constants
+An integer constant must have at least one digit.
+It must not have a decimal point.
+It can be either positive or negative.
+If no sign precedes an integer constant it is assumed to be
+positive.
+No commas or blanks are allowed within an integer constant.
+The allowable range for integer constants is -32768 to 32767. 
+
+
+Rules for Real Constants
+A real constant must have at least one digit.
+It must have a decimal point.
+It could be either positive or negative.
+Default sign is positive.
+No commas or blanks are allowed within a real constant. 
+
+’A’ is a valid character constant whereas ‘A’ is not
+
+Rules for Constructing Variable Names
+A variable name is any combination of 1 to 31 alphabets, digits or underscores. Some compilers allow variable names
+whose length could be up to 247 characters. Still, it would be safer to stick to the rule of 31 characters. Do not create
+unnecessarily long variable names as it adds to your typing effort.
+The first character in the variable name must be an alphabet or underscore.
+No commas or blanks are allowed within a variable name.
+No special symbol other than an underscore (as in gross_sal) can be used in a variable name. 
+
+In place of the condition there can be any other valid
+expression. So long as the expression evaluates to a non-zero
+value the statements within the loop would get executed. 
+
+It is important to note that the initialization, testing and
+incrementation part of a for loop can be replaced by any valid
+expression. Thus the following for loops are perfectly ok. 
+
+Pointer:
+(a) Reserve space in memory to hold the integer value.
+(b) Associate the name i with this memory location.
+(c) Store the value 3 at this location. 
+
+Data Type Range Bytes Format
+signed char -128 to + 127 1 %c
+unsigned char 0 to 255 1 %c
+short signed int -32768 to +32767 2 %d
+short unsigned int 0 to 65535 2 %u
+signed int -32768 to +32767 2 %d
+unsigned int 0 to 65535 2 %u
+long signed int -2147483648 to +2147483647 4 %ld
+long unsigned int 0 to 4294967295 4 %lu
+float -3.4e38 to +3.4e38 4 %f
+double -1.7e308 to +1.7e308 8 %lf
+long double -1.7e4932 to +1.7e4932 10 %Lf 
+
+variable name identifies some
+physical location within the computer where the string of bits
+representing the variable’s value is stored. There are basically two
+kinds of locations in a computer where such a value may be kept—
+Memory and CPU registers
+
+There are four storage classes in C:
+(a) Automatic storage class
+(b) Register storage class
+(c) Static storage class
+(d) External storage class 
+
+Preprocessor
+(a) Macro expansion
+(b) File inclusion 
+(c) Conditional Compilation
+(d) Miscellaneous directives 
+A #define directive could be used to replace even an entire C
+statement. This is shown below.
+Macros can have arguments, just as functions can. Here is an
+example that illustrates this fact.  but do expression in paranthesis and no termination symbol
+
+We can make use of various preprocessor directives such as
+#define, #include, #ifdef - #else - #endif, #if and #elif in our
+program. 
+
+arrays make use of pointers internally
+
+every time a pointer is incremented it points to the immediately next location of its type. 
+
+ Note that the address of the zeroth element (many a times called the base address) can also be passed
+by just passing the name of the array.
+
+ When we say, num[i], the C compiler internally
+converts it to *( num + i ). This means that all the following
+notations are same:
+
+int stud[4][2] = {
+ { 1234, 56 },
+ { 1212, 33 },
+ { 1434, 80 },
+ { 1312, 78 }
+ } ;  
+ int stud[4][2] = { 1234, 56, 1212, 33, 1434, 80, 1312, 78 } ;
+ 
+ *( s[2] + 1 ) is same as, *( *( s + 2 ) + 1 ). Thus, all the
+following expressions refer to the same element, 
+
+ function strlen( ), we are passing
+the base address of the string, and the function in turn returns the
+length of the string. While calculating the length it doesn’t count
+‘\0’. Even in the second call, 
+
+Structure elements can be accessed through a structure
+variable using a dot (.) operator.
+Structure elements can be accessed through a pointer to a
+structure using the arrow (->) operator.
+All elements of one structure variable can be assigned to
+another structure variable using the assignment (=) operator. 
+
+the programming languages
+are byte oriented, whereas hardware tends to be bit oriented.operate upon ints and chars but not on floats
+and doubles. B
+s. Bits are numbered from zero onwards, increasing from
+right to left as shown below:
+
+ end of file in text files is indicated by a
+character whose ASCII value is 26. 
+
+Note that if the operand is a multiple of 2 then shifting the operand
+one bit to right is same as dividing it by 2 and ignoring the
+remainder. Thus,
+64 >> 1 gives 32
+64 >> 2 gives 16
+128 >> 2 gives 32
+
+
+e delay between job submission
+and job completion (called turnaround time) m
+
+Time complexity of bubble sort is O(n2)    
+Time complexity of the simple insertion sort is O(n2)
+Time complexity of selection sort is O(n2)
+Time complexity  O(n2) for worst case and O(n log n) for the average case
+Time Complexity O(n * log (n))
+

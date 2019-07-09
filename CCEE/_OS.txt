@@ -1,0 +1,220 @@
+OS (Ooper se Sudar)
+
+-----------------------------
+chmod / access control ?
+chmod command is used to change the access mode of a file.
+The name is an abbreviation of change mode.
+
+Syntax :
+
+chmod [reference][operator][mode] file... 
+e.g chmod u=rwx,g=rx,o=r myfile
+	chmod 754 myfile
+	      ugo 	
+4 stands for "read",
+2 stands for "write",
+1 stands for "execute", and
+0 stands for "no permission."
+
+
+chown cmd ?
+chown command
+chown command changes the user and/or group ownership of for given file. The syntax is:
+chown owner-user:owner-group directory/file
+
+
+network cmd ? ftp, ssh, finger?
+Ifconfig
+ifconfig utility is used to configure network interface parameters.
+Mostly we use this command to check the IP address assigned to the system.
+
+w prints a summary of the current activity on the system, including what each user is doing, and their processes.
+
+finger is a program you can use to find information about computer users. It usually lists the login name, the full name, and possibly other details about the user you are fingering
+
+type of shells	:	$SHELL $O	$$ [bash,ksh,csh,sh,bsh]
+tee cmd?
+tee (T-splitter) command reads the standard input and writes it to both the standard output and one or more files or variables .
+wc -l file1.txt|tee -a file2.txt
+
+kernal   & type ?
+
+interrupt mgmt and sys calls ?
+OS is event driven
+– i.e. executes only when there is an interrupt, trap, or system call 
+An interrupt can be a synchronous or an asynchronous event that causes the processor to temporarily stop the current work and execute something else.
+
+
+		• Hardware interrupts : raised by external hardware devices
+				These events are asynchronous i.e. we cannot predict when they will happen. 
+				A device can send electric signal over its bus to interrupt controller. If interrupt line is enabled, the interrupt controller sends interrupt to processor. The processor immediately stops what it is doing and jumps to a predefined location in memory to find the appropriate handler to execute.
+		• Software Interrupts : raised by user programs 
+				currently running code can generate it and are synchronous. Caused by a special instruction in the instruction set or by an exceptional condition in the processor.
+		• Exceptions : due to illegal operations 
+					Exceptions occur when the processor detects an error condition while executing an instruction, such as division by zero. The processor detects a variety of error conditions including protection violations, page faults, and internal machine faults.
+					Exceptions are classified as faults, traps, or aborts 
+		A trap is an exception that is reported immediately following the execution of the trapping instruction. Traps allow execution of a program or task to be continued without loss of program continuity. The return address for the trap handler points to the instruction to be executed after the trapping instruction.
+		A fault is an exception that can generally be corrected and that, once corrected, allows the program to be restarted with no loss of continuity. 	
+		
+Each process has two
+stacks
+– a user space stack
+– a kernel space stack 
+A system call is the fundamental interfaces between a user space and the privileged kernel. In other way, user space(less-privileged) invokes system calls to request kernel space(privileged) to do some task which the user space has no permission to do directly. This requires change in privilege levels defined by the architectures.
+
+mode = 0 kernal privilege 
+mode = 1 user privilege
+
+Signals are software interrupts sent to a program to indicate that an important event has occurred.
+SIGINT	2	Issued if the user sends an interrupt signal (Ctrl + C)
+SIGKILL 9	If a process gets this signal it must quit immediately and will not perform any clean-up operations
+SIGTERM 15	Software termination signal (sent by kill by default)
+
+
+IPC & Signals  - semaphore & mutex (check sequence problems)?
+Inter process communication (IPC) is a mechanism which allows processes to communicate each other and synchronize their actions. 
+
+message queue & shared memory ?
+Shared Memory:
+Communication between processes using shared memory requires processes to share some variable and it completely depends on how programmer will implement it. 
+Processes can use shared memory for extracting information as a record from other process as well as for delivering any specific information to other process
+The two processes shares a common space or memory location known as buffer where the item produced by Producer is stored and from where the Consumer consumes the item if needed.
+*** There are two version of this problem: first one is known as unbounded buffer problem in which Producer can keep on producing items and there is no limit on size of buffer, 
+	the second one is known as bounded buffer problem in which producer can produce up to a certain amount of item and after that it starts waiting for consumer to consume it. 
+	in bounded buffer consumer first check for the availability of the item and if no item is available, Consumer will wait for producer to produce it.
+	
+Message Passing
+		processes communicate with each other without using any kind of shared memory. If two processes p1 and p2 want to communicate with each other, they proceed as follow:
+	Establish a communication link (if a link already exists, no need to establish it again.)
+	Start exchanging messages using basic primitives.
+	We need at least two primitives:
+	– send(message, destinaion) or send(message)
+	– receive(message, host) or receive(message)
+
+	 A standard message can have two parts: header and body.
+	The header part is used for storing Message type, destination id, source id, message length and control information. 
+
+Message Queue:
+	A message queue is a linked list of messages stored within the kernel and identified by a message queue identifier. 
+	A new queue is created or an existing queue opened by msgget() [ returns the message queue identifier by creating new or existing ]
+	New messages are added to the end of a queue by msgsnd() (via some (OS) message-passing module) 
+	message has a positive long integer type field, a non-negative length, and the actual data bytes (corresponding to the length), all of which are specified to msgsnd() when the message is added to a queue. 
+	Each message is given an identification or type so that processes can select the appropriate message.
+	Messages are fetched from a queue by msgrcv(), we can fetch messages based on their type field.
+	Process must share a common key (using ftok())in order to gain access to the queue in the first place.
+	We destroy/control message using msgctl():
+	
+	pipe is internally as kernel buffer pipe() syscall
+		unnamed pipe - related process
+		named pipe - unrelated process  mkfifo()
+		
+		if process not utilizing memory allocated to it leads to wastage = internal fragmentation
+
+deadlock & starvation ?
+A Deadlock is a situation where each of the computer process waits for a resource which is being assigned to some another process. In this situation, none of the process gets executed since the resource it needs, is held by some other process which is also waiting for some other resource to be released.
+Deadlock happens when Mutual exclusion, hold and wait, No preemption and circular wait occurs simultaneously.	
+
+Starvation is a situation where the low priority process got blocked and the high priority processes proceed.
+It occurs due to the uncontrolled priority and resource management.
+
+Necessary conditions for Deadlocks
+		Mutual Exclusion
+		A resource can only be shared in mutually exclusive manner. It implies, if two process cannot use the same resource at the same time.
+
+		Hold and Wait
+		A process waits for some resources while holding another resource at the same time.
+
+		No preemption
+		The process which once scheduled will be executed till the completion. No other process can be scheduled by the scheduler meanwhile.
+
+		Circular Wait
+		All the processes must be waiting for the resources in a cyclic manner so that the last process is waiting for the resource which is being held by the first process.
+
+
+Memory management ? Virtual Memory?
+Single contiguous allocation: Simplest allocation method used by MS-DOS. All memory (except some reserved for OS) is available to a process.
+
+Partitioned allocation: Memory is divided in different blocks or partitions.Each process is allocated accroding to the requirment.
+
+Paged memory management: Memory is divided into fixed sized units called page frames, used in a virtual memory environment.
+
+Segmented memory management: Memory is divided in different segments (a segment is a logical grouping of the process’ data or code).In this management, allocated memory doesn’t have to be contiguous.
+
+ degree of multiprogramming describes the maximum number of processes that a single-processor system can accommodate efficiently
+ 
+ Long Term or job scheduler It brings the new process to the ‘Ready State’. It controls Degree of Multi-programming, i.e., number of process present in ready state at any point of time.It is important that the long-term scheduler make a careful selection of both IO and CPU bound process.
+ 
+ Short term or CPU scheduler: It is responsible for selecting one process from ready state for scheduling it on the running state. Note: Short-term scheduler only selects the process to schedule it doesn’t load the process on running.
+ 
+ Dispatcher is responsible for loading the process selected by Short-term scheduler on the CPU (Ready to Running State) Context switching is done by dispatcher only. A dispatcher does the following:
+		Switching context.
+		Switching to user mode.
+		Jumping to the proper location in the newly loaded program.
+
+Medium-term scheduler It is responsible for suspending and resuming the process. 
+
+
+mmu CONVERTS logical address of a process into physical address
+
+NMI Non maskable interrupt
+Maskable Intterupt 
+
+
+ram/equal sized partition = frames
+process/equal sized partition = pages
+one page to one frame
+
+pre--emptive & non-premptive ?
+TLB? (stores recently translated page address to frame address mapping)
+
+
+Page replacement algo?
+
+File Systems ?
+Disk Scheduling Algo?
+
+Process and related commands, fork,wait, exec?
+process signals?
+
+File Type | Links Type | Pipe & FIFO's
+
+Thread Mgmt , Safety, Synchornization & mutex.
+Internal Fragmentation, External Fragmentation.
+--------------------------------------------------------
+
+
+
+
+-		= regular file
+d		= directory file
+p		= named pipe
+l		= symbolic link
+c		= character device file
+b		= block device file
+
+
+ls — Use the "ls" command to know what files are in the directory you are in. You can see all the hidden files by using the command “ls -a”.
+
+cp — Use the cp command to copy files/folder through the command line. It takes two arguments: The first is the location of the file/folder to be copied, the second is where to copy.
+
+mv — Use the mv command to move files through the command line. We can also use the mv command to rename a file. As it updatess the inode of folder by renaming or add new entry into inode of another folder if moved inside it.
+
+lpr submits files for printing
+
+SORT command is used to sort a file, arranging the records in a sorted/particular order. By default, the sort command sorts file assuming the contents are ASCII. It considers blank spaces
+
+The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern.
+
+Cat(concatenate) command is very frequently used in Linux. It reads data from the file and gives their content as output.
+
+ Tac is reverse version of cat command (also spelled backwards) which prints each line of a file starting from the bottom line and finishing on the top line.tac command in Linux is used to concatenate and print files in reverse
+
+more is a command to view (but not modify) the contents of a text file one screen at a time.
+
+The 'tail' command displays the last lines of a file. 
+
+The man command is used to format and display the man pages
+
+whatis command in Linux is used to get a one-line manual page descriptions
+
+locate is a Unix utility which serves to find files on filesystems

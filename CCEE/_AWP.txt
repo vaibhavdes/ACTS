@@ -1,3 +1,80 @@
+Network:
+
+TRACE is HTTP request for loop-back test
+
+
+HTML 5
+
+Navi ahe He
+<html lang="en">
+<footer>
+<header>
+<nav>
+
+The <datalist> tag specifies a list of pre-defined options for an <input> element.
+<input list="browsers">
+
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+
+
+The <canvas> tag is used to draw graphics, on the fly, via scripting (usually JavaScript).
+
+The <canvas> tag is only a container for graphics, you must use a script to actually draw the graphics.
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(0, 0, 80, 80);
+</script>
+
+
+CSS
+
+border-width: top,right,bottom,left
+
+The CSS Box Model
+All HTML elements can be considered as boxes. In CSS, the term "box model" is used when talking about design and layout.
+
+The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content. The image below illustrates the box model:
+
+Explanation of the different parts:
+
+(from internal area part to external area part):
+(inside content there is element)
+Content - The content of the box, where text and images appear
+Padding - Clears an area around the content. The padding is transparent
+Border - A border that goes around the padding and content
+Margin - Clears an area outside the border. The margin is transparent
+
+
+JS
+
+onload	script	Fires after the page is finished loading
+onblur	script	Fires the moment that the element loses focus
+onchange	script	Fires the moment when the value of the element is changed
+oncontextmenu	script	Script to be run when a context menu is triggered
+onfocus	script	Fires the moment when the element gets focus
+oninput	script	Script to be run when an element gets user input
+oninvalid	script	Script to be run when an element is invalid
+onreset	script	Fires when the Reset button in a form is clicked
+onsearch	script	Fires when the user writes something in a search field (for <input="search">)
+onselect	script	Fires after some text has been selected in an element
+onsubmit	script	Fires when a form is submitted
+onkeydown	script	Fires when a user is pressing a key
+onkeypress	script	Fires when a user presses a key
+onkeyup	script	Fires when a user releases a key
+onclick	script	Fires on a mouse click on the element
+
+
 
 PHP
 
@@ -55,6 +132,11 @@ asort() - sort associative arrays in ascending order, according to the value
 ksort() - sort associative arrays in ascending order, according to the key
 arsort() - sort associative arrays in descending order, according to the value
 krsort() - sort associative arrays in descending order, according to the key
+
+
+The sprintf() function writes a formatted string to a variable.
+$txt = sprintf("There are %u million bicycles in %s.",$number,$str);
+
 
 The PHP superglobal variables are:
 

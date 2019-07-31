@@ -51,6 +51,16 @@ public class Solution {
                     largest = sm;
                 if(sm.compareTo(smallest) < 0)
                     smallest = sm;
+         
+           /*
+          SortedSet<String> myset= new TreeSet<String>();
+           for(int i = 0; i <= s.length() - k; i++){
+                   myset.add(s.substring(i,i+k));
+           }
+           smallest = myset.first();
+           largest = myset.last();
+           */
+        
         }
         
         return smallest + "\n" + largest;

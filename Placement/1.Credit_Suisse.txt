@@ -1,0 +1,51 @@
+Rounds:
+  1) Online Test from Home (HackerRank Platform)
+  
+
+Pattern:
+  1) Online Test
+      24 MCQ on Aptitude and Technical  (Moderate)
+      4 Coding Questions  (Advance)
+          (Based on Dynamic / Branch Bound / Backtracking Problems)
+          
+How to Prepare?
+  1) Solve "Algorithm" & DS sections from Hacker Rank
+  
+
+
+Questions:
+
+
+Ques 1 -> Unique  Subsequence 
+
+You are given a string a....z  You have to generate the set (all unique) of all the substrings of X and then sort that set lexicographically. Now to have to tell the rank of the string X in the new set formed.
+
+Note: String X contains only lowercase English letters. and it should contain all alphabets
+
+eg : “eren”
+
+Lexicograhically Sorted set of unique substrings of X = {“e”, “en”, “er”, “ere”, “eren”, “n”, “r”, “re”, “ren”}
+
+Rank of “eren” = 5
+
+Note: Time complexity matters, optimize your algorithm
+
+ 
+
+Ques 2 -> Walls
+
+Consider N walls, each of unit width, situated next to each other.
+
+You have to select any two walls i and j (1<=i, j<=N) such that if you break all walls except i and j and fill the spaces between them with water, then the amount of water stored is maximum.
+
+Write a program to find the maximum amount of water that can be accumulated between the walls.
+
+eg: 1 2 3 4 5
+
+Ans: we choose wall 2 and 5, the amount of water that can be stored will be the distance between walls i.e (5-2-1) = 4 which is maximum.
+
+
+Ques 3 -> Travelling Postman
+
+ You have to travel all cities but one different things postman forget to deliver post at one place (provided in input) so at last visit that location
+ and then go to origin

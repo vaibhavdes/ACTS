@@ -1,5 +1,5 @@
 Rounds:
-  1) Online Test from Home (HackerRank Platform)
+  1) Online Test from Home (HackerEarth Platform)
   
 
 Pattern:
@@ -9,7 +9,7 @@ Pattern:
           (Based on Dynamic / Branch Bound / Backtracking Problems)
           
 How to Prepare?
-  1) Solve "Algorithm" & DS sections from Hacker Rank
+  1) Solve "Algorithm" & DS sections from HackerEarth
   
 
 
@@ -49,3 +49,6 @@ Ques 3 -> Travelling Postman
 
  You have to travel all cities but one different things postman forget to deliver post at one place (provided in input) so at last visit that location
  and then go to origin
+
+Ques 4 -> Counting nodes
+Generate Tree from array and array from Tree

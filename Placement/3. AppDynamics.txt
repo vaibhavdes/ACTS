@@ -1,0 +1,12 @@
+Process: (#Do not opt out as test is simple)
+    1) Online Test at Center (via HackerRank Portal)
+    
+    
+Pattern:
+    1) Online Test
+        2 - Database SQL Question (Moderate - Advance)
+            (Practice  Joins, Group By and Internal Functions)
+        2 - Coding Questions (One on Any Language and Second only in Java) (Easy - Moderate)
+            1) Extending Car Class (Practice Super(), Constructor, Extend, Override, Virtual, Abstract based Code)
+            2) RegExpression to find Valid IPV4 Address
+        2 - Technical MCQ on OS (With Options) (Moderate)

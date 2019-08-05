@@ -1,0 +1,14 @@
+Process:
+    1) Online Test at Center
+    2) Video Record Round (Second Recorded Video on Number)
+        Q. Why we should Hire you?
+        Q. What values will you bring to company?
+    3) Final Interview
+    
+Pattern:
+  1) Online Test (Simple)
+      Java Core Questions - 10 (Moderate)
+      Quant Questions - 10
+      Logical Questions - 4
+      Verbal Questions - 10
+  

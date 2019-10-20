@@ -12,3 +12,9 @@ Checkout our Final Project Here:
           (Built with ReactJS and Spring Boot)
 
 CDAC Journey Blog: https://cdacactspgdac.blogspot.com
+
+[Update]
+Developer Technologies:
+      Full Stack Developer (V1) : Java : Angular/React/DoJo (FrontEnd) - Spring Boot/Hibernate/Kafka (Backend) - Git/Jenkins (DevOps)
+      Full Stack Developer (V2) : JS : Angular/React/Dojo (FrontEnd) - NodeJS/ExpressJS (BackEnd) - Git/Jenkins (DevOps)
+      Full Stack Developer (V3) : Python : Django/Flash (FrontEnd) - ElasticSearch/Redis -  Docker/Ansible (DevOps)

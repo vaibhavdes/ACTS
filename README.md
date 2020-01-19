@@ -1,6 +1,11 @@
 # DAC ACTS PUNE
 CDAC ACTS PUNE PG-DAC 2019 Assignment
 
+#Update (2020)
+Learn to Code (Language & Framework) on Instagram
+Follow Me : www.instagram.com/vaibhav.py
+
+
 Course Schedule: 19th Feb - 4th Aug 
 Project Evaluation: 3rd Aug
 Placement Schedule: 6th Aug - October (With Ganesha Festival Holiday in September)

@@ -1,0 +1,39 @@
+Here is the list of Questions Which are mostly asked during Interviews
+(P.N: Interviewer may ask you to write Pseudo-Code or Draw a Hierarchy Diagram on Paper)
+
+1. Explain OOPS concepts, i.e 4 pillars with example
+2. String vs Stringbuffer vs StringBuilder
+3. Exception Handling in Java (Write Custom Exception Program on Paper)
+4. What will happen if an exception occurs in finally block
+5. What is an Interface ?
+6. What is an Abstract Class ?
+7. Collection framework (To Draw Hierarchy in Java)
+8. Arraylist vs Vector  & Map
+9. Hashset vs Treeset
+10. List interface vs Queue interface
+17. Explain LinkedList Data structure
+18. Explain Doubly Linked List
+19. Explain Circular Linked List
+20. Pseudo Code for deleting an element from the middle of linked list
+21. Pseudo Code to find if given linked list has a loop, if loop exists then at which node.
+22. If you are creating a text editor application in java, then how will you do to implement
+“undo” functionality
+
+Spring Framework
+23. What are the types of beans ?
+24. Which technologies did you use in your project ?
+25. What is synchronized in java ?
+26. What are REST services ?
+27. What type of data can REST handle, which one did you use in your project ?
+28. Name some HTTP methods ?
+29. Garbage Collection in java 
+30. Explain new() operator 
+31. Explain default methods in interface ?
+
+Thread: 
+11. What is mMltithreading ?
+12. Different ways to achieve multithreading
+13. start() vs run()
+14. Explain join in thread
+15. Explain yield in thread
+16. Notify() vs notifyAll()

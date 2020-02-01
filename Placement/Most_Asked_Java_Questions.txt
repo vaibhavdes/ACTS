@@ -11,13 +11,7 @@ Here is the list of Questions Which are mostly asked during Interviews
 8. Arraylist vs Vector  & Map
 9. Hashset vs Treeset
 10. List interface vs Queue interface
-17. Explain LinkedList Data structure
-18. Explain Doubly Linked List
-19. Explain Circular Linked List
-20. Pseudo Code for deleting an element from the middle of linked list
-21. Pseudo Code to find if given linked list has a loop, if loop exists then at which node.
-22. If you are creating a text editor application in java, then how will you do to implement
-“undo” functionality
+
 
 Spring Framework
 23. What are the types of beans ?

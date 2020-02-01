@@ -1,0 +1,17 @@
+DS:
+
+17. Explain LinkedList Data structure
+18. Explain Doubly Linked List
+19. Explain Circular Linked List
+20. Pseudo Code for deleting an element from the middle of linked list
+21. Pseudo Code to find if given linked list has a loop, if loop exists then at which node.
+22. If you are creating a text editor application in java, then how will you do to implement
+“undo” functionality
+
+
+Angular: 
+
+1. Lifecycle of Application 
+2. Explain Service , Component
+3. What is MVC 
+4. Tell some directives

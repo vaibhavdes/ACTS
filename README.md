@@ -3,8 +3,9 @@ CDAC ACTS PUNE PG-DAC 2019 Assignment
 
 #Update (2020)
 Learn to Code (Language & Framework) on Instagram
-Follow Me : www.instagram.com/vaibhav.py
+Follow Me : www.instagram.com/vaibhavkurkute
 
+# CCEE Question Paper 2019 : https://stoic-goldstine-f5b469.netlify.app/
 
 Course Schedule: 19th Feb - 4th Aug 
 Project Evaluation: 3rd Aug

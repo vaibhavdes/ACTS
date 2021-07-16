@@ -1,0 +1,921 @@
+# Operating System Concepts:
+	Q. What is Computer?
+	- Computer is a machine/hardware/digital device
+	- Computer System contains -- Processor, Memory Devices & IO Devices
+	Q. Basic functions of Computer:
+		1. data storage
+		2. data processing
+		3. data movement
+		4. control
+		
+	* Program -- set of instructions given to the machine to do specific task.
+	* there are three types of programs:
+		1. user programs -- e.g. programmer user defined programs
+		2. application programs -- notepad, google chrome, mozilla firfox etc....
+		3. system programs -- system defined programs, e.g. device drivers etc...
+		
+	* source code -- program written in any programming languauge, e.g. c source code,
+	java source code etc...
+	* eclipse is an IDE: Integrated Developement Environment
+	- it is an application s/w which is a collection of tools required for the faster
+	s/w developement.
+	- it contains tools like an editor, compiler, linker, debugger, etc....
+	e.g. eclipse, netbeans, ms visual studio, etc...
+	* preprocessor -- it is an application program which gets executed before compilation
+	and it performs two tasks: 
+	1. it removes all comments from the source code and
+	2. it executes all preprocessor directives, like #include, #define, #ifndef, #ifdef, 
+	#endif etc....
+	* compiler -- it is a program which converts human understandable language code (high
+	level programming language code) into the machine understandable language code
+	(low level programming language code). e.g. "gcc", "tc" etc...
+	* assembler -- it is a program which converts assembly language code into machine
+	language code, i.e. in binary language. e.g. "asm", "masm" etc...
+	* linker -- it is a program which links object file/s with precompiled object modules
+	of library functions and creates final single executable file.
+	* "portability" -- c program written on one machine/platform can be compiled and
+	executed on any other machine/platform.
+	
+	
+		
+	Q. What is OS?
+	- OS is a "system software"(i.e. collection of system programs), which acts as an
+	interface between user (end user, programmer user, admin user, machine etc...) and
+	computer hardware(processor, memory & io).
+	- OS acts as an interface between programs and hardware.
+	- as OS allocates required resoureces like (main memory, CPU time, IO devices access)
+	to the running program, OS is also called as "resource allocator".
+	- as OS manages available resources among all running programs, it is also called
+	as "resource manager".
+	- as OS controls execution of all programs as well it controls all h/w devices
+	attached to the system, it is also called as "control program".
+	- OS is a software usually comes in CD/DVD
+		OS = Kernel + Utility Programs + Application Programs.
+		
+		* Kernel -- it is core part/program of an OS, which runs continuosly into the main
+		memory and does basic minimal functionalities of an OS.
+		* Utility Programs -- task manager, disk manager etc....
+		* Application Programs -- MS Office, calculator, etc....
+			- installation -- to store OS s/w (programs) onto the machine i.e. onto the 
+			HDD (Hard Disk Drive).
+			
+		* booting -- it is a process of loading kernel from secondary memory into the
+		main memory.
+		
+		* peripheral devices -- the devices which connected externally to the motherboard
+		through ports are called as "peripheral devices" or "peripherals".
+		
+		* bootable device -- if any storage device contains one special program called
+		as "bootstrap program" in its first sector i.e. in its boot sector, then such a
+		device is called as bootable device.
+		
+		* bootable partition -- if any partition contains one special program called
+		as "bootstrap program" in its first sector i.e. in its boot sector, then such a
+		partition is called as bootable partition.
+
+		
+		* there are two steps of booting:
+		1. machine boot:
+		- when we switch on the power supply current gets passed to the motherboard,
+		on which from ROM memory one micro-program gets executed called as "BIOS":
+		Basic Input Output System.
+		- first step of BIOS is POST(Power On Self Test): under POST, BIOS checks
+		whether all peripherals are connected properly or not and their working
+		status.
+		- next BIOS executes "bootstrap loader" program -- bootstrap loader searches 
+		available bootable devices in the computer system and selects one out of it.
+		- upon selection of bootable device, bootstrap program inside it gets executed.
+				
+		2. system boot:
+		- bootstrap program locates the kernel, and load it into the main memory.
+-----------------------------------------------------------------------------------------
+	# functions of an OS:
+	basic minimal functionalities -- which must supports by any OS.
+	1. Process Management
+	2. Memory Management
+	3. File & IO Management
+	4. Hardware Abstraction
+	5. CPU Scheduling
+	
+	----------------------------------------
+	extra utility functionalities -- 
+	6. Protection & Security
+	7. Networking
+	8. User Interfacing		
+			
+---------------------------------------------------------------
+	# Computer Fundmentals:
+	- Computer is a hardware:
+	- major components of Computer: Processor, Memory & IO
+	- Processor -- ALU, CU, EU, CPU registers etc....
+	- Processor is also reffered as "CPU" -- Central Processing/Processor Unit
+	- All components of the computer are connected to each other via conducting wires
+	called as "buses"/"lines"
+	- All components of the computer can communicates with each other via buses.
+	- Bus which connects major components of the computer system is called "system bus".
+	- There are three types of bus:
+		- address bus/address lines -- addresss
+		- data bus/data lines -- data
+		- control lines -- control signals
+		
+	- As each and every device in a computer system has its own dedicated processor
+	called as "controller", which controls that device only, and processor is a general 
+	pupose processor that co-ordinates with all special purpose processors of devices and
+	controls all operations centrally, it is also reffered "Central Processor Unit".
+	
+	Q. what is the basic "structural" and "functional" unit of life in human body system?
+	cell --
+	
+	- Computer has two fundamental components: wihch are basic structural and functional
+	units
+		1. Memory Cell
+		2. Gate
+
+	- Computer is a digital device which is made up of collection of millinons of
+	"memory cells" and "gates".
+			
+	- 1 byte = 8 bits
+	- bit -- binary digit -- either 0 or 1
+	- addressable unit -- 1 byte
+	
+	- bitfields -- are the members of the structure for whome memory can be defined
+	in terms of bits.
+	e.g.
+		typedef struct date
+		{
+			unsigned int dd: 5;
+			unsigned int mm: 4;
+			unsigned int yy: 12;
+		}date_t;
+		
+		3 bytes
+		
+		date_t dob;
+		
+		&dob.dd
+		
+	
+	300 -- 0000 0000 0000 0000 0000 0001 0010 1100
+	
+	- there are two methods/format by which data can be written by the processor into the
+	memory: (byte ordering).
+	
+	1. big endian format -- in this method binary equivalent of value of any variable 
+	gets written into the memory.
+	
+	2. little endian format -- in this method, LSB gets stored into the lowest memory
+	location, next LCB gets stored into the next lowest memory location and so on...
+	- all pentium processor's family follows little endian format.
+	
+	- From system points of veiw unit memory is : "word".
+	- word -- it is a collection of bits/bytes.
+	- word length = 8 bits/16 bits/32 bits/64 bits.
+	- on few processor -- legth of the word is fixed and on few processor it may vary.
+	- word length either gets decided on "no. of bytes required to store integer value"
+	or "instruction length i.e. no. of bytes required to store one instruction".
+	
+	--------------------------------------------------------------------------------------
+	structure member allignment -- generally, for the members of the structure memory gets
+	allocated from even number location.
+	---------------------------------------------------------------------------------------
+	
+	# Memory:
+		Computer memory heirarchy:
+		-- CPU Registers(MAR, MBR, IOAR, IOBR, PC, etc....)
+		-- One or more levels of cache i.e. L1 cache & L2 cache
+		-- Cache Memory
+		-- Main Memory
+		-- Magnetic Memory (HDD, Magnetic Tapes etc...)
+		-- Optical Memory(CD/DVD etc...)
+	
+	-- RAM is also called as "main memory"
+	-- RAM: Random Access Memory -- data can be accessed from this memory by using
+	"random access" method.
+	-- there are two types of RAM:
+		1. SRAM -- Static RAM -- memory cells are made up of capacitors e.g. main meomory
+		2. DRAM -- Dynamic RAM -- memory cells are made up of flip-flop gates
+			e.g. cache memory
+		
+	
+	Q. Why RAM is called as "main memory": for execution of any program RAM memory is must,
+	i.e. without RAM program cannot be executed, and that's why RAM memory is called as
+	"main memory".
+	- temporary storage -- it is a volatile memory
+	- permanent storage -- hard disk drive/magnetic memory
+	
+	- internal memory -- memory which is internal to the motherboard
+	i.e. cpu registers, L1 & L2 cache, cache memory & main memory
+	- external memory -- memory which is external to the motherboard
+	i.e. hard disk drive, pen drive, cd, DVD etc...
+	
+	Q. What do you mean by Primary Memory & Secondary Memory?
+	- memory which can be accessible directly by the cpu called as primary memory
+	otherwise it is called as secondary memory.
+	- e.g. cpu registers, L1 & L2 cache, cache memory & main memory
+	are the examples of primary memory
+	secondary memory -- hard disk drive, pen drive, cd, DVD etc...
+	
+	
+	Q. Why cache memory?
+	- the rate at which cpu can executes data and instructions is faster than the rate at
+	which data can be accessed from the main memory, due this speed mismatch overall
+	system performance gets decreases, to reduce speed mismatch between the cpu and main
+	memory "cache memory" can be added between them.
+	
+	- cache memory contains most recently accessed main memory contents, stores in an
+	associative manner i.e. data can be kept in a cache memory in key-value pairs format
+	
+	- when requested data is exist in a cache memory it is reffered as "cache hit", on
+	cache hit data can be transferred from cache memory to the CPU.
+	- but when requested data is not found in the cache memory it is reffred as "cache 
+	miss", on cache miss requested data can be transferred from the main memory to the 
+	cpu via cache memory.
+	- even after adding cache memory in between the cpu and main memory, there is a speed
+	mismatch between cpu and the cache memory and to reduce speed mismatch between the
+	cpu and cache memory one or more levels of cache memory can be added between them
+	reffered as L1 cache & L2 cache.
+	
+	- the rate at which cpu can execute the instructions is much faster than the rate
+	at which data can be fetched from the disk, there is a huge speed mismatch between
+	then, and to reduce this speed mismatch "disk cache" can be used.
+	- disk cache -- it is a purely a software technique in which portion of main memory
+	can be used as a cache memory in which most recently disk contents can be kept
+	in a key-value format.
+	
+	* there are four methods by which data can be accessed from the computer memory
+	1. sequential access -- e.g. magnetic tapes --> data used to store into this memory
+	in record format, if we want to fetch data from this memory we have to apply sequetial
+	access method.
+	- as this method is not an efficient methods, so now a days magetic tapes are out lated
+	and as a secondary storage purpose mostly magtic disks can be used.
+	
+	2. direct access -- e.g. magnetic disks
+	
+	3. random access -- e.g. main memory
+	
+	4. associative access -- e.g. cache memory -- data used to store into the memory
+	in a key-value pairs format i.e. in an associative manner, so if we want to fetch
+	data/value, key gets searched into the memory.
+	
+	# magnetic disk:
+	- magnetic disk is made up of one or more circular platter(s)
+	- circula platter is made up of any non-magnetic substance like alluminium or 
+	alluminuim alloy, which is coated with a magnetic substance.
+	- circular paltter is divided into hundreds of concetric rings called as "tracks",
+	and each track is divided into thounsands of fixed size of blocks called as "sectors",
+	whereas size of each sector on same or different tracks is same.
+	- usually the size of sector = 512 bytes
+	- there are one or more conducting coils called as "head" can be used to read or to
+	write data from the sector.
+	- head can read/write 512 bytes of data at a time.
+	- data can be transferred from the magntic disk block by block -- and hence magnetic
+	disk can be catagorised into the "block devices".
+	- access time = seek time + rotational latency
+		- seek time -- it is a time required for the disk controller to move head from its
+		current position to the desired track/cylinder.
+		- rotational latency -- once head moved to desired track/cylinder, time it takes
+		to rotate the platter and gets alligned head with desired sector.
+--------------------------------------------------------------------------------------
+	# IO techniques:
+	- when there is transfer of data from major components of the system to the i/o devices
+	and vice-versa, it is reffered as an IO.
+	IO:
+	- data can be transferred from the cpu to the i/o devices or secondary memory devices
+	or vice versa
+	- data can be transferes from main memory to the i/o devices or secondary memory
+	devices and vice-versa
+	- when there is a data transfer between core computer system (i.e. the cpu and main
+	memory ) and peripherals, it is reffered as an IO.
+	
+	- IO Modules -- IO modules acts as an interface between peripherals (i/o devices) and
+	 core computer system. it contains logic to provide interface of any io device to
+	 the processor via a system bus.
+	 
+	- "qwerty" keyboard:
+	there are three IO techniques:
+	1. Program driven IO:
+		- all logic required for doing an IO is there into one program, and by means
+		of executing that program by the CPU IO can be done.
+		- this technique is simple
+		- by the time IO modules does communication with external devices, cpu remains
+		idle, so utilization of the cpu is not at its best and system performance gets
+		down.
+		- in this techniqueue cpu remains involved in an IO from the begining till the
+		end, so cpu utilization is not at its best.
+		
+	2. Interrupt IO:
+		- interrupt is a signal sent by any device to the cpu, due to which cpu stops
+		executing one job and starts executing another job.
+		- cpu is getting involved in an IO only when its gets interrupted, and instead
+		to remains idle cpu starts executiion of another job.
+		- in this technique utilization of the cpu can be maximized, and overall system
+		performance can be upgraded.
+		
+	3. DMA -- Direct Memory Access -- DMA controller can be added onto the system bus
+	which acts as an sorogate processor, so cpu sends all required information
+	to the DMA controller and DMA controller will will talks with an IO module on behalf
+	of the cpu.
+	- the cpu outsource his task to the DMA controller
+	- in this technique involvelment is reduced, i.e. cpu gets involved in an IO only
+	at the begining and directly at the end.
+	
+----------------------------------------------------------------------------------------
+# UNIX: UNICS -- Uniplexed Information and Computing Services
+- UNIX was developed in 1970's at AT&T Bell Labs by Ken Thompson (B.E. Electricals),
+ Denies Ritchie(M.Sc. Physics & Maths) and team.
+- UNIX was first executed on "DEC-PDP-7" machine
+- Originally UNIX was written in assembly language and B Programming Lanaguage
+- 1972 C programming lang was invented by Denis Ritchie and in 1973 UNIX was
+rewrriten in C Programming Language. UNIX -- 10,000 = 9000 (C) + 1000 (Assembly).
+
+- UNIX is the world's first multi-user, multi-tasking operating system.
+- UNIX is most secured OS
+- UNIX is reffered as mother of all modern OS's like -- Linux, Android, iOS, MAC OS X,
+Symbian, Windows, BSD UNIX, Solaris etc...., becuase system architecture of all modern
+operating system is taken from the system architecture design of the UNIX.
+
+	int main(void)
+	{
+		int n1, n2, res;
+		
+		printf("enter the values of n1 & n2: ");
+		scanf("%d %d", &n1, &n2);
+		
+		res = n1 + n2;
+		
+		printf("res = %d\n", res);
+		
+		return 0;
+	}
+	
+- System Architecture Design of UNIX:
+
+	# system calls are the functions defined in c, c++ & assembly language, which provides
+	interface of the services made availaable by the kernel for user.
+	in other words if user want to call services made available by the kernel, user can
+	give call to the system calls directly from the program or indirectly through library
+	functions.
+	
+	# there are 64 system call in UNIX, In Linux around 300 system calls are there, whereas
+	in windows more than 3000 system calls are available.
+	
+	# there are 6 catagories of system calls:
+	1. file manipulation system calls: open(), close(), read(), write(), lseek() etc...
+	2. process control system calls: fork(), _exit(), wait() etc....
+	3. device manipulation system calls: read(), write(), close(), ioctl(), etc...
+	4. inter process communication system calls: pipe(), shmget(), shmat(), msgget(), 
+	etc...
+	5. accouting information system calls: getpid(), getppid(), etc...
+	6. protection and security system calls: chmod(), chown() etc....
+	
+	
+	
+	# UNIX system catagorises all devices attached into the two catagories:
+	1. character devices: devices from which data gets transferred char by char are called
+	as character devices, e.g. keyboard, monitor, printer, serial ports & parellel ports
+	
+	2. block devices: devices from which data can be transferred block by block called
+	as block devices, e.g. all storage devices are block devices.
+	
+	# pid = process id i.e. process identifier
+	- for every running program OS assigns one unique number/identifier called as
+	"process id".
+	# each process has parent process
+	
+		
+	# dual mode operation: system runs in two modes
+	1. user mode/non-priviledged mode
+	2. system mode/kernel mode/monitor mode/priviledged mode
+	
+	- cpu can differentiate between instructions of user defined code and system defined
+	code with help of one "mode bit" which exists onto the CPU.
+	user mode --> mode bit = 1
+	kernel mode --> mode bit = 0
+	- protection can be acheived by using this mode bit.
+	
+	# buffer cache can be used by the system to store most recently accessed contents
+	from block devices to get max throughput in min h/w movement.
+	
+	# Process Control Subsystem:
+		- Process Management: when we say OS does process management that means OS
+		is responsible for process creation, for allocating resources, to provide 
+		environment for all running programs, cpu scheduling, process synchronization
+		and to terminate the process.
+		
+		- Program -- set of instructions given to the machine to do specific task
+			- Program is a passive entity
+		- Process -- Program in execution/when programs gets loaded into the main memory
+		it is called as process/running program is called as process.
+		- When any program started its execution OS creates one structure for that process
+		in which information of that process can be store for controlling execution of that
+		process, that structure is called as "PCB: Process Control Block".
+		- PCB is also called as "Task Control Block", also called as "Process Descriptor"
+		- OS creates one PCB per process, and termination of the process PCB of that
+		process also gets removed from the main memory.
+		
+		- Process has : stack section, heap section, data section, bss secction, rodata
+		section, code/text section.
+		- PCB contains information about the process like
+			1. pid -- process id
+			2. current state of the process
+			3. PC: program counter
+			4. cpu sched information like priority, etc..
+			5. mem mgmt information
+			6. exit status
+			7. execution context
+			etc.....
+			
+		- job queue -- it contains list of PCB's of all submitted processes.
+		- ready queue -- it contains list of PCB's of processes which are loaded into
+		the main memory and waiting for the cpu time.
+		- waiting queue -- OS maintains waiting queue for each device, when any process
+		is requesting for any particular device, PCB of that process can be added into the
+		waiting queue of that device if multiple requests are there.
+		
+		# feautures of an OS:
+		- multi-programming -- system in which multiple programs can be submitted at a time
+		OR multiple programs can starts their execution at a time.
+		- degree of multi-programming -- no. of programs that can be submitted into the
+		system at a time.
+		
+		- multi-tasking -- system in which CPU can execute multiple tasks concurrently/
+		simultaneuosly.
+		
+		atom -- atom is a smallest indivisible part of an element
+		
+		-thread -- is the smallest indivisible part of a process
+			- thread is a smallest execution unit of a process
+			- thread is a light weight process
+			
+		- the CPU can execute only one thread of any one process at a time
+		 
+		- multi-threading -- system in which cpu can execute multiple threads of
+		either same process or different processes concurrently/simultaneously.
+		
+		- multi-user -- system in which multiple users can be logged into at a time
+		
+		- multi-processor -- system can run on a machine in which two or more CPU's
+		are connected in a closed circuit.
+		 
+		- dispatcher -- it is the module of an OS, which stores execution context of
+		the process from its PCB which is scheduled by the cpu scheduler.
+		- it is a program which stops execution of one process and starts assigns the
+		control of the cpu to another process.
+		- time required for the dispatcher to stops execution of one process and starts
+		execution another process is called as "dispatcher latency".
+		
+		- context switch -- during context switch cpu is switching from execution context
+		of one process into the execution of another process.
+		- context switch = state-save of one process and state-restore of another process
+		- state-save -- execution context of suspended process can be saved into its PCB
+		called as state-save.
+		
+		- state-restore -- execution context of the process from its PCB which selected by
+		the CPU scheduler gets stored onto the cpu registers called as "state-restore".
+		
+		# there are two types of cpu scheduling:
+		1. non-preemptive: under non-preemptive scheduling, control of the CPU released
+		by the process by its own, i.e. voluntarily
+		
+		2. preemptive: under preemptive	scheduling control of the cpu taken away forcefully
+		from a process.
+		
+		- There are multiple CPU scheduling algo's exists:
+		1. FCFS: First Come First Served
+		2. SJF: Shortest Job First
+		3. Priority Scheduling
+		4. Round Robin
+		5. Multi-level Queue
+		6. Multi-level Feedback Queue
+		
+		- out of multiple algo we need to decide which algo is best suited at which
+		situation, to decide this there are certain CPU scheduling criterias:
+		
+		1. CPU utilization: one need to select such an algo in which cpu utilization
+		must be as max as possible.
+		
+		2. Throughput -- it is total work done per unit time, one need to select such an 
+		algo in which throughput must be as max as possible.
+		
+		3. Turn-around-time -- it is the total amount of time required for the process to
+		complete its execution from its time of submission.
+		- one need to select such an algo in which turn-around-time must be as min as
+		possible.
+		- turn-around-time = waiting time + running time
+		- it is the sum of periods spent by the process on ready queue for waiting and
+		onto the cpu for completing its execution.
+		
+		4. waiting time -- it is the total time spent by the process in ready queue	for
+		waiting to get the control of the CPU, from its time of submission.
+		- one need to select such an algo in which waiting time must be as min as
+		possible.
+		
+		5. response time -- it is time required for the process to get first respose from
+		the CPU from its time submission.
+		- one need to select such an algo in which response time must be as min as 
+		possible.
+		
+		* execution time/running time -- it is total amount of time spent by the process
+		onto the CPU to complete its execution.
+		
+		cpu burst time -- total no. of cpu cycles required for the process to complete
+		its execution.
+------------------------------------------------
+ # CPU Scheduling Algorithms:
+ 	1. First Come First Served CPU Scheduling
+ 		- in this algo, process which arrived first into the ready gets control of the
+ 		cpu first, i.e. control of the cpu gets allocated for processes as per their
+ 		order of arrival.
+ 		- this algo  is very simple, and can be implemented by using FIFO queue.
+ 		- it is non-preemptive
+ 		
+ 		- "gant chart" -- it is a bar chart representation of cpu allocation for processes
+ 		in terms of cpu cycle numbers.
+ 		
+ 		Processes -- CPU Burst Time
+ 		P1 -- 24
+ 		P2 -- 3
+ 		P3 -- 3
+ 		
+ 		
+ 		W.T. of P1 = 0 ms; W.T. of P2 = 24 ms; W.T. of P3 = 27 ms;
+ 		A.W.T. = (0+24+27)/3 = 51/3 = 17 ms.
+ 		
+ 		R.T. of P1 = 0 ms; R.T. of P2 = 24 ms; R.T. of P3 = 27 ms; 
+ 		A.R.T = (0+24+27)/3 = 51/3 = 17 ms.
+ 		
+ 		T.A.T. of P1 = 0 + 24 = 24 ms;
+ 		T.A.T. of P2 = 24 + 3 = 27 ms;
+ 		T.A.T. of P3 = 27 + 3 = 30 ms;
+ 		A.T.A.T. =(24+27+30)/3 = 27 ms
+ 		
+ 		- "convoy effect" -- due to the arrival of longer processes before smaller 
+ 		processes, smaller processes has to wait for longer duration, which results
+ 		into increase in their waiting time and hence average waiting for all processes
+ 		in a system also gets increases and due to this system performance gets down.
+ 		
+ 		2. SJF -- Shortest Job First
+ 		- in this algo process having min cpu burst time gets control of the cpu first
+ 		- in this algo tie can be resolved by using FSCS algo
+ 		- SJF algo ensures min waiting time
+ 		
+ 		
+ 		W.T. of P1 = 6 ms; W.T. of P2 = 0 ms; W.T. of P3 = 3 ms;
+ 		A.W.T. = (6+3+0)/3 = 9/3 = 3 ms.
+ 		
+ 		R.T. of P1 = 6 ms; R.T. of P2 = 0 ms; R.T. of P3 = 3 ms; 
+ 		A.R.T = (0+24+27)/3 = 51/3 = 17 ms.
+ 		
+ 		T.A.T. of P1 = 6 + 24 = 30 ms
+ 		T.A.T. of P2 = 0 + 3 = 3 ms;
+ 		T.A.T. of P3 = 3 + 3 = 6 ms;
+ 		A.T.A.T. =(30+3+6)/3 = 39/3 = 13 ms
+ 	
+ 		- SJF can be implemented as a non-preemptive as well as preempive
+ 		- SJF under non-preemptive is called as "shortest-next-time-first".
+ 		- SJF under preemptive is called as "shortest-remaining-time-first".
+
+ 		Processes -- A.T. -- CPU Burst Time
+ 		P1 -- 0 -- 8
+ 		P2 -- 1 -- 4
+ 		P3 -- 2 -- 6
+ 		P4 -- 3 -- 5
+ 		P5 -- 4 -- 3
+ 		
+
+ 		W.T. of P1 = 18 ms; W.T. of P2 = 0 ms; W.T. of P3 = 11 ms;
+ 		W.T. of P4 = 5 ms; W.T. of P5 = 1 ms;
+ 		
+ 		A.W.T. = ???
+ 		
+ 		R.T. of P1 = 0 ms; R.T. of P2 = 0 ms; R.T. of P3 = 11 ms; 
+ 		R.T. of P4 = 5 ms; R.T. of P5 = 1 ms;
+ 		
+ 		A.R.T = ???
+ 		
+ 		T.A.T. of P1 = 18 + 8 = 26 ms
+ 		T.A.T. of P2 = 0 + 4 = 4 ms
+ 		T.A.T. of P3 = 11 + 6 = 17 ms;
+ 		T.A.T. of P4 = 5 + 5 = 10 ms;
+ 		T.A.T. of P5 = 1 + 3 = 4 ms;
+ 		
+ 		A.T.A.T. = ????
+
+	3. Priority Scheduling Algorithm:
+	- in this algo each process has priority with it and control of the cpu gets 
+	allocated as per the priority
+	- the process having highest priority will get the control of the cpu first and so on..
+	
+ 		Processes -- Priority -- CPU Burst Time
+ 		P1 -- 3 -- 8
+ 		P2 -- 10 -- 4
+ 		P3 -- 1 -- 6
+ 		P4 -- 8 -- 5
+ 		P5 -- 5 -- 3
+
+		- min priority value indicates highest priority
+		i.e. in our example as priority value of processs P3 is minimum so P3 has
+		got highest priority and so on...
+		
+		- starvation -- process in a ready queue gets blocked due to very low priority
+		i.e. blocked process will never gets control of the cpu, such situation is called
+		"starvation" or "indefinite blocking".
+		- "ageing" -- ageing is a technique in which priority blocked process increments
+		gradually by the system, i.e. after some time intervals system keeps on 
+		incrementing priority of blocked process, so that at some moment priority
+		of blocked process becomes suff enough to get control of the cpu.
+		
+		4. Round Robin:
+		- this algo ensures min "response time".
+		- if time quantum is small, context switch occurs frequently which increase 
+		overhead of the cpu.
+		
+		5. Multi-level Queue CPU Sched Algorithm:
+		
+		6. Multi-level Feedback Queue CPU Sched Algorithm:
+		- in this algo if any process is not getting suff cpu time, that process sent
+		feedback to the OS, due to which OS switch that process from one queue onto
+		the another queue.
+	---------------------------------------------------------------------------------------
+	1. Asymmetric Multi Processor System
+	2. Symmetric Multi Processor System
+	
+	
+	# Inter Process Communication:
+	- independent process -- process which do not shares data with any other process
+	called as "indepedent process".
+	- process which do not affects or not get affected by any other process called
+	as "indepedent process".
+	
+	- co-operating processes -- process which shares data with any other process
+	called as "co-operating process".
+	- process which affects or get affected by any other process called
+	as "co-operating process".
+	
+	- there are two mechanisms by which processes can communicates with each other:
+	1. shared memory model:
+	- under this model, processes can communicates with each other by means of reading
+	and writing data into the "shared memory region" which is provided by the OS.
+	
+	2. message passing model:
+	- under this model, processes can communicates with each other by means of sending
+	messages.
+		i. pipe:
+			- there are two types of pipe:
+				1. un-named pipe -- by using un-named pipe any two "related processes"
+				which are running on the same system can communicates with each other
+				by means of sending messages.
+				
+				2. named pipe -- by using un-named pipe any two "non-related processes"
+				which are running on the same system can communicates with each other
+				by means of sending messages.
+				
+			- pipe is uni-directional communication pathway, i.e. at a time only one 
+			process can send message to another process, vice-versa is not possible.
+			- by using pipe only processes which are running on same system can 
+			communicates.
+			
+		ii. message queue -- by using this mechanism, processes which are running on the
+		same system can communicates with each other by means of sending as well as
+		recieving packets of messages to each other.
+		- for this OS provides/maintains "message queue" onto which all message packets
+		can be stored, and can be sent as per the addr of reciever process.
+		
+		- each message packet contains actual message, addr of sender process as well
+		as addr of reciever process etc...
+		- this is a bi-directional communication pathway, i.e. at a time any process
+		can send as well recieve message packet.
+		
+		iii. signal -- processes which are running on the same system can communicates
+		with each other by means of sending signals which has some predefined meaning.
+		- one process can send signal to any other process.
+		- OS can send signal to any process, but any process cannot send signal to OS.
+		- when we shutdown the machine, OS send "SIGTERM" to all running processes due
+		to which all processed gets terminated normally, if processes not gets terminated
+		even after getting SIGTERM signal from OS, OS send SIGKILL sigal to them.
+		- SIGSTOP, SIGCONT, SIGINT, etc....
+		- SIGSEGV -- Signal for Segment Violation -- when any program try to access
+		memory which is not allocated for it, OS send SIGSEGV signal to that process,
+		due to which process gets terminated with message as "segmentation fault".
+		
+		iv. socket: by using "socket" process running on one machine can communicates
+		with another process which is running on another machine, and both machines are
+		at remote distance from each other provided both the machines are connected in 
+		a network (LAN/WAN/Internet).
+		
+		- socket = Port No. + IP addr
+		
+		v. RPC: Remote Procedure Calling
+		- process running on one machine can invoke function which is exists on another
+		machine, both the machines are at remote distance from and are connected in a
+		network(LAN/WAN/Internet).
+-----------------------------------------------------------------------------------------
+	# Process Synchronization:
+			
+	- critical section problem -- when two processes are running in their critical sections
+	at a time, then there are chances to occur "data incosistency", this problem is
+	reffred as "critical section problem".
+	
+	- to avoid data incosistency problem OS use some synchronization tools:
+	1. semaphore:
+		- counting semaphore
+		- bianry semaphore
+		
+	2. mutex -- mutual execlusion
+			
+	- race condition -- 
+	
+	- 	C1 --> A
+		C2 --> B
+		C3 --> C
+		
+		R1 --> P1
+		R2 --> P2
+		R3 --> P3
+		
+		- there are four necc and suff conditions to occur deadlock:
+		1. mutual exclusion -- at a time only one process can have access of the resource
+		
+		2. hold & wait -- each process is holding one resource and waiting for another
+		resource which is held by another process
+		
+		3. no preemption -- any resource cannot be preepted from any process i.e. control
+		of the resource cannot be taken away forcefully from any process
+		
+		4. circular wait -- 
+		
+		
+		# resource allocation graph: it is graphical representation of allocation
+		of resource for the processes.
+		- set of vertices:
+			- P = { P1, P2, P3 }
+			- R = { R1, R2, R3 }
+		- set of edges:
+			- assignment edges -- { P1 <-- R1, P2 <-- R2, P3 <-- R3 }
+			- request edges -- { P1 --> R3, P2 --> R1, P3 --> R2 }
+			
+		--------------------------------------------------------
+			- processes can be represent by using circles
+			- resources can be represent by using rectangles, one dot inside rectangle
+			indicates only one instance of that resource is available.
+			- assignment edges in a graph can be represent by using left directed arrow
+			- request edges in a graph can be represent by using right directed arrow
+			
+			- if resource allocation graph contains a cycle -- deadlock occures
+			- cycle - if path in a given graph, start point and end point are same then 
+			such a path is called as "cycle".
+			
+	# deadlock handling methods:
+	1. deadlock prevention -- deadlocks can be prevented by discarding any one condition
+	out of four necc & suff conditions
+	
+	2. deadlock detection and avoidance -- in this method before allocating resources
+	for processes input given to algorithms and with the help of algo's it gets checked
+	whether deadlock will occur or not, if there are chances to occur deadlock (if deadlock
+	deadlock detected in an algorithm then input can be changes to avoid it.)
+		- there are two deadlock detection algo's:
+			1. resource allocation graph algorithm
+			2. banker's algorithm
+			
+	3. deadlock recovery -- system can recovered from deadlocks by two methods, i.e. there
+	are two deadlock recovery methods:
+		1. process termination -- under this method any process got selected and gets 
+		terminated, such process is reffered as "victim".
+		
+		2. resource preemption -- under this method resource can be preempted from process
+		i.e. control of the resource taken away forcefully from the process.
+	------------------------------------------------------------------------------
+	# Memory Management:
+	- OS manages "main memory"
+	
+	
+	# There are two methods by which memory gets allocated for processes, there
+	are two methods of memory allocation:
+	1. Contiguos Memory Allocation:
+		I. Fixed size partitioning method:
+			- main memory is divided into fixed no. of partitions having size of each
+			partition is fixed.
+			- and when any process is requesting for memory, process gets loaded into
+			any free partition in which process can fit.
+			advantages:
+			- simple
+			disadvantages:
+			- internal fragmentation - when memory remains unused internal to the partition
+			it is reffered as "internal fragmentation".
+			- degree of multi-programming os limited to no. of partitions
+			- size of the process is limited to max size partition in main the memory
+			
+		II. Dynamic/Variable size partitioning method:
+			- external fragementation
+			
+		- there are two solutions for the problem of "external fragmentation":
+		1. compaction -- shuffling of all memory in such a way all used partiotions can
+		be shifted to one side and all free partitions can be shifted to another side, so
+		that one large contiguos free partition will made available for loading next
+		programs.
+		
+		2. Non-contiguos memory allocation -- program can complete its execution even
+		if memory gets allocated for it in a non-contiguos manner.
+		
+			I. segmenation -- under this method, process is divided into small size
+			segments, so that for a process memory gets allocated in a non-contiguos
+			manner, i.e. segments of process may get load into the memory randomly.
+			- to keep track on segments associated with one process, OS maintains
+			one table per process called as "segmentation table", in which info about
+			all segments of that process can be kept.
+			- external fragmentation can be reduced by using "segmentation" technique.
+			
+			II. paging -- it is a technique in which physical memory i.e. main memory
+			is divided into fixed size of blocks called as "frames", whereas logical
+			memory i.e. process is divided into same size of blocks (as that of frame size)
+			called as "pages".
+			- when process is requesting for memory all pages of that process may get load
+			at any free frame, pages of any process may get load into any available free
+			frame i.e. randomly.
+			- to keep track on all pages associated with a single process, OS maintains 
+			one table per process called as "page table".
+			- there no external fragmentation in "paging"
+		---------------------------------------------------------------------------
+		- page fault -- when process is requesting for any page, if that page does not
+		exists into the main memory it is reffered as "page fault".
+		
+		- demand paging -- any page will gets loaded into the main memory from swap 
+		partition only after demanding/requesting it by the process
+		
+		- lazy swapper -- "swapper program" will going swap in pages only after demanded
+		by the process, swapper do not works by its own
+		
+		- page replacement algorithms:
+		1. FIFO page replacement algo -- page which was inserted first can be removed first
+		from the main memory
+		
+		2. Optimal page replacement algo -- page which will get used in a near future 
+		will get removed from the main memory
+		
+		3. LRU page replacement algo -- least recently used page gets removed from the main
+		memory
+		
+		4. LFU (least frequently used)
+		5. MFU (most frequently used)
+	------------------------------------------------------------------------------
+	+ thrashing -- if process/system spending more time on paging rather than execution,
+	this high paging activity is called as "thrashing".
+--------------------------------------------------------------------------------------
+	# File Management:
+	
+	- what is file?
+		- file is a named collection of logically related data/information.
+		- file is a basic storage unit
+		- file is stream of bytes/chars/words
+		
+		- file = data(actual file contents)  + meta data(information about the file)
+		- information about the file can be kept in a structure called as "FCB": File
+		Control Block.
+		- On UNIX FCB is called as "iNode".
+		- iNode contains:
+			- inode number
+			- name of the file
+			- type of the file
+			- size of the file
+			- access perms -- user, grp member & others
+			- no. of data blocks allocatded for file
+			- timestamps
+			etc....
+			
+			
+		filesystem -- is  a way to store data onto  the disk in an organized manner
+		so that data can be accessed from the disk efficiently.
+		
+		- filesystem divides disk logically into sectors:
+		1. boot sector/boot block -- info about booting system
+		
+		2. volume control block/super block -- info about remaining blocks
+			total no. of data blks, no. of used blks, no. free data blks, etc...
+			
+		3. master file table/inode list block -- linked list of inodes
+		4. data block -- actual data
+			data blks -- 
+			- size of data block = 512 bytes
+---------------------------------------------------------------------------------------
+	- when a file requesting for disk space i.e. requesting data blocks
+	there are three methods by which disk space gets allocated for a file:
+	1. contiguos allocation -- data blocks gets allocated for any file in only
+	contiguos manner
+	
+	2. linked allocation -- linked list of data blocks of one file can be maintained
+	in a data block
+	
+	3. index allocation -- any one data block considered as a "index data block" and
+	addresses of all data blocks of one file can be kept into that index data block.
+----------------------------------------------------------------------------------------
+	+ disk scheduling algorithms: when system submits multiple requests into the waiting
+	queue for the disk controller, disk controller can accept and complete only one
+	request at a time, so there is need to schedule only one request at a time and pass
+	it to the disk controller, to do this there are certain algo's reffered as
+	"disk scheduling algo's".
+	
+	1. FCFS -- First Come First Served
+	2. SSTF -- Shortest Seek Time First
+	3. SCAN -- 
+	4. C-SCAN -- Circular SCAN
+	5. LOOK -- 
